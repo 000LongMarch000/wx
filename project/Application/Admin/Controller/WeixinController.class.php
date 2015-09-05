@@ -208,7 +208,7 @@ class WeixinController extends AdminController {
         $menu = $menuMdl->getRow($id);
 
         if ($menu) {
-            if($menu['msg_data']) $menu['msg_data'] = unserialize($menu['msg_data']);
+            $menu['msg_data'] = $menu['msg_data']?unserialize($menu['msg_data']):array();
             $sec_list = $menuMdl->getList($menu['id']);
             if (!$sec_list) {
                 if ($menu['type'] == 'view') {

@@ -59,6 +59,7 @@ class IndexController extends Controller {
             case 'CLICK':
                 $menuMdl = D('Menu');
                 $menu = $menuMdl->getRow($data['EventKey']);
+                \Common\Lib\Utils::log('wechat', 'request.log', $menu);
                 $this->reply($menu);
                 break;
             default:

@@ -14,11 +14,6 @@ class PubController extends Controller {
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')){
             $this->assign('in_wechat', 1);
             $this->wx();
-            $wxConfig = C('WX_OAUTH');
-            $redisConfig = C('REDIS_CONFIG_USER');
-            $jssdk = new \Common\Lib\Jssdk($wxConfig['appid'], $wxConfig['appsecret'], $redisConfig);
-            $signPackage = $jssdk->getSignPackage();
-            $this->assign('signPackage', $signPackage);
         }
 
         //抛数据到模版中
@@ -87,7 +82,7 @@ class PubController extends Controller {
 
     //微信处理
     public function wx(){
-        $wx_oauth_conf = C('WX_OAUTH');
+        $wx_oauth_conf = C('WEIXIN');
         $wechat = new \Common\Lib\Wechat($wx_oauth_conf);
 
         if (!$_COOKIE['wxopenid']) {
@@ -96,7 +91,7 @@ class PubController extends Controller {
             $referrerUri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             $state = base64_encode($referrerUri);
             #$redirectUri = 'http://www.sandbox.wdwd.com/admin/data/login';
-            $redirectUri = 'http://wdwd.com/admin/data/login';
+            $redirectUri = 'http://i.shopflow.cn/admin/data/login';
             $authorizeUrl = $wechat->getOauthRedirect($redirectUri, $state, 'snsapi_base');
             header('Location: ' . $authorizeUrl);
             exit;
