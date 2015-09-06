@@ -1,0 +1,328 @@
+@import "compass";
+@import "vars";
+
+/*==========================
+=            通用            =
+==========================*/
+.shop-media {
+  @include clearfix();
+  .shop-img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    float: left;
+    line-height: 50px;
+    .iconfont {
+      color: $border_gray;
+      font-size: 44px;
+      background: #fff;
+    }
+  }
+  .shop-name {
+    margin: 0 0 2px 55px;
+    padding: 4px 0 0;
+    font-size:14px;
+    color:#333;
+  }
+  .shop-info {
+    color: #777;
+    margin: 0 0 0 55px;
+    a.link{
+      color:#14a4ff
+    }
+    &.fail-info{
+      color:$color_red;
+    }
+  }
+}
+
+
+/*==========================
+=            开店            =
+==========================*/
+.mod-open-shop {
+  .mod-title {
+    margin: 0 0 25px;
+    padding: 0 0 0 100px;
+    @include clearfix();
+    .event-ico {
+      margin-left: -100px;
+      float: left;
+      _display: inline;
+    }
+    h4 {
+      padding: 20px 0 0;
+      margin: 0 0 5px;
+    }
+    .sub-title {
+      color: $color_light_gray;
+    }
+  }
+  .sec-weibo-steps {
+    $weibo_step_size: 200px;
+    .step {
+      margin: 0 25px 10px 0;
+      float: left;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      height: $weibo_step_size + 35px;
+    }
+    .step-title {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      top: $weibo_step_size + 5px;
+      height: 30px;
+      line-height: 30px;
+      color: $color_gray;
+    }
+    .step-info {
+      width: $weibo_step_size;
+      height: $weibo_step_size;
+      overflow: hidden;
+      border: 1px solid $border_gray;
+    }
+    .done {
+      .step-info {
+        border: 1px solid #82b3ef;
+        @include box-shadow(inset 0 0 10px #82b3ef);
+      }
+    }
+    .step-info-cont {
+      position: absolute;
+      top: 30%;
+      width: 100%;
+    }
+    .info-overlay {
+      position: absolute;
+      width: $weibo_step_size;
+      height: $weibo_step_size;
+      border: 1px solid #666;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: #666;
+      @include box-shadow(inset 0 0 10px #333);
+      @include opacity(.9);
+      .note {
+        padding: 0 40px;
+        margin-top: $weibo_step_size / 2 - 20px;
+        color: #fff;
+      }
+    }
+  }
+}
+
+/*==========================
+=            用户            =
+==========================*/
+.mod-account-info {
+}
+
+/*==========================
+=            连接            =
+==========================*/
+.mod-link {
+  .mod-title {
+    text-align: center;
+    padding: 40px 40px 20px;
+  }
+  .btns {
+    text-align: center;
+    margin: 0 0 40px;
+  }
+}
+.mod-link-taobao {
+}
+.mod-link-other {
+  .link-info {
+    line-height: 1.5;
+    font-size: 12px;
+    margin: 0 80px 20px;
+    ul {
+      margin: 0 0 15px;
+    }
+  }
+}
+
+/*==========================
+=             认证            =
+==========================*/
+.mod-shop-auth {
+  .auth-hint {
+    padding: 30px 0;
+    line-height: 1.5;
+    font-size: 13px;
+    dl {
+      margin: 0 0 15px;
+    }
+    dt {
+      margin: 0 0 10px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    dd {
+      padding: 0 5px;
+    }
+    li {
+      margin: 0 0 10px 15px;
+      line-height: 1.5;
+      list-style: disc;
+      list-style-position: outside;
+    }
+  }
+  .auth-protocol {
+    border: 1px solid #ddd;
+    padding: 10px;
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0 0 15px;
+  }
+  .btns {
+    text-align: center;
+    margin: 10px 0 15px;
+  }
+
+  .list-skin-3{
+    margin-top: 0px;
+    border:none;
+
+    tbody td{
+      border-bottom: none;
+      background:#f6f6f6;
+      padding:17px 0 19px 32px;
+    }
+  }
+
+  .auth-list{
+    @include clearfix();
+    margin: 25px 0 0 0;
+    li{
+      float: left;
+      margin-left: 28px;
+      width:250px;
+      padding:0 15px;
+      border:1px solid #ddd;
+      @include border-radius(2px);
+      &.current{
+        border: 1px solid $color_red;
+      }
+      &.disabled{
+        background: #fbfbfb;
+      }
+      .list-icon{
+        i{
+          width:80px;
+          margin: 20px auto;
+        }
+      }
+      .list-name{
+        color:#333;
+        font-size: 14px;
+        text-align: center;
+      }
+      .list-desc{
+        color:#777;
+        text-align: justify;
+        line-height: 1.8em;
+        height:125px;
+        margin-top: 5px;
+      }
+      .list-btn{
+        text-align: center;
+        margin-bottom: 25px;
+        height:40px;
+      }
+    }
+  }
+}
+
+.auth-success {
+  @include clearfix();
+  .list-skin-3{
+    tbody td{
+      border-bottom: 1px solid #ddd;
+      background:#fff;
+      padding: 22px 0 18px 48px;
+
+    }
+    td.t-r{
+      background:#fff image-url("auth_done.png") no-repeat right top;
+      padding:0px;
+      .btn{
+        margin-right: 40px;
+      }
+    }
+  }
+  .shop-media{
+    .shop-img {
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+    }
+    .shop-name {
+      margin: 0 0 5px 92px;
+      padding: 17px 0 0;
+    }
+    .shop-info {
+      margin: 0 0 0 92px;
+    }
+  }
+}
+
+.auth-view{
+  border:1px solid #dddddd;
+  padding:30px;
+  width:858px;
+  margin: 20px auto;
+  font-size: 14px;
+  label.ctl-label{
+    color:#222;
+  }
+  .ctl-txt{
+    color:#777;
+    img{
+      width:120px;
+      height:120px;
+      border:1px solid #ddd;
+      vertical-align: middle;
+    }
+  }
+  .form-group{
+    padding:0px 5px 5px 130px;
+    .ctl-label{
+      margin:0 0 0 -125px;
+    }
+  }
+
+  .hr-line{
+    height:10px;
+    border-bottom: 1px dashed #ddd;
+  }
+  .hr-after{
+    height:10px;
+  }
+}
+
+.taobao-shopname{
+  font-size: 14px;
+}
+/*==========  运费设置  ==========*/
+.sec-shipping-area {
+  background: #fff;
+  border: 1px solid #e9e9e9;
+  padding: 5px;
+  width: 200px;
+  height: 300px;
+  overflow-y: scroll;
+  label {
+    display: block;
+    padding: 4px;
+    cursor: pointer;
+    &:hover {
+      background: #f8f8f8;
+    }
+  }
+}

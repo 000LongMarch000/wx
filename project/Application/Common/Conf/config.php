@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/env.php';
 $common = array(
-    //'DEBUG' => true,
+    'DEBUG' => true,
     'ENV' => 'DEV',
 
     'URL_MODEL' => 2,
@@ -35,6 +35,8 @@ $common = array(
     ),
 
     'PAGE_LIMIT' => 10,
+
+    'WEIXIN' => array('appid' => 'wx5c5eb81395daa40c', 'appsecret' => '2486f856156e4cee1ffe231658558b26', 'token' => '2d5d7e74c17bdcc3f753f3d46fc3abc0'),
 );
 
 return array_merge($common, $conf);

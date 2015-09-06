@@ -1,0 +1,487 @@
+@import "compass";
+@import "vars";
+@import "spectrum";
+@import "showcase/showcase_config";
+@import "showcase/showcase_widgets";
+@import "showcase/showcase_ctls";
+@import "showcase/showcase_respond";
+@import "icons_showcase";
+
+.showcase-cont {
+  background: #fff image-url("showcase/edit_bg.gif");
+  min-height: 600px;
+  position: relative;
+  margin: -5px 0 -20px;
+  padding: 20px 30px 70px;
+  .showcase-toolbar {
+    background: #fff;
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    .btn-primary {
+      padding-left: 38px;
+      padding-right: 38px;
+      margin: 0 3px;
+    }
+  }
+  .status-bar {
+    background: image-url("showcase/status_bar.jpg") no-repeat;
+    height: 64px;
+    position: relative;
+    cursor: pointer;
+    .tit {
+      height: 44px;
+      line-height: 50px;
+      width: 10em;
+      top: 20px;
+      left: 50%;
+      margin: 0 0 0 -5em;
+      padding: 0;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      position: absolute;
+      @include text-overflow();
+    }
+  }
+  .showcase-viewport {
+    background: #f6f6f6;
+    margin: 0 0 20px;
+    width: 320px;
+    min-height: 760px;
+    position: relative;
+    @include box-shadow(0 0 8px rgba(0, 0, 0, .5));
+    @include clearfix();
+    border: 1px solid #e8e8e8\9;
+    overflow: hidden;
+  }
+  .showcase-editor {
+    position: absolute;
+    left: 400px;
+    top: 20px;
+    width: 460px;
+    .showcase-menu {
+      z-index: 10;
+      position: absolute;
+      overflow: visible;
+      .arr-l {
+        @include arr(left, #eaeaea, 20px);
+        position: absolute;
+        left: -40px;
+        top: 10px;
+        z-index: 2;
+      }
+      .arr-inner {
+        @include arr(left, #fff, 20px);
+        position: absolute;
+        left: -19px;
+        top: -20px;
+      }
+    }
+    .hr {
+      margin: 5px 0;
+    }
+    .sub-tit {
+      padding: 5px 0 10px;
+      margin: 0 0 12px;
+      border-bottom: 1px dashed #e2e2e2;
+    }
+  }
+  .edit-helper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+  }
+  .comp-field {
+    position: relative;
+    cursor: pointer;
+    @include clearfix();
+    .loading-indicator {
+      background-color: #ccc;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      @include opacity(.5);
+    }
+  }
+  .hover .edit-helper {
+    border: 1px dashed #0073dd;
+    padding: 0;
+    background-color: #0073dd;
+    background-color: rgba(#0073dd, .1);
+    background: none\9;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#1a237efb, endColorstr=#1a237efb);
+    .btns {
+      // right: 0;
+      // bottom: 0;
+      @include opacity(1);
+      visibility: visible;
+    }
+  }
+  .cur .edit-helper{
+    border: 1px solid #0073dd;
+  }
+  .edit-helper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    @include box-sizing(border-box);
+    z-index: 5;
+    padding: 1px;
+    .btns {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      @include opacity(0);
+      @include transition(opacity .1s);
+      visibility: hidden;
+      font-size: 0;
+      a {
+        font-size: 12px;
+        background: #0073dd;
+        display: inline-block;
+        padding: 0 8px;
+        color: #fff;
+        height: 26px;
+        line-height: 26px;
+        margin-left: 1px;
+      }
+      .btn-del {
+        background: #ff4f47;
+      }
+      .sc-ico {
+        margin: 0 5px 0 0;
+      }
+    }
+  }
+  .showcase-menu-cont {
+    margin: 8px;
+    .menu-tit {
+      background: #fff;
+      border: 1px dashed #dadce2;
+      color: #9198a9;
+      text-align: center;
+      height: 48px;
+      line-height: 48px;
+      font-size: 16px;
+      .iconfont {
+        font-size: 20px;
+        margin-right: 3px;
+      }
+    }
+    .showcase-menu {
+      border-top: none;
+    }
+  }
+  .comp-helper {
+    background: #efefef;
+    margin: 10px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #ccc;
+  }
+  .comp-division {
+    min-height: 14px;
+  }
+  //轮播不显示第一张以外的图片
+  .img-list-carousel {
+    .imgs-list {
+      .item {
+        display: none;
+        &:first-child {
+          display: table-cell;
+        }
+      }
+    }
+  }
+}
+
+$menu_size: $size_320 - (8px + 1px) * 2;
+
+.showcase-menu {
+  background: #fff;
+  width: $menu_size;
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+  .comps-list {
+    @include clearfix();
+    width: $menu_size + 10px;
+  }
+  .item {
+    float: left;
+    width: ($menu_size - 2px) / 4;
+    height: ($menu_size - 2px) / 4 +5px;
+    border-right: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  .comp-name {
+    color: #333;
+    display: block;
+    position: absolute;
+    top: ($menu_size - 2px) / 4 - 20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+  }
+  .sc-ico-cont{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:($menu_size - 2px) / 4 - 20px;
+    .vm-span{
+      vertical-align: middle;
+      height: 100%;
+      width:0px;
+      display: inline-block;
+    }
+  }
+  .sc-ico {
+    
+  }
+  .btn-more {
+    display: block;
+    border-top: 1px solid #eaeaea;
+    margin-top: -1px;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    color: #ccc;
+  }
+}
+
+.showcase-editor {
+  background: #fff;
+  .wgt-tabs {
+    padding: 0 3px;
+    margin: 0 -3px 5px;
+  }
+  .comp-editor {
+    background: #fff;
+    position: absolute;
+    border: 1px solid #c2c2c2;
+    width: 100%;
+    left: 0;
+    .hd {
+      background: #515264;
+      color: #fff;
+      position: relative;
+      z-index: 3;
+      margin: 2px;
+      height: 45px;
+      line-height: 45px;
+      padding: 0 18px;
+      font-size: 16px;
+    }
+    .bd {
+      padding: 5px 15px;
+    }
+    .arr-l {
+      @include arr(left, #c2c2c2, 20px);
+      position: absolute;
+      left: -40px;
+      top: 50px;
+      z-index: 2;
+    }
+    .arr-inner {
+      @include arr(left, #fff, 20px);
+      position: absolute;
+      left: -19px;
+      top: -20px;
+    }
+    .ctls-selector {
+      padding: 5px 0 0;
+    }
+  }
+  .form-group {
+    padding-left: 75px;
+    .ctl-label {
+      width: 65px;
+      margin-left: -75px;
+    }
+  }
+  .form-group-line {
+    .ctl-label {
+      margin-left: 5px;
+    }
+  }
+  .form-group-div {
+    border-bottom: 1px dashed #e2e2e2;
+    padding: 0 0 5px;
+    margin: -15px 0 5px;
+    height: 1px;
+    overflow: hidden;
+    font-size: 0;
+  }
+  textarea.input-text {
+    width: 90%;
+  }
+  .ctl-radio, .ctl-checkbox {
+    display: block;
+    margin: 0 0 5px;
+    cursor: pointer;
+  }
+}
+
+/*=======================================
+=            showcase editor            =
+=======================================*/
+.showcase-editor {
+  .pdts-list {
+    border-top: 1px dashed #e2e2e2;
+    margin: 0 0 15px;
+    @include clearfix();
+    .item {
+      background: #fff;
+      padding: 10px 0 10px 30px;
+      height: 45px;
+      overflow: hidden;
+      color: #777777;
+      position: relative;
+      @include clearfix();
+      border-bottom: 1px dashed #e2e2e2;
+      &:hover .btn-del {
+        right: 0;
+        visibility: visible;
+        @include opacity(1);
+      }
+      &:active .btn-del {
+        @include opacity(.8);
+      }
+    }
+    .ico-move-handler {
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      margin-top: -11px;
+      cursor: move;
+    }
+    .pdt-img {
+      float: left;
+      @include pdt_img(45px);
+    }
+    .pdt-name, .pdt-price {
+      width: 70%;
+      margin-left: 60px;
+    }
+    .pdt-name {
+      margin-top: 2px;
+      height: 32px;
+      line-height: 16px;
+      overflow: hidden;
+    }
+  }
+  .btn-del {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    margin-top: -0.5em;
+    color: $color_red;
+    @include transition(opacity, 0.2s);
+    @include opacity(0);
+    visibility: hidden;
+    .iconfont {
+      font-size: 14px;
+      margin-right: 3px;
+    }
+  }
+  .btn-select {
+    background: #fff8f8;
+    border: 1px dashed #fdc3c0;
+    color: #f87671;
+    display: block;
+    margin: 3px 0 5px;
+    height: 43px;
+    line-height: 43px;
+    font-size: 16px;
+    text-align: center;
+    strong {
+      font-size: 1.1em;
+      margin-right: 2px;
+    }
+    &:hover {
+      color: darken(#f87671, 3%);
+      background: darken(#fff8f8, 3%);
+    }
+  }
+
+  .imgs-list {
+    border-top: 1px dashed #e2e2e2;
+    margin-bottom: 15px;
+    @include clearfix();
+    .item {
+      background: #fff;
+      padding: 10px 0 10px 30px;
+      height: 80px;
+      overflow: hidden;
+      color: #777777;
+      position: relative;
+      @include clearfix();
+      border-bottom: 1px dashed #e2e2e2;
+      &:hover .btn-del {
+        right: 0;
+        visibility: visible;
+        @include opacity(1);
+      }
+      &:active .btn-del {
+        @include opacity(.8);
+      }
+    }
+    .ico-move-handler {
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      margin-top: -11px;
+      cursor: move;
+    }
+    .img {
+      background: #fff;
+      float: left;
+      @include pdt_img(80px);
+      position: relative;
+      cursor: pointer;
+      a {
+        display: block;
+        height: 20px;
+        color: #fff;
+      }
+      .btns {
+        background: #000;
+        color: #fff;
+        @include opacity(0);
+        visibility: hidden;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        @include transition(opacity 0.2s);
+      }
+      &:hover {
+        .btns {
+          visibility: visible;
+          @include opacity(.6);
+        }
+      }
+    }
+    .img-url {
+      padding-left: 10px;
+      float: left;
+    }
+  }
+}

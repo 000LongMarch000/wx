@@ -1,0 +1,347 @@
+/* line 3, ../scss/showcase_manager.scss */
+.showcase-cont {
+  margin-top: -5px;
+  margin-bottom: -20px;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+/* line 10, ../scss/showcase_manager.scss */
+.showcase-current {
+  float: left;
+  padding-top: 22px;
+  width: 278px;
+}
+
+/* line 16, ../scss/showcase_manager.scss */
+.sc-cur-cont {
+  position: relative;
+  margin: 0 auto;
+  -moz-border-radius: 18px;
+  -webkit-border-radius: 18px;
+  border-radius: 18px;
+  border: 1px solid #bccad8;
+  width: 259px;
+  height: 497px;
+  background: #f5f7fa;
+}
+
+/* line 26, ../scss/showcase_manager.scss */
+.sc-cur-bg-camera,
+.sc-cur-bg-microphone,
+.sc-cur-bg-speaker,
+.sc-cur-bg-home,
+.sc-cur-wrapper {
+  position: absolute;
+  border-style: solid;
+  border-width: 1px;
+}
+
+/* line 36, ../scss/showcase_manager.scss */
+.sc-cur-bg-camera,
+.sc-cur-bg-microphone,
+.sc-cur-bg-home {
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+/* line 42, ../scss/showcase_manager.scss */
+.sc-cur-bg-camera,
+.sc-cur-bg-microphone,
+.sc-cur-bg-speaker {
+  height: 6px;
+}
+
+/* line 48, ../scss/showcase_manager.scss */
+.sc-cur-bg-camera,
+.sc-cur-bg-microphone {
+  border-color: #bfccda;
+  width: 6px;
+}
+
+/* line 54, ../scss/showcase_manager.scss */
+.sc-cur-bg-microphone,
+.sc-cur-bg-speaker {
+  top: 38px;
+}
+
+/* line 59, ../scss/showcase_manager.scss */
+.sc-cur-bg-camera {
+  left: 130px;
+  top: 23px;
+}
+
+/* line 64, ../scss/showcase_manager.scss */
+.sc-cur-bg-microphone {
+  left: 102px;
+}
+
+/* line 68, ../scss/showcase_manager.scss */
+.sc-cur-bg-speaker {
+  left: 115px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border-color: #bccad8;
+  width: 38px;
+}
+
+/* line 75, ../scss/showcase_manager.scss */
+.sc-cur-bg-home {
+  left: 110px;
+  bottom: 12px;
+  border-color: #bdcbd9;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 83, ../scss/showcase_manager.scss */
+.sc-cur-bg-legcay-fix {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 261px;
+  height: 499px;
+  background: no-repeat url('../img/showcase-container.png');
+}
+
+/* line 92, ../scss/showcase_manager.scss */
+.sc-cur-wrapper {
+  left: 8px;
+  top: 68px;
+  border-color: #b4b4b4;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* line 101, ../scss/showcase_manager.scss */
+.sc-cur-preview, .sc-cur-preview img {
+  width: 240px;
+  height: 360px;
+}
+
+/* line 107, ../scss/showcase_manager.scss */
+.sc-cur-actions {
+  bottom: -40px;
+  background: rgba(101, 222, 193, 0.9);
+  -moz-transition: bottom 0.15s linear;
+  -o-transition: bottom 0.15s linear;
+  -webkit-transition: bottom 0.15s linear;
+  transition: bottom 0.15s linear;
+}
+/* line 112, ../scss/showcase_manager.scss */
+.sc-cur-actions, .sc-cur-actions a {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 40px;
+}
+/* line 119, ../scss/showcase_manager.scss */
+.sc-cur-actions a {
+  display: block;
+  top: 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+}
+
+/* line 129, ../scss/showcase_manager.scss */
+.sc-cur-actions-bg-fix {
+  background: #65dec1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;
+}
+
+/* line 134, ../scss/showcase_manager.scss */
+.sc-cur-cont:hover .sc-cur-actions {
+  bottom: 0;
+}
+
+/* line 138, ../scss/showcase_manager.scss */
+.sc-cur-info {
+  margin: 28px auto 0;
+  width: 259px;
+}
+
+/* line 143, ../scss/showcase_manager.scss */
+.sc-cur-qr-title {
+  color: #777;
+  font-size: 12px;
+}
+
+/* line 148, ../scss/showcase_manager.scss */
+.sc-cur-qr-title,
+.sc-cur-qr-code {
+  text-align: center;
+}
+
+/* line 153, ../scss/showcase_manager.scss */
+.sc-cur-qr-code {
+  margin: 7px auto 0;
+  border: 3px solid #f6f6f6;
+  padding: 8px;
+  background: #fff;
+}
+/* line 159, ../scss/showcase_manager.scss */
+.sc-cur-qr-code, .sc-cur-qr-code img {
+  width: 126px;
+  height: 126px;
+}
+
+/* line 165, ../scss/showcase_manager.scss */
+.sc-cur-address {
+  margin: 16px auto 0;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  width: 257px;
+  height: 40px;
+  color: #777;
+  font-size: 12px;
+  line-height: 40px;
+  text-align: center;
+  background: #f6f6f6;
+}
+/* line 177, ../scss/showcase_manager.scss */
+.sc-cur-address a {
+  color: #0e5dd3;
+}
+
+/* line 182, ../scss/showcase_manager.scss */
+.showcase-templates {
+  border-left: 1px solid #ddd;
+  margin-left: 278px;
+}
+
+/* line 187, ../scss/showcase_manager.scss */
+.sc-tpl-cat {
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+  background: #fff;
+}
+
+/* line 193, ../scss/showcase_manager.scss */
+.sc-tpl-cat-item {
+  float: left;
+  margin: 0 7px;
+  width: 80px;
+}
+/* line 198, ../scss/showcase_manager.scss */
+.sc-tpl-cat-item a {
+  display: block;
+  border-bottom: 2px solid #fff;
+  height: 48px;
+  color: #333;
+  font-size: 14px;
+  line-height: 50px;
+  text-align: center;
+}
+/* line 207, ../scss/showcase_manager.scss */
+.sc-tpl-cat-item a.cur {
+  color: #ec4e1e;
+  border-color: #ec4e1e;
+}
+
+/* line 214, ../scss/showcase_manager.scss */
+.sc-tpl-list {
+  padding: 21px;
+  background: #f5f7fa;
+}
+
+/* line 219, ../scss/showcase_manager.scss */
+.sc-tpl-list-list {
+  margin-left: -21px;
+}
+
+/* line 223, ../scss/showcase_manager.scss */
+.sc-tpl-list-item {
+  float: left;
+  margin-left: 21px;
+  width: 199px;
+}
+
+/* line 229, ../scss/showcase_manager.scss */
+.sc-tpl-wrapper {
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  padding: 1px;
+  background: #ddd;
+}
+
+/* line 235, ../scss/showcase_manager.scss */
+.sc-tpl-preview {
+  padding: 17px 16px 16px 17px;
+  background: #fff;
+}
+/* line 239, ../scss/showcase_manager.scss */
+.sc-tpl-preview, .sc-tpl-preview img {
+  width: 164px;
+  height: 254px;
+}
+
+/* line 245, ../scss/showcase_manager.scss */
+.sc-tpl-actions {
+  height: 35px;
+  background: #f5f7fa;
+}
+/* line 249, ../scss/showcase_manager.scss */
+.sc-tpl-actions a {
+  float: left;
+  width: 50%;
+  color: #777;
+  font-size: 14px;
+  line-height: 35px;
+  text-align: center;
+}
+
+/* line 260, ../scss/showcase_manager.scss */
+.sc-tpl-actions-single a {
+  width: 100%;
+}
+
+/* line 265, ../scss/showcase_manager.scss */
+.sc-tpl-title {
+  color: #777;
+  font-size: 14px;
+  line-height: 54px;
+  text-align: center;
+}
+
+/* line 273, ../scss/showcase_manager.scss */
+.sc-tpl-cur-item .sc-tpl-wrapper {
+  padding: 4px 4px 1px;
+  background: #65dec1;
+}
+/* line 278, ../scss/showcase_manager.scss */
+.sc-tpl-cur-item .sc-tpl-preview {
+  padding: 13px 12px 16px 13px;
+}
+/* line 282, ../scss/showcase_manager.scss */
+.sc-tpl-cur-item .sc-tpl-actions {
+  background: #65dec1;
+}
+/* line 285, ../scss/showcase_manager.scss */
+.sc-tpl-cur-item .sc-tpl-actions a, .sc-tpl-cur-item .sc-tpl-actions span {
+  color: #fff;
+}
+/* line 289, ../scss/showcase_manager.scss */
+.sc-tpl-cur-item .sc-tpl-actions span {
+  float: left;
+  width: 50%;
+  font-size: 14px;
+  line-height: 35px;
+  text-align: center;
+}
+
+/* line 299, ../scss/showcase_manager.scss */
+#J_mpagesList .btn-edit {
+  color: #666;
+  visibility: hidden;
+}

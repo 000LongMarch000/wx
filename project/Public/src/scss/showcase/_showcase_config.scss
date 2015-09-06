@@ -1,0 +1,36 @@
+/**
+*
+* widgets define && preview
+*
+**/
+
+@import "compass";
+@import "vars";
+
+/*==============================
+=            config            =
+==============================*/
+$is_mobile: false;
+
+/*-----  End of config  ------*/
+
+$size_320: 320px;
+$side_offset: 8px;
+$pdt_offset: 8px;
+$pdt_item_padding: 0;
+$pdt_large_item_width: $size_320 - $pdt_offset * 2;
+$pdt_small_item_width: ($size_320 - $pdt_offset * 3) / 2;
+$pdt_item_border_size: 1px;
+
+$border_gray: #dedede;
+
+
+@if $is_mobile {
+  $pdt_item_border_size: 0;
+}
+
+$pdt_small_img_size: $pdt_small_item_width - ($pdt_item_padding + $pdt_item_border_size) * 2;
+$pdt_large_img_size: $pdt_large_item_width - ($pdt_item_padding + $pdt_item_border_size) * 2;
+
+
+$img_placeholder_bgs: #ffa18a #f79cad #acb0d5 #f4dd88;

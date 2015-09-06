@@ -1,0 +1,18 @@
+<div id="actionlist" style="display:none">
+  <ul class="Menu-tabs">
+    <{foreach from=$componentKeys item=item key=key}>
+    <li><a href="#<{$key}>" rel="<{$key}>"><{$item.name}></a></li>
+    <{/foreach}>
+  </ul>
+  <div class="Tab-content">
+    <{foreach from=$componentKeys item=item key=key}>
+    <div class="Tab-pane <{if $key == 'Product'}>Product-list<{/if}>" id="<{$key}>">
+      <ul class="items">
+        <li class="loading">正在加载...</li>
+      </ul>
+      <div class="pagination"></div>
+    </div>
+    <{/foreach}>
+  </div>
+  <div class="Btn-actions"><button type="button" class="Btn-a Action-cofirm-action">确定</button></div>
+</div>

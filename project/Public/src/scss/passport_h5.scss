@@ -1,0 +1,75 @@
+@import "compass";
+@import "vars";
+
+body {
+  background: #f8f8f8;
+  font-family: $font;
+  font-size: 12px;
+}
+
+.page-passport {
+}
+.sec-yl-brand, .sec-reg-status{
+  img {
+    width: 100%;
+  }
+}
+.sec-reg {
+  padding: 20px 15px;
+  .reg-hint {
+    text-align: center;
+    padding: 15px 0;
+    color: #777777;
+    font-size: 14px;
+  }
+  .form-group-line {
+    position: relative;
+  }
+  .ico {
+    @include scale(0.5);
+    position: absolute;
+    left: -4px;
+    top: 0;
+  }
+  .input-text, .btn {
+    font-size: 16px;
+  }
+  .input-line {
+    text-indent: 20px;
+  }
+  .input-small {
+    width: 140px;
+  }
+  .btn-send-code {
+    width: 76px;
+  }
+  .note {
+    padding: 10px;
+  }
+}
+
+.sec-reg-steps {
+  position: relative;
+  .step {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.sec-reg-status {
+  padding: 40px 0 0;
+  text-align: center;
+  .reg-succ {
+    width: 126px;
+    height: 30px;
+    margin: 0 0 20px;
+  }
+  .status-msg {
+    font-size: 15px;
+    h2, p {
+      margin: 0 0 8px;
+    }
+  }
+}

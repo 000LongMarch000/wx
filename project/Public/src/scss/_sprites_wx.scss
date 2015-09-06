@@ -1,0 +1,34 @@
+$reply-droid-g: -5px -5px 80px 80px;
+$reply-droid: -5px -95px 80px 80px;
+$reply-follow-g: -5px -185px 80px 80px;
+$reply-follow: -5px -275px 80px 80px;
+$reply-msg-g: -5px -365px 80px 80px;
+$reply-msg: -5px -455px 80px 80px;
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite) {
+  @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.wx-ico {
+  background-image: url('../img/sp_wx.png');
+}
+

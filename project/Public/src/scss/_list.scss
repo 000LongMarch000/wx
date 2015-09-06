@@ -1,0 +1,339 @@
+@import "compass";
+@import "vars";
+
+/*==================================
+=            col define            =
+==================================*/
+.col-selector         { width: 35px; text-align: center; }
+.col-goods-meida      { width: 170px;  }
+.col-goods-img        { width: 90px; }
+.col-goods-name       { width: 150px; }
+.col-component        { width: 90px; }
+.col-time             { width: 65px; word-break: break-all; .cell { width: 70px; } }
+
+.cont-wrap {
+  .search-bar {
+    .input-text, .input-search, .input-datetime {
+      height: 25px;
+      line-height: 25px;
+    }
+    .input-search {
+      background-position: left 6px;
+      padding-left: 22px;
+    }
+    .input-datetime {
+      width: 80px;
+      text-align: center;
+    }
+    .ss-selected-text {
+      height: 29px;
+      line-height: 29px;
+    }
+  }
+}
+
+.data-list-toolbar {
+  position: relative;
+  z-index:1;
+  padding: 10px 0;
+  .search-bar {
+    position: absolute;
+    right: 10px;
+    .input-text, .input-search, .input-datetime {
+      height: 25px;
+      line-height: 25px;
+    }
+    .input-search {
+      background-position: left 6px;
+      padding-left: 22px;
+    }
+    .input-datetime {
+      width: 80px;
+      text-align: center;
+    }
+    .ss-selected-text {
+      height: 29px;
+      line-height: 29px;
+    }
+  }
+  .search-bar-upper {
+    top: -45px;
+  }
+  .btns {
+    font-size: 0;
+    *word-spacing: -1px;
+  }
+  .btn {
+    font-size: 14px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    margin: 0 4px 0 0;
+  }
+}
+
+.data-list {
+  color: #666;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  thead {
+    th {
+      background: #f6f6f6;
+      font-weight: normal;
+      padding: 0 12px;
+    }
+    a {
+      color: $color_base;
+    }
+    .cell {
+      height: 18px;
+      line-height: 18px;
+      padding: 15px 0;
+      position: relative;
+      overflow: visible;
+    }
+    .order-by {
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      margin-top: -12px;
+      overflow: hidden;
+      height: 48px;
+    }
+    .ico-arr-up {
+      @include arr(up);
+      display: block;
+      margin: 0 0 3px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .ico-arr-down {
+      @include arr(down);
+      display: block;
+      margin: 0 0 3px;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .ico-arr-up-active {
+      @include arr(up, $color_red);
+      display: block;
+      overflow: hidden;
+    }
+    .ico-arr-down-active {
+      @include arr(down, $color_red);
+      display: block;
+      overflow: hidden;
+    }
+  }
+  tbody {
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+  }
+  .mpage-name {
+    width: 122px;
+    input {
+      margin: 0;
+      @include border-radius(3px);
+      border: 1px solid #ec4e1e;
+      width: 120px;
+      height: 16px;
+      text-align: center;
+    }
+  }
+  .opts {
+    text-align: center;
+    a, span {
+      margin: 0 2px;
+    }
+    .disabled {
+      color: #ec4e1e;
+    }
+  }
+  .goods-media {
+    .goods-img {
+      float: left;
+      border-color: rgba(#fff, 0);
+    }
+    .goods-name {
+      width: 170px;
+      height: 2.9em;
+      overflow: hidden;
+      display: block;
+      padding: 15px 0;
+      line-height: 1.5em;
+      margin: 0 0 0 80px;
+      color: #666;
+    }
+  }
+  .goods-media-mini {
+    .goods-img {
+      width: 45px;
+      height: 45px;
+      margin-top: 12px;
+      img {
+        display: block;
+        width: 45px;
+        height: 45px;
+      }
+      a {
+        width: 45px;
+        height: 45px;
+      }
+    }
+    .goods-name {
+      width: 120px;
+      margin: 0 0 0 55px;
+    }
+  }
+}
+
+.data-list-lite {
+  width: 100%;
+  td {
+    padding: 3px 5px;
+    vertical-align: top;
+  }
+}
+
+/*商品、订单*/
+.list-skin-1 {
+  border: 1px solid $border_light;
+  border-bottom: none;
+  tbody {
+    td {
+      text-align: center;
+    }
+  }
+  .ico-edit {
+    visibility: hidden;
+    color: $color_gray;
+  }
+  tr:hover .ico-edit {
+    visibility: visible;
+  }
+  .input-text {
+    height: 16px;
+    line-height: 16px;
+  }
+}
+
+/*连接商铺等轻列表*/
+.list-skin-3 {
+  border: 1px solid $border-gray;
+  border-bottom: none;
+  margin-top: 10px;
+  tbody {
+    td {
+      padding: 10px;
+      border-bottom: 1px solid $border-gray;
+    }
+  }
+}
+
+.card-list {
+  position: relative;
+  overflow: hidden;
+  ul {
+    position: relative;
+    margin-left: -20px;
+    float: left;
+    *display: inline;
+  }
+  .item {
+    background: #fff;
+    position: relative;
+    float: left;
+    width: 405px;
+    height: 80px;
+    padding: 20px;
+    margin: 0 0 20px 20px;
+    *display: inline;
+    overflow: hidden;
+    @include border-radius(3px);
+    color: #888;
+    border: 1px solid $border_light;
+    &:hover {
+      cursor: pointer;
+      background: #fafafa;
+      border-color: $border_gray;
+    }
+  }
+  .item-nil {
+    cursor: auto;
+    &:hover {
+      cursor: auto;
+      background: #fff;
+      border-color: $border_light;
+    }
+  }
+  .item-ico {
+    float: left;
+    width: 80px;
+  }
+  .item-cont {
+    margin: 0 0 0 100px;
+    overflow: hidden;
+    position: relative;
+  }
+  .card-link {
+    display: block;
+    width: 405px;
+    height: 80px;
+    padding: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+  }
+  .card-title {
+    font-weight: bold;
+    color: #222;
+    margin: 10px 0 5px;
+  }
+  .card-desc {
+    font-size: 12px;
+    line-height: 18px;
+    width: 75%;
+  }
+  .card-status {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -10px;
+    height: 20px;
+    line-height: 20px;
+  }
+}
+.card-auth-list {
+  .item {
+    height: 80px + 240px;
+  }
+  .item-extra {
+    clear: both;
+    margin: 25px -5px;
+    padding: 25px 0 0;
+    .hd {
+      background: #53d993;
+      padding: 0 12px;
+      height: 32px;
+      line-height: 32px;
+      color: #fff;
+    }
+    .bd {
+      background: #f7f7f7;
+      border: 1px solid #e8e8e8;
+      padding: 14px 0;
+      overflow: hidden;
+    }
+  }
+  .auth-preview-company {
+    .hd {
+      background: #5bb9de;
+    }
+  }
+}
+

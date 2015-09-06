@@ -1,0 +1,1 @@
+seajs.use(['h5/main']);

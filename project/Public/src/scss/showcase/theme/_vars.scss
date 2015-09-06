@@ -1,0 +1,224 @@
+$font: "微软雅黑", "Microsoft YaHei", "Hiragino Sans GB", Helvetica, Arial, sans-serif;
+$font_size: 14px;
+
+$color_orange: #ff5f28;
+$color_border_gray: #dedede;
+$color_font_black: #4b4b4b;
+$color_font_gray: #8c8c8c;
+$click_safe:16px;
+$block_safe:8px;
+$color_red: #ea4f2b;
+
+
+
+
+$color_base: #333;
+$color_black: #333;
+$color_dark: #414141;
+
+$color_blue: #016afa;
+$color_green: #80b534;
+$color_yellow: #ffefb1;
+$color_gray: #999999;
+$color_light_gray: #888888;
+
+
+$color_link: #2b8acc;
+$color_link_light: #005fe2;
+$color_link_dark: #333333;
+
+$bg_gray: #fafafa;
+$border_light: #eee;
+$border_gray: #ddd;
+
+@mixin title-block(){
+  height:44px;
+  line-height: 44px;
+}
+
+@mixin text-overflow(){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin clearfix(){
+  &:after { content: ""; display: block; height: 0; width:0; clear: both; visibility: hidden; overflow:hidden;}
+  *zoom: 1;
+  display: block;
+}
+
+@keyframes loading-move {
+  50% { @include translateX(150%); }
+}
+@-webkit-keyframes loading-move {
+  50% { @include translateX(150%); }
+}
+
+@mixin loading($size: 12px, $color: #e8e8e8){
+  display: inline-block;
+  width: $size * 1.5;
+  height: $size;
+  vertical-align: middle;
+  position: relative;
+  &:before, &:after {
+    position: absolute;
+    background-color: $color;
+    content: '';
+    top: 50%;
+    margin-top: -$size / 4;
+    display: block;
+    width: $size / 2;
+    height: $size / 2;
+    @include border-radius($size);
+    @include animation(loading-move 1.5s infinite ease-in);
+  }
+  &:after {
+    @include animation-delay(-0.75s);
+  }
+}
+
+@mixin arr($pos, $color: #ccc, $size: 5px) {
+  border: $size dashed transparent;
+  @if $pos == up {
+    border-bottom: $size solid $color;
+  } @else if $pos == right {
+    border-left: $size solid $color;
+  } @else if $pos == down {
+    border-top: $size solid $color;
+  } @else {
+    border-right: $size solid $color;
+  }
+  width: 0;
+  height: 0;
+  font-size: 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: -3px;
+}
+
+@mixin size($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+}
+
+@mixin vertial-img($size) {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  overflow: hidden;
+  *display: block;
+  *font-size: $size * 0.873;
+  *font-family: Arial;
+  width: $size;
+  height: $size;
+  img {
+    vertical-align: middle;
+  }
+}
+
+
+@mixin pdt_img($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  img {
+    max-width: $size;
+    max-height: $size;
+    vertical-align: middle;
+  }
+}
+
+@mixin inline-block(){
+  display: inline-block;
+  _display: inline;
+  *zoom: 1;
+}
+
+@mixin overflow($val, $dir: 'all') {
+  @if $dir == 'x' {
+    overflow-x: $val;
+  } @else if $dir == 'y' {
+    overflow-y: $val;
+  } @else {
+    overflow: $val;
+  }
+  @if val == 'scroll' {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@mixin overflowScrollX($val) {
+  @include overflow($val, 'x');
+}
+
+@mixin overflowScrollY($val) {
+  @include overflow($val, 'y');
+}
+
+@mixin hairline($color, $sides...) {
+  @if length($sides) == 0 {
+    $sides: top right bottom left;
+  }
+  position: relative;
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    pointer-events: none;
+    @include box-sizing(border-box);
+    @each $side in $sides {
+      border-#{$side}: 1px solid $color;
+    }
+  }
+  @media (-webkit-device-pixel-ratio: 2) {
+    &:before {
+      @include transform-origin(0, 0);
+      width: 200%;
+      height: 200%;
+      @include scale(0.5);
+    }
+  }
+  @media (-webkit-device-pixel-ratio: 1.5) {
+    &:before {
+      width: 150%;
+      height: 150%;
+      @include transform-origin(0, 0);
+      @include scale(0.6666);
+    }
+  }
+  @media (-webkit-device-pixel-ratio: 3) {
+    &:before {
+      width: 300%;
+      height: 300%;
+      @include transform-origin(0, 0);
+      @include scale(0.3333);
+    }
+  }
+}
+
+
+@mixin respond-device($media) {
+  @if $media == "iPhone 6" or $media == "ip6" {
+    @media only screen and(min-device-width : 375px) and (max-device-width : 667px) { @content; }
+  }
+  @else if $media == "iPhone 6+" or $media == "ip6+" {
+    @media only screen and(min-device-width : 414px) and (max-device-width : 736px) { @content; }
+  }
+  @else if $media == "android-mdp" {
+    @media only screen and(min-width : 360px) { @content; }
+  }
+  @else if $media == "android-hdp" {
+    @media only screen and(min-width : 540px) { @content; }
+  }
+}

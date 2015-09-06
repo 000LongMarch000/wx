@@ -1,0 +1,153 @@
+@import "compass";
+@import "vars";
+
+.module-tree_selector {
+    margin: -8px;
+    
+    .body {
+        position: relative;
+        margin: 20px 70px;
+        height: 500px;
+        
+        .tree {
+            position: absolute;
+            top: 0;
+            border: 1px solid #ddd;
+            width: 280px;
+            height: 100%;
+        }
+
+        .tree-0 {
+            left: 0;
+        }
+
+        .tree-1 {
+            right: 0;
+        }
+
+        .tree-title {
+            border-bottom: 1px solid #ddd;
+            height: 50px;
+            font-size: 14px;
+            line-height: 50px;
+            text-align: center;
+            background: #f6f6f6;
+        }
+
+        .tree-data {
+            position: absolute;
+            left: 0;
+            top: 51px;
+            bottom: 0;
+            width: 100%;
+            overflow: auto;
+            @include user-select(none);
+        }
+
+        .tree-0 {
+            .tree-data {
+                cursor: pointer;
+            }
+        }
+
+        .actions {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -55px;
+            margin-top: -25px;
+            width: 110px;
+            height: 50px;
+
+            .btn {
+                padding-left: 0;
+                padding-right: 0;
+                width: 100%;
+            }
+        }
+    }
+    
+    .footer {
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        background: #eee;
+        
+        .btn {
+            margin-left: 15px;
+            
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+    
+    .jqtree-element {
+        position: relative;
+        border-top: 1px solid #eee;
+        height: 40px;
+        line-height: 40px;
+        
+        .iconfont {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            color: inherit;
+            font-size: 12px;
+            line-height: 40px;
+        }
+    }
+    
+    .tree-0 {
+        .jqtree-element {
+            .iconfont {
+                display: none;
+                color: $color_red;
+            }
+        }
+        
+        .jqtree-selected {
+            > .jqtree-element {
+                .iconfont {
+                    display: inline;
+                }
+            }
+        }
+    }
+    
+    .jqtree-folder {
+        ul.jqtree_common {
+            .jqtree-element {
+                padding-left: 32px;
+            }
+        }
+    }
+    
+    .jqtree-toggler {
+        padding: 0 8px 0 12px;
+        color: #333;
+        font-family: "iconfont";
+        font-size: 12px;
+    }
+    
+    .jqtree-tree {
+        > li.jqtree_common:first-child {
+            .jqtree-element {
+                border-top: 0;
+            }
+        }
+    }
+    
+    .jqtree-closed {
+        > ul.jqtree_common {
+            display: none;
+        }
+    }
+    
+    .jqtree-selected,
+    .jqtree-partialSelected {
+        > .jqtree-element {
+            background: #fafafa;
+        }
+    }
+}

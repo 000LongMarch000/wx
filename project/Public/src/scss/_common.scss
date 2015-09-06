@@ -1,0 +1,154 @@
+@import "compass";
+@import "vars";
+
+.container {
+  width: 1180px;
+  margin: 0 auto;
+  @include clearfix();
+}
+
+.img-placeholder {
+  background: image-url("img_add.png") no-repeat center center;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  *zoom: 1;
+}
+
+.loading {
+  background: image-url("loading.gif") center center no-repeat;
+  min-height: 40px;
+}
+
+p.note {
+  color: #777;
+  padding: 40px 0;
+  text-align: center;
+  img {
+    display: block;
+    margin: 0 auto 20px;
+  }
+}
+
+.label {
+  background: #fafafa;
+  @include border-radius(3px);
+  padding: 1px 3px;
+  font-size: 12px;
+  display: inline-block;
+  *display: inline;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin: 0 2px 0 0;
+}
+.label-info {
+  @extend .label;
+  background: $color_blue;
+  color: #fff;
+}
+.label-warn {
+  @extend .label;
+  background: $color_orange;
+  color: #fff;
+}
+.label-error {
+  @extend .label;
+  background: $color_red;
+  color: #fff;
+}
+
+
+.alert {
+  background-color: #FCF8E4;
+  border: 1px solid #F4E5C8;
+  color: #c2995a;
+  padding: 10px 20px;
+  line-height: 1.5;
+  font-size: 12px;
+  margin: 0 0 15px;
+  position: relative;
+  @include clearfix();
+  .close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+    color: #ddd;
+    .iconfont {
+      font-size: 10px;
+    }
+  }
+  @include border-radius(2px);
+  p {
+    margin: 0 0 0.5em;
+  }
+}
+.alert-success {
+  @extend .alert;
+  background: #fafff4;
+  border: 1px solid #c9e2a4;
+  color: #699b21;
+}
+.alert-info {
+  @extend .alert;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  color: $color_gray;
+}
+.alert-error {
+  @extend .alert;
+  background: #fff4f4;
+  color: $color_red;
+  border: 1px solid #ec5d3c;
+}
+
+.hint {
+  color: $color_gray;
+  line-height: 22px;
+  font-size: 12px;
+}
+
+.num {
+  font-size: 1.2em;
+  color: $color_red;
+}
+.time {
+  color: #777;
+  font-size: 1.1em;
+}
+
+.f-price {
+  color: #ea5b23;
+  font-size: 18px;
+  @include text-overflow;
+}
+
+.m10 {
+  margin-bottom: 10px;
+}
+.um10 {
+  margin-top: -10px;
+}
+.full {
+  width: 100%;
+  @include box-sizing(border-box);
+}
+.hide {
+  display: none;
+}
+
+$sizes: 80 160;
+@each $size in $sizes {
+  .size-#{$size} {
+    @include size($size+px);
+    text-align: center;
+    color: #999;
+  }
+}
+
+ol {
+  &.decimal li {
+    margin-left: 15px;
+    list-style-type: decimal;
+  }
+}

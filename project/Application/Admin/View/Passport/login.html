@@ -1,0 +1,39 @@
+﻿<{extends '../Layouts/passport.html'}>
+
+<{block 'content'}>
+<div class="mod-passport">
+  <div class="mod-title">
+    <h1><span>ShopFlow</span></h1>
+  </div>
+
+  <div class="passport-panel">
+    <div class="mod-hd"><h3>登录</h3></div>
+    <div class="mod-bd">
+      <form id="J_loginForm" action="/admin/passport/verify" method="POST">
+        <{if $errmsg}><div class="alert-error"><{$errmsg}></div><{/if}>
+        <div class="form-group-line">
+          <input type="text" name="mobile" class="input-text input-xlarge required mobile" placeholder="使用手机号登录">
+        </div>
+        <div class="form-group-line">
+          <input type="password" name="password" class="input-text input-xlarge required" placeholder="请输入密码">
+        </div>
+        <div class="form-group-line">
+          <button type="submit" class="btn btn-primary btn-large btn-line">登录</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<{/block}>
+
+<{block 'footer_script'}>
+<script>
+seajs.use(['p.login', 'm.placeholder'], function(app, $placeholder){
+  $placeholder($);
+  app.init();
+  $('#J_loginForm').validate();
+  $('#J_loginForm').find('input[placeholder]').placeholder();
+});
+</script>
+<{/block}>

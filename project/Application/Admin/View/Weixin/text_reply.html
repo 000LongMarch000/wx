@@ -1,0 +1,54 @@
+<div class="Mod Wtextreplay">
+  <form action="text_reply.html" method="get" id="Wtextreply-form" class="Textreply-from">
+    <ul>
+      <li class="Form-group">
+        <div class="Form-controls">
+          <textarea id="content" name="content" data-vtype="required" style="width:95%;height:300px;"><%= content%></textarea>
+        </div>
+      </li>
+      <li class="Form-group">
+        <div class="Form-controls"><span class="word-count">还可以输入<em id="Wordlimit">600</em>字</span><span class="word-count2" style="display:none">已超出<em id="Wordlimit2">0</em>字，请调整到600字以内。</span></div>
+      </li>
+      <li class="Form-group">
+        <div class="Form-controls"><button class="Btn-b" type="submit">保存</button></div>
+      </li>
+    </ul>
+  </form>
+</div>
+
+<script src="/ym/js/editor/kindeditor.js"></script>
+<script src="/ym/js/editor/lang/zh_CN.js"></script>
+<script>
+(function(K) {
+    K.create('#content', {
+        height:120,
+        themeType: 'simple',
+        htmlTags: {
+            a : ['href', 'target'],
+            'br': []
+        },
+        resizeType: 1,
+        dialogAlignType: '',
+        items: ['link'],// 'emoticons',
+        noDisableItems: ['link'],
+        designMode: true,
+        pasteType: 1,
+        newlineTag: 'br',
+        indentChar: '  ',
+        afterChange: function() {
+            var n = 600 - this.count('text');
+            if(n >= 0) {
+                K('.word-count').show();
+                K('.word-count2').hide();
+                K('#Wordlimit').html(n);
+            }
+            else {
+                K('.word-count').hide();
+                K('.word-count2').show();
+                K('#Wordlimit2').html(-n);
+            }
+        }
+    });
+})(KindEditor);
+
+</script>

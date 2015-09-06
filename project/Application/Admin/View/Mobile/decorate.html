@@ -1,0 +1,452 @@
+<{extends '../Layouts/interaction_frame.html'}>
+
+<{block 'style'}>
+<link rel="stylesheet" href="<{autover assets_path=$assets_path filepath='/css/index.css'}>" />
+<link rel="stylesheet" href="/ym/css/admin.css">
+<link rel="stylesheet" href="/ym/css/layout.css">
+<{/block}>
+
+<{block 'content'}>
+<link rel="stylesheet" href="/ym/css/decorate.css" />
+
+<div class="Application">
+  <div class="Application-header">
+      <h2><{$title}></h2>
+  </div>
+
+  <div id="J_smartForm" class="form-builder-wrap clearfix">
+
+    <div id="J_formBuilder" class="form-builder">
+      <div id="J_fieldTypes" class="form-field-types">
+        <div class="field-types clearfix">
+          <ul>
+            <li class="comp-item" data-type="brand-carousel">
+              <i class="iconfont">&#xe609;</i>
+              <span class="title">轮播广告</span></li>
+            <li class="comp-item" data-type="brand-1col">
+              <i class="iconfont">&#xe609;</i>
+              <span class="title">1栏图片广告</span></li>
+            <li class="comp-item" data-type="brand-2col">
+              <i class="iconfont">&#xe609;</i>
+              <span class="title">2栏图片广告</span>
+            </li>
+            <li class="comp-item" data-type="goods-1col">
+              <i class="iconfont">&#xe605;</i>
+              <span class="title">1栏商品区块</span>
+            </li>
+            <li class="comp-item" data-type="goods-2col">
+              <i class="iconfont">&#xe606;</i>
+              <span class="title">2栏商品区块</span>
+            </li>
+            <li class="comp-item" data-type="hr">
+              <i class="iconfont">&#xe60a;</i>
+              <span class="title">分割线</span>
+            </li>
+            <li class="comp-item" data-type="title">
+              <i class="iconfont">&#xe604;</i>
+              <span class="title">标题文字</span>
+            </li>
+            <li class="comp-item" data-type="text">
+              <i class="iconfont">&#xe602;</i>
+              <span class="title">内容文字</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="J_formContainer" class="form-container">
+      <div id="J_formView" class="form-view"></div>
+    </div>
+
+    <div id="J_formEditor" class="form-editor"></div>
+
+    <div id="J_formActs" class="form-acts t-c">
+      <button type="submit" id="J_formSubmit" class="Btn-b">保存</button>
+    </div>
+
+  </div>
+
+  <div id="J_formLoading" class="form-loading">
+    <img src="/ym/img/loading.gif">
+    <p class="note">正在加载</p>
+  </div>
+
+</div>
+
+
+<script id="T_form" type="text/x-tpl">
+{{#if isIndex}}
+<div class="shop-hd">
+  {{> placard}}
+  <div id="item-seller" class="sec sec-item-seller">
+    <div class="seller-info clearfix">
+      <img src="<{if $shopinfo.pic_path}><{$shopinfo.pic_path}><{else}><{$shopinfo.pic_default}><{/if}>" class="seller-logo" width="50" height="50">
+      <p class="seller-name"><{$shop.name}></p>
+      <div class="seller-sub-info">
+        <!-- <span class="label-red">认证商家</span> -->
+        <!-- <span class="addr"></span> -->
+      </div>
+      <a class="btn-enter-shop" href="{{$shop.url}}">
+        进入店铺<i class="iconfont">&#xe60d;</i>
+      </a>
+    </div>
+    <div class="seller-opts">
+      <a class="btn"><i class="iconfont">&#xe60b;</i>私信</a>
+      <a class="btn btn-green"><i class="iconfont">+</i>加关注</a>
+    </div>
+  </div>
+  {{> compHelper }}
+</div>
+{{/if}}
+<div class="form-fields">
+  <div id="J_formFields"></div>
+</div>
+</script>
+
+<!-- partials start -->
+<script id="T_shop_placard" type="text/x-tpl">
+<div class="placard-cont">
+  <div class="shop-placard">
+    {{#if placard_img}}
+    <img class="img" src="{{placard_img}}">
+    {{else}}
+    <span class="img img-placeholder">请添加图片</span>
+    {{/if}}
+  </div>
+</div>
+</script>
+<script id="T_comp_helper" type="text/x-tpl">
+<div class="comp-helper">
+  <span class="comp-helper-text">编辑</span>
+  <a href="javascript:;" class="btn-del">x</a>
+</div>
+</script>
+<script id="T_editor_brand_item" type="text/x-tpl">
+<li id="{{id}}" class="item">
+  <table class="ctl-table">
+    <tr>
+      <th width="50">图片：</th>
+      <td>
+        {{#if img}}
+          <img class="img" src="{{img}}">
+        {{else}}
+          <span class="img img-placeholder"></span>
+        {{/if}}
+      </td>
+    </tr>
+    <tr>
+      <th>链接：</th>
+      <td><input name="brand_{{id}}" type="text" class="input-text url" value="{{url}}"></td>
+    </tr>
+  </table>
+  <div class="opts">
+    <a href="javascript:;" class="btn-up" title="向上移动"><i class="iconfont">&#xe607;</i></a>
+    <a href="javascript:;" class="btn-down" title="向下移动"><i class="iconfont">&#xe608;</i></a>
+    <a href="javascript:;" class="btn-del" title="删除"><i class="iconfont">&#xe603;</i></a>
+  </div>
+</li>
+</script>
+<script id="T_editor_goods_item" type="text/x-tpl">
+<li id="{{id}}" class="item" data-item="{{json this}}">
+  <a href="javascript:;" class="goods-img">
+    <img class="img" src="{{img}}_120x120.jpg">
+  </a>
+  <div class="goods-title">{{title}}</div>
+  <div class="goods-price">￥<strong class="num">{{price}}</strong></div>
+  <div class="opts">
+    <a href="javascript:;" class="btn-up" title="向上移动"><i class="iconfont">&#xe607;</i></a>
+    <a href="javascript:;" class="btn-down" title="向下移动"><i class="iconfont">&#xe608;</i></a>
+    <a href="javascript:;" class="btn-del" title="删除"><i class="iconfont">&#xe603;</i></a>
+  </div>
+</li>
+</script>
+<!-- partials end -->
+
+<script id="T_error" type="text/x-tpl">
+<div class="form-error">
+  <p class="note">操作失败，请稍后再试</p>
+</div>
+</script>
+
+<!-- comp tpl start -->
+<script id="T_comp_nil" type="text/x-tpl">
+<p class="note" >请将组件拖拽到此</p>
+</script>
+<script id="T_comp_hr" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-hr">
+  <div class="hr"></div>
+  {{> compHelper }}
+</div>
+</script>
+<script id="T_comp_brand-carousel" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-carousel brands-list-1col">
+  <ul class="brands-list">
+    {{#if brands}}
+      {{#each brands}}
+        <li><a href="javascript:;"><img src="{{img}}"></a></li>
+      {{/each}}
+    {{else}}
+      <li><span class="img-placeholder">请添加图片</span></li>
+    {{/if}}
+  </ul>
+  <div class="carousel-indicators">
+    {{#each brands}}
+      <i></i>
+    {{/each}}
+  </div>
+  {{> compHelper }}
+</div>
+</script>
+<script id="T_comp_brand-1col" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-brands brands-list-1col">
+  <ul class="brands-list">
+    {{#each brands}}
+      <li>
+        {{#if img}}
+          <a href="javascript:;"><img src="{{img}}"></a>
+        {{else}}
+          <a href="javascript:;"><span class="img-placeholder">请添加图片</span></a>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+  {{> compHelper }}
+</div>
+</script>
+<script id="T_comp_brand-2col" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-brands brands-list-2col">
+  <ul class="brands-list">
+    {{#each brands}}
+      <li>
+        {{#if img}}
+          <a href="javascript:;"><img src="{{img}}"></a>
+        {{else}}
+          <a href="javascript:;"><span class="img-placeholder">请添加图片</span></a>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+  {{> compHelper }}
+</div>
+</script>
+<script id="T_comp_goods-1col" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-goods">
+  {{#if title}}
+  <h3 class="title">{{title}}</h3>
+  {{/if}}
+  <ul class="goods-list goods-list-1col">
+    {{#if goods}}
+      {{#each goods}}
+      <li class="item">
+        <div class="goods-img">
+          <a href="javascript:;" class="img"><img src="{{img}}_640x640.jpg"></a>
+        </div>
+        <a href="javascript:;" class="goods-title">{{title}}</a>
+        <div class="goods-price">￥<strong class="num">{{price}}</strong></div>
+      </li>
+      {{/each}}
+    {{else}}
+      <li class="item">
+        <a href="javascript:;" class="goods-img img"><span class="img-placeholder">请添加图片</span></a>
+      </li>
+    {{/if}}
+  </ul>
+  {{> compHelper }}
+</div>
+</script>
+<script id="T_comp_goods-2col" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-goods">
+  {{#if title}}
+  <h3 class="title">{{title}}</h3>
+  {{/if}}
+  <ul class="goods-list goods-list-2col clearfix">
+    {{#if goods}}
+      {{#each goods}}
+      <li class="item">
+        <div class="goods-img">
+          <a href="javascript:;" class="img"><img src="{{img}}_160x160.jpg"></a>
+        </div>
+        <a href="javascript:;" class="goods-title">{{title}}</a>
+        <div class="goods-price">￥<strong class="num">{{price}}</strong></div>
+      </li>
+      {{/each}}
+    {{else}}
+      <li class="item">
+        <a href="javascript:;" class="goods-img img"><span class="img-placeholder">请添加图片</span></a>
+      </li>
+    {{/if}}
+  </ul>
+  {{> compHelper }}
+</div>
+</script>
+<script id="T_comp_title" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-title">
+  <h3 class="title">{{title}}</h3>
+  {{> compHelper }}
+</div>
+</script>
+<script id="T_comp_text" type="text/x-tpl">
+<div id="{{cid}}" class="comp comp-text">
+  <div class="text">{{text}}</div>
+  {{> compHelper }}
+</div>
+</script>
+<!-- comp tpl end -->
+
+<!-- editor tpl start -->
+<script id="T_editor_nil" type="text/x-tpl">
+<div class="editor-hint">
+  <h6>你没有选择任何组件</h6>
+  <p>请在右侧预览区选择组件进行属性修改</p>
+</div>
+</script>
+<script id="T_editor_placard" type="text/x-tpl">
+<div class="editor-placard">
+  <h3 class="editor-hd">店招</h3>
+  <div class="form-line">
+    {{> placard}}
+    <div class="help-block">
+      图片规格：<br>
+      尺寸：640x400 1mb以内 <br>类型：jpeg，png，gif
+    </div>
+  </div>
+  <div class="form-actions">
+    <a href="javascript:;" class="Btn-b Btn-small btn-save J_btnSaveBanner">确定</a>
+    <a href="javascript:;" class="Btn-a Btn-small btn-cancel">取消</a>
+  </div>
+</div>
+</script>
+<script id="T_editor_brand-carousel" type="text/x-tpl">
+<form class="editor-brand-carousel">
+  <h3 class="editor-hd">1栏轮播广告</h3>
+  <div class="form-line">
+    <ul class="brands-list">
+      {{#each brands}}
+        {{> brand }}
+      {{/each}}
+    </ul>
+  </div>
+  <div class="form-line">
+    <a class="btn-add" href="javascript:;">+</a>
+    <div class="help-block">
+      图片规格：<br> 尺寸：640x320 大小： 1mb以内 <br>类型：jpg，png，gif
+    </div>
+  </div>
+  <div class="form-actions">
+    <a href="javascript:;" class="Btn-b Btn-small btn-save">确定</a>
+    <a href="javascript:;" class="Btn-a Btn-small btn-cancel">取消</a>
+  </div>
+</form>
+</script>
+<script id="T_editor_brand-1col" type="text/x-tpl">
+<form class="editor-brand-1col">
+  <h3 class="editor-hd">1栏图片广告</h3>
+  <div class="form-line">
+    <ul class="brands-list">
+      {{#each brands}}
+        {{> brand }}
+      {{/each}}
+    </ul>
+    <div class="help-block">
+      图片规格：<br> 尺寸：640x任意高 大小： 1mb以内 <br>类型：jpg，png，gif
+    </div>
+  </div>
+  <div class="form-actions">
+    <a href="javascript:;" class="Btn-b Btn-small btn-save">确定</a>
+    <a href="javascript:;" class="Btn-a Btn-small btn-cancel">取消</a>
+  </div>
+</form>
+</script>
+<script id="T_editor_brand-2col" type="text/x-tpl">
+<form class="editor-brand-2col">
+  <h3 class="editor-hd">2栏图片广告</h3>
+  <div class="form-line">
+    <ul class="brands-list">
+      {{#each brands}}
+        {{> brand }}
+      {{/each}}
+    </ul>
+    <div class="help-block">
+      图片规格：<br> 尺寸：640x320 大小： 1mb以内 <br>类型：jpg，png，gif
+    </div>
+  </div>
+  <div class="form-actions">
+    <a href="javascript:;" class="Btn-b Btn-small btn-save">确定</a>
+    <a href="javascript:;" class="Btn-a Btn-small btn-cancel">取消</a>
+  </div>
+</form>
+</script>
+<script id="T_editor_goods" type="text/x-tpl">
+<form class="editor-goods">
+  <h3 class="editor-hd">{{#ifCond type '==' 'goods-1col'}}1栏{{/ifCond}}{{#ifCond type '==' 'goods-2col'}}2栏{{/ifCond}}商品区块</h3>
+  <div class="form-line">
+  标题：<input type="text" name="comp[title]" value="{{title}}" class="input-text" maxlength="15">
+  </div>
+  <div class="form-line">
+    <ul class="goods-list">
+      {{#each goods}}
+        {{> good }}
+      {{/each}}
+    </ul>
+    <a href="javascript:;" class="btn-add">+</a>
+  </div>
+  <div class="form-actions">
+    <a href="javascript:;" class="Btn-b Btn-small btn-save">确定</a>
+    <a href="javascript:;" class="Btn-a Btn-small btn-cancel">取消</a>
+  </div>
+</form>
+</script>
+<script id="T_editor_title" type="text/x-tpl">
+<form class="editor-title">
+  <h3 class="editor-hd">标题文字</h3>
+  <div class="form-line">
+    <textarea name="title" class="input-text required">{{title}}</textarea>
+  </div>
+  <div class="form-actions">
+    <a href="javascript:;" class="Btn-b Btn-small btn-save">确定</a>
+    <a href="javascript:;" class="Btn-a Btn-small btn-cancel">取消</a>
+  </div>
+</form>
+</script>
+<script id="T_editor_text" type="text/x-tpl">
+<form class="editor-title">
+  <h3 class="editor-hd">内容文字</h3>
+  <div class="form-line">
+    <textarea name="text" class="input-text required" rows="6">{{text}}</textarea>
+  </div>
+  <div class="form-actions">
+    <a href="javascript:;" class="Btn-b Btn-small btn-save">确定</a>
+    <a href="javascript:;" class="Btn-a Btn-small btn-cancel">取消</a>
+  </div>
+</form>
+</script>
+<!-- editor tpl end -->
+
+
+<{include file='../Include/media.html'}>
+
+<script src="/ym/js/main.js"></script>
+<script src="/ym/js/json2.js"></script>
+<script src="/ym/js/jquery-ui-min.js"></script>
+<script src="/ym/js/j.validate.js"></script>
+<script src="/ym/js/j.switcher.js"></script>
+<script src="/ym/js/handlebars.js"></script>
+<script src="/ym/js/json2.js"></script>
+<script src="/ym/js/jquery.nicescroll.js"></script>
+<script src="/ym/js/decorate/index.js"></script>
+<script>
+$(function(){
+  var data = <{$init_data}>;
+  Decorate.init(data);
+
+
+  // media.init({
+  //   menus: ['goods'],
+  //   node_id: Decorate.node_id,
+  //   crop: false,
+  //   startIndex: 0
+  // });
+});
+</script>
+<{/block}>

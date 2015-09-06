@@ -1,0 +1,131 @@
+@import "compass";
+@import "vars";
+
+/*=============================
+=            订单详情             =
+=============================*/
+.mod-order-info {
+  .order-info-brief {
+    margin: 0 0 15px;
+    li {
+      display: inline;
+      margin: 0 15px;
+    }
+  }
+  .order-info-side {
+    width: 220px;
+    overflow: hidden;
+    float: right;
+  }
+  .order-info-main {
+    float: left;
+    width: 680px;
+    overflow: hidden;
+  }
+  .bx {
+    .hd {
+      border-bottom: 0;
+    }
+    .bd {
+      border-top: 1px solid #eee;
+      padding: 10px 20px;
+      color: #777;
+      li {
+        margin-top: 10px;
+        padding: 0;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      em {
+        color: #333;
+        font-style: normal;
+      }
+    }
+    .bd-title {
+      float: left;
+      width: 60px;
+      color: #333;
+    }
+    .bd-cont {
+      display: block;
+      margin-left: 60px;
+    }
+    li {
+      padding: 0 0 10px;
+    }
+  }
+  .bx-order-items {
+    .bd {
+      padding: 15px;
+    }
+  }
+}
+
+.bx-order-detail-col-0 {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  width: 80px;
+  color: #777;
+}
+
+.bx-order-detail-col-1 {
+  color: #333;
+  .extra {
+    color: #777;
+    a {
+      color: inherit;
+      text-decoration: underline;
+      &:hover {
+        color: #333;
+      }
+    }
+  }
+}
+
+.mod-order-overview {
+  .order-overview {
+    padding: 0 0 0 10px;
+    font-size: 18px;
+    margin: 15px 0 30px;
+    li {
+      display: inline;
+      margin: 0 60px 0 0;
+      white-space: nowrap;
+    }
+    .num {
+      margin: 0 0 0 15px;
+    }
+  }
+  .sec-charts {
+    margin: 0 0 15px;
+    height: 400px;
+  }
+}
+
+.order-contact-card {
+  width: 330px;
+  padding: 5px;
+  li {
+    padding: 0 0 5px;
+  }
+}
+
+
+
+/*=============================
+=           弹出层             =
+=============================*/
+#J_formRemark {
+  textarea[name="remark"] {
+    width: 376px;
+    height: 100px;
+    resize: none;
+    outline: 0;
+  }
+  .help-block {
+    margin-top: 0;
+    text-align: right;
+  }
+}

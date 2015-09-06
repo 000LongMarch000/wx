@@ -1,0 +1,201 @@
+<div class="Wgraphic">
+  <form action="" class="Form-vertical" method="get" id="Wgraphicreply-form">
+    <input type="hidden" name="" id="editing_id" value="0">
+    <input type="hidden" name="sort" id="sorted_ids" value="">
+    <div class="Clearfix Table-wrap">
+      <div class="Preview">
+        <h2 class="Hd">图文消息预览</h2>
+        <div class="Bd" id="updateArea">
+          <dl class="Graphic-cont" id="sortable">
+            <dt class="Active">
+              <figure>
+                <img src="../statics/img/w-cover.jpg" alt="">
+                <h3>标题</h3>
+              </figure>
+              <div class="Actions">
+                <a href="0" class="Edit">编辑</a>
+              </div>
+            </dt>
+            <!--<dd id="1">
+              <figure>
+                <img src="../statics/img/w-thumb.png" alt="">
+                <h3>图文标题1</h3>
+              </figure>
+              <div class="Actions">
+                <a href="" class="Sortable">拖动排序</a><a href="" class="Edit">编辑</a><a href="" class="Del">删除</a>
+              </div>
+            </dd>-->
+          </dl>
+          <div class="Btnbar"><button class="Btn-a Action-add-graphic" type="button"><i class="Icon-add"></i> 添加一条图文</button><span class="Alert-info"><i class="Icon-info"></i> 最多添加8条图文</span></div>
+        </div>
+      </div>
+      <div class="Content">
+        <ul id="prop_0">
+          <li class="Form-group">
+            <label for="" class="Form-label">标题 <em>*</em></label>
+            <div class="Form-controls"><input type="text" data-vtype="required" class="Action-title" name="title[0]" id=""></div>
+          </li>
+          <li class="Form-group">
+            <label for="" class="Form-label"><span class="Pic-cover">封面</span> <em>*</em></label>
+            <div class="Form-controls">
+              <div class="Img-area">
+                <img src="" class="Preview-img" width="180" height="100" style="display:none;">
+                <button type="button" class="Btn-a Uploader-btn">上传图片</button>
+                <input type="hidden" data-vtype="required" name="image[0]">
+              </div>
+            </div>
+          </li>
+          <li class="Form-group">
+            <label for="" class="Form-label">点击<span class="Pic-cover">封面</span>链接至</label>
+            <div class="Form-controls"><label><input type="radio" name="linked[0][]" id="" class="Linkedto" checked> 链接</label>　　<label><input type="radio" name="linked[0][]" class="Linkedto" id=""> 活动</label></div>
+            <div class="Form-controls"><input type="hidden" name="text[0]" class="Linked-text" value="" /><input type="url" placeholder="http://" name="url[0]" id="" class="Linked-url"></div>
+            <div class="Form-controls" style="display:none">
+              <button type="button" class="Btn-a Action-select-action"><span>选择活动</span></button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="Cb Action-bar"><button class="Btn-b" type="submit">保存</button></div>
+  </form>
+</div>
+
+<script type="text/template" id="Gitem_template">
+  <dd id="<%= id%>" class="New">
+    <figure>
+      <img src="../statics/img/w-thumb.png" alt="">
+      <h3>标题</h3>
+    </figure>
+    <div class="Actions">
+      <a href="javascript:void(0);" class="Sortable">拖动排序</a><a href="<%= id%>" class="Edit">编辑</a><a href="<%= id%>" class="Del">删除</a>
+    </div>
+  </dd>
+</script>
+<script type="text/template" id="Gform_template">
+  <ul id="prop_<%= id%>">
+    <li class="Form-group">
+      <label for="" class="Form-label">标题 <em>*</em></label>
+      <div class="Form-controls"><input type="text" data-vtype="required" class="Action-title" name="title[<%= id%>]" id=""></div>
+    </li>
+    <li class="Form-group">
+      <label for="" class="Form-label"><span class="Pic-cover" style="display:none">封面</span><span class="Pic-thumb">缩略图</span> <em>*</em></label>
+      <div class="Form-controls">
+        <div class="Img-area">
+          <img src="" class="Preview-img" width="180" height="100" style="display:none;">
+          <button type="button" class="Btn-a Uploader-btn">上传图片</button>
+          <input type="hidden" data-vtype="required" name="image[<%= id%>]">
+        </div>
+      </div>
+    </li>
+    <li class="Form-group">
+      <label for="" class="Form-label">点击<span class="Pic-cover" style="display:none">封面</span><span class="Pic-thumb">缩略图</span>链接至</label>
+      <div class="Form-controls"><label><input type="radio" name="linked[<%= id%>][]" id="" class="Linkedto" checked> 链接</label>　　<label><input type="radio" name="linked[<%= id%>][]" class="Linkedto" id=""> 活动</label></div>
+      <div class="Form-controls"><input type="hidden" name="text[<%= id%>]" class="Linked-text" value="" /><input type="url" placeholder="http://" name="url[<%= id%>]" id="" class="Linked-url"></div>
+      <div class="Form-controls" style="display:none">
+        <button type="button" class="Btn-a Action-select-action"><span>选择活动</span></button>
+      </div>
+    </li>
+  </ul>
+</script>
+<script>
+(function($){
+
+var form = $('#Wgraphicreply-form');
+var sortable = $('#sortable');
+
+//拖动排序
+sortable.sortable({
+    handle: '.Sortable',
+    helper: 'clone',
+    items: '> dd',
+    connectWith: form.find('.Content'),
+    containment: 'parent',
+    stop: function(e, ui) {
+        $('#sorted_ids').val($(this).sortable('toArray'));
+        // form.find('.Content ul').hide().eq(ui.item.index()).show();
+    }
+});
+
+//添加
+var count = 1;
+function fitHeight() {
+    var parent = $('.Table-wrap');
+    var children = parent.children();
+    if(children.eq(0).outerHeight() > children.eq(1).children().outerHeight()) {
+        parent.addClass('V-b');
+    }
+    else {
+        parent.removeClass('V-b');
+    }
+}
+$(document)
+.on('resize', '.Table-wrap .Content ul', function(e) {
+    // fitHeight();
+})
+.on('input', '.Action-title', function(e) {
+    sortable.find('.Active h3').text(this.value);
+})
+.on('click', '.Action-add-graphic:not(.Disabled)', function(e) {
+    count++;
+    e.preventDefault();
+    if(count > 8 || sortable.children().size() == 8) {
+        return false;
+    }
+    var tpl = [$('#Gitem_template').html(), $('#Gform_template').html()];
+    var dd = $(_.template(tpl[0], {id: 'new'+ count}));
+    var ul = $(_.template(tpl[1], {id: 'new'+ count}));
+    sortable.append(dd);
+    form.find('.Content').find('ul').hide().end().append(ul);
+    dd.addClass('Active').siblings('.Active').removeClass('Active');
+    if(count == 8) {
+        $(this).addClass('Disabled');
+    }
+})
+.on('mouseenter', '.Action-add-graphic.Disabled', function(e) {
+    $(this).parent().find('.Alert-info').addClass('Hover');
+})
+.on('mouseleave', '.Action-add-graphic.Disabled', function(e) {
+    $(this).parent().find('.Alert-info').removeClass('Hover');
+})
+.on('click', '.Actions .Edit', function(e) {
+    e.preventDefault();
+    $(this).parents('dd, dt').addClass('Active').siblings('.Active').removeClass('Active');
+    var id = $(this).attr('href');
+    $('#editing_id').val(id);
+    form.find('.Content ul').hide().eq($(this).parents('dd,dt').index()).show();
+
+
+})
+.on('click', '.Actions .Del', function(e) {
+    var id = $(this).attr('href');
+    e.preventDefault();
+    if(confirm('确定删除吗?')) {
+        $('#sorted_ids').val(sortable.sortable('toArray'));
+
+        $('.Action-add-graphic.Disabled').removeClass('Disabled');
+        count--;
+
+        var dd = $(this).parents('dd');
+        $('#prop_' + dd.attr('id')).prev().show().end().remove();
+        dd.prev().addClass('Active').end().remove();
+    }
+})
+
+form.on('click', '.Uploader-btn', function() {
+    var parent = $(this).parent(), img = parent.find('.Preview-img'), hidden = parent.find('input[type=hidden]');
+    var xx = Xiuxiu.init();
+    xx.set('onUploadResponse',function(data){
+        var res = JSON.parse(data);
+        if(res.succ == true){
+            xx.hide();
+            img.show().attr('src',res.data.file_url);
+            hidden.val(res.data.file_url);
+            sortable.find('.Active img').attr('src', res.data.file_url);
+        }
+    });
+    xx.show();
+});
+
+
+})(jQuery);
+</script>

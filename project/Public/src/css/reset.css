@@ -1,0 +1,207 @@
+/*=============================
+=            utils            =
+=============================*/
+/*-----  End of utils  ------*/
+/*reset*/
+/* line 4, ../scss/reset.scss */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  list-style: none;
+}
+
+/* line 18, ../scss/reset.scss */
+body {
+  font-size: 12px;
+}
+
+/* line 22, ../scss/reset.scss */
+h1 {
+  font-size: 2em;
+  line-height: 1;
+  margin-bottom: 0.5em;
+}
+
+/* line 23, ../scss/reset.scss */
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* line 24, ../scss/reset.scss */
+h3 {
+  font-size: 1.2em;
+  line-height: 1;
+  margin-bottom: 0.3em;
+}
+
+/* line 25, ../scss/reset.scss */
+h4 {
+  font-size: 1em;
+  line-height: 1.25;
+  margin-bottom: 0.2em;
+}
+
+/* line 26, ../scss/reset.scss */
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 0.2em;
+}
+
+/* line 27, ../scss/reset.scss */
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* line 29, ../scss/reset.scss */
+p {
+  margin: 0 0 0.5em;
+}
+
+/* line 30, ../scss/reset.scss */
+a {
+  color: #237efb;
+  text-decoration: none;
+  outline: 0;
+}
+
+/* line 31, ../scss/reset.scss */
+a:hover {
+  color: #005fe2;
+  text-decoration: none;
+}
+
+/* line 32, ../scss/reset.scss */
+.lnk {
+  color: #237efb;
+  cursor: pointer;
+}
+
+/* line 33, ../scss/reset.scss */
+a.lnk {
+  text-decoration: none;
+}
+
+/* line 34, ../scss/reset.scss */
+a.lnk:hover {
+  text-decoration: underline;
+}
+
+/* line 35, ../scss/reset.scss */
+img {
+  border: none;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* line 37, ../scss/reset.scss */
+input, button, select, textarea {
+  outline: 0;
+}
+
+/* line 39, ../scss/reset.scss */
+.gray {
+  color: #999999;
+}
+
+/* line 40, ../scss/reset.scss */
+.red {
+  color: #ea4f2b;
+}
+
+/* line 41, ../scss/reset.scss */
+.orange {
+  color: #ff9900;
+}
+
+/* line 42, ../scss/reset.scss */
+.green {
+  color: #80b534;
+}
+
+/* line 43, ../scss/reset.scss */
+.blue {
+  color: #016afa;
+}
+
+/* line 44, ../scss/reset.scss */
+.black {
+  color: #333;
+}
+
+/* line 46, ../scss/reset.scss */
+.f-l {
+  float: left;
+}
+
+/* line 47, ../scss/reset.scss */
+.f-r {
+  float: right;
+}
+
+/* line 48, ../scss/reset.scss */
+.t-r {
+  text-align: right !important;
+}
+
+/* line 49, ../scss/reset.scss */
+.t-l {
+  text-align: left !important;
+}
+
+/* line 50, ../scss/reset.scss */
+.t-c {
+  text-align: center !important;
+}
+
+/* line 51, ../scss/reset.scss */
+s.ico {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  overflow: hidden;
+}
+
+/* line 53, ../scss/reset.scss */
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+/* line 54, ../scss/reset.scss */
+* html .clearfix {
+  zoom: 1;
+}
+
+/* line 55, ../scss/reset.scss */
+* + html .clearfix {
+  zoom: 1;
+}
+
+/* line 56, ../scss/reset.scss */
+.clearfix {
+  display: block;
+}
+
+/* line 57, ../scss/reset.scss */
+.clear {
+  clear: both;
+}
+
+/* line 59, ../scss/reset.scss */
+.hide {
+  display: none;
+}

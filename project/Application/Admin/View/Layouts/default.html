@@ -1,81 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Bootstrap Admin</title>
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+  <title>有量微店 移动电商智能营销平台</title>
+  <link rel="stylesheet" href="<{autover assets_path=$assets_path filepath='/css/index.css'}>" />
+  <{block 'style' }>
+  <{/block}>
+  <{if $DEBUG}>
+  <script type="text/javascript" src="<{$assets_path}>/js/sea.js" id="seajsnode"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/sea/plugin-text.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/sea/plugin-css.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/config.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/jquery-1.11.0.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/admin/lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/admin/lib/bootstrap/css/bootstrap-responsive.css">
-    <link rel="stylesheet" type="text/css" href="/admin/stylesheets/theme.css">
-    <link rel="stylesheet" href="/admin/lib/font-awesome/css/font-awesome.css">
-    <{block 'style'}>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/underscore.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/json2.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/handlebars-1.3.0.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/jquery.transit.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/jquery.qtip.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/icheck.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/style-select.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/jquery.validate.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/accounting.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/nprogress.js"></script>
+
+  <script type="text/javascript" src="<{$assets_path}>/js/main.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/main.use.js"></script>
+  <{else}>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/sea.js'}>" id="seajsnode"></script>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/jquery-1.11.0.js'}>"></script>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/libs/index.js'}>"></script>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/main.js'}>"></script>
+  <{/if}>
+  <{block 'header_script'}>
+  <{/block}>
+  <!--[if lte IE 7]>
+  <link rel="stylesheet" href="<{autover assets_path=$assets_path filepath='/css/ie6.css'}>" />
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/ie6.js'}>"></script>
+  <![endif]-->
+</head>
+<body class="page-yl">
+<{include file="../Common/header.html"}>
+
+<div class="main container">
+  <div class="main-side">
+    <{block 'side'}>
+    <{include file="../Common/side_nav/product.html"}>
     <{/block}>
+  </div>
 
-    <script src="/admin/lib/jquery-1.8.1.min.js" type="text/javascript"></script>
-    <{block 'header_script'}>
+  <div class="main-cont">
+    <{block 'content'}>
     <{/block}>
+  </div>
+</div>
 
-    <!-- Demo page code -->
-    
-    <style type="text/css">
-        #line-chart {
-            height:300px;
-            width:800px;
-            margin: 0px auto;
-            margin-top: 1em;
-        }
-        .brand { font-family: georgia, serif; }
-        .brand .first {
-            color: #ccc;
-            font-style: italic;
-        }
-        .brand .second {
-            color: #fff;
-            font-weight: bold;
-        }
-    </style>
+<{include file="../Common/footer.html"}>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-  </head>
-
-  <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
-  <!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
-  <!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
-  <!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> 
-  <body> 
-  <!--<![endif]-->
-    
-    <{include file="../Common/header.html"}>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <{block 'content'}>
-            <{/block}>
-        </div>
-        <{include file="../Common/footer.html"}>
-    </div>
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/admin/lib/bootstrap/js/bootstrap.js"></script>
-    <{block 'footer_script'}>
-    <{/block}>
-  </body>
+<{block 'footer_script'}>
+<{/block}>
+</body>
 </html>
-
-

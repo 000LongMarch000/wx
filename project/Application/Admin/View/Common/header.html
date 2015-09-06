@@ -1,10 +1,14 @@
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <ul class="nav pull-right">
-
-                </ul>
-                <a class="brand" href="index.html"><span class="first">Your</span> <span class="second">Company</span></a>
-            </div>
-        </div>
+<div class="top-header">
+  <div class="container">
+    <div class="logo">
+       Shopflow
     </div>
+    <div class="navs-list">
+      <ul>
+        <li <{if $menu == 'product'}>class="cur"<{/if}>><a href="/admin/product/add">我的设置</a></li>
+        <li><a href="/admin/passport/logout">退出</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+

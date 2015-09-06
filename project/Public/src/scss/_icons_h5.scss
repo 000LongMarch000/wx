@@ -1,0 +1,33 @@
+@import "sprites_h5";
+@import "vars";
+
+i.ico {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 2px 0 0;
+}
+
+.ico-loading {
+  background: image-url("loading.gif") no-repeat center center;
+  width: 16px;
+  height: 16px;
+}
+
+.ico-arr-down {
+  @include arr(down);
+}
+.ico-arr-left {
+  @include arr(left);
+}
+.ico-arr-right {
+  @include arr(right);
+}
+.ico-arr-up {
+  @include arr(up);
+}
+.ico-input-mobile {
+  @include sprite($mobile);
+}
+.ico-input-password {
+  @include sprite($lock);
+}

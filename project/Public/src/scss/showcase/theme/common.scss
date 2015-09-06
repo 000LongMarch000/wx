@@ -1,0 +1,54 @@
+@import "compass";
+@import "showcase/theme/vars";
+
+.cert-info{
+  display: inline-block;
+  width:48px;
+  height:13px;
+  line-height: 13px;
+  font-size: 11px;
+  color:#fff;
+  text-align: center;
+  &:hover {
+    color: #fff;
+  }
+  &.orange{
+    background: $color_orange;
+  }
+  &.blue{
+    background: #5e96ff;
+  }
+  &.gray{
+    background: #a0a0a0;
+  }
+}
+
+.rich-reset {
+    @include box-sizing(border-box);
+    word-wrap:break-word;
+    line-height: 1.5;
+
+    table{
+        border-collapse: collapse;
+    }
+
+    ol li{
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+    ul li{
+        list-style-type: disc;
+        list-style-position: inside;
+    }
+
+    p{
+      margin: 0 0 0.5em 0;
+    }
+
+    img{
+      max-width: 100% !important;
+      width:auto !important;
+      height:auto !important;
+      vertical-align: middle;
+    }
+}

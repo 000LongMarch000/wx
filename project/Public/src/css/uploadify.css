@@ -1,0 +1,82 @@
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
+*/
+/* line 7, ../scss/uploadify.scss */
+.uploadify {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+/* line 11, ../scss/uploadify.scss */
+.uploadify-button {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: #FFF;
+  font: bold 12px Arial, Helvetica, sans-serif;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+
+/* line 41, ../scss/uploadify.scss */
+.uploadify:hover .uploadify-button {
+  background-color: transparent;
+}
+
+/* line 58, ../scss/uploadify.scss */
+.uploadify-button.disabled {
+  background-color: #D0D0D0;
+  color: #808080;
+}
+
+/* line 62, ../scss/uploadify.scss */
+.uploadify-queue {
+  margin-bottom: 1em;
+}
+
+/* line 65, ../scss/uploadify.scss */
+.uploadify-queue-item {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font: 11px Verdana, Geneva, sans-serif;
+  margin-top: 5px;
+  max-width: 350px;
+  padding: 5px;
+}
+
+/* line 75, ../scss/uploadify.scss */
+.uploadify-error {
+  background-color: #FDE5DD !important;
+}
+
+/* line 78, ../scss/uploadify.scss */
+.uploadify-queue-item .cancel a {
+  background: url('../img/uploadify/uploadify-cancel.png') 0 0 no-repeat;
+  float: right;
+  height: 16px;
+  text-indent: -9999px;
+  width: 16px;
+}
+
+/* line 85, ../scss/uploadify.scss */
+.uploadify-queue-item.completed {
+  background-color: #E5E5E5;
+}
+
+/* line 88, ../scss/uploadify.scss */
+.uploadify-progress {
+  background-color: #E5E5E5;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* line 93, ../scss/uploadify.scss */
+.uploadify-progress-bar {
+  background-color: #0099FF;
+  height: 3px;
+  width: 1px;
+}

@@ -1,0 +1,78 @@
+@import "vars";
+
+.app-price_modifier {
+    margin: -8px; /* Fix paddings */
+    
+    .header,
+    .footer {
+        padding: 10px;
+    }
+    
+    .header {
+        .address {
+            width: 700px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+        .field-deliveryFee {
+            .col-l {
+                text-align: center;
+            }
+            
+            .label {
+                margin: 0;
+                font-size: 18px;
+                line-height: 20px;
+                background: none;
+            }
+        }
+    }
+    
+    .body {
+        clear: both;
+    }
+    
+    .footer {
+        border-top: 1px solid #eee;
+        background-color: #f6f6f6;
+        
+        .sum {
+            color: #888;
+            font-size: 14px;
+            line-height: 40px;
+            
+            em {
+                color: #333;
+                font-size: 22px;
+                font-style: normal;
+            }
+        }
+        
+        .form-actions {
+            margin: 0;
+        }
+        
+        .flag-rise {
+            color: $color_red;
+        }
+        
+        .flag-fall {
+            color: $color_green;
+        }
+    }
+    
+    .col-l {
+        float: left;
+    }
+    
+    .col-r {
+        float: right;
+        margin-left: 10px;
+    }
+    
+    .input-price {
+        text-align: center;
+    }
+}

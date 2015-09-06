@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/*=============================
+=            utils            =
+=============================*/
+/*-----  End of utils  ------*/
+/* line 4, ../scss/passport_h5.scss */
+body {
+  background: #f8f8f8;
+  font-family: "微软雅黑", "Microsoft YaHei", "Hiragino Sans GB", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+/* line 13, ../scss/passport_h5.scss */
+.sec-yl-brand img, .sec-reg-status img {
+  width: 100%;
+}
+
+/* line 17, ../scss/passport_h5.scss */
+.sec-reg {
+  padding: 20px 15px;
+}
+/* line 19, ../scss/passport_h5.scss */
+.sec-reg .reg-hint {
+  text-align: center;
+  padding: 15px 0;
+  color: #777777;
+  font-size: 14px;
+}
+/* line 25, ../scss/passport_h5.scss */
+.sec-reg .form-group-line {
+  position: relative;
+}
+/* line 28, ../scss/passport_h5.scss */
+.sec-reg .ico {
+  -moz-transform: scale(0.5, 0.5);
+  -ms-transform: scale(0.5, 0.5);
+  -webkit-transform: scale(0.5, 0.5);
+  transform: scale(0.5, 0.5);
+  position: absolute;
+  left: -4px;
+  top: 0;
+}
+/* line 34, ../scss/passport_h5.scss */
+.sec-reg .input-text, .sec-reg .btn {
+  font-size: 16px;
+}
+/* line 37, ../scss/passport_h5.scss */
+.sec-reg .input-line {
+  text-indent: 20px;
+}
+/* line 40, ../scss/passport_h5.scss */
+.sec-reg .input-small {
+  width: 140px;
+}
+/* line 43, ../scss/passport_h5.scss */
+.sec-reg .btn-send-code {
+  width: 76px;
+}
+/* line 46, ../scss/passport_h5.scss */
+.sec-reg .note {
+  padding: 10px;
+}
+
+/* line 51, ../scss/passport_h5.scss */
+.sec-reg-steps {
+  position: relative;
+}
+/* line 53, ../scss/passport_h5.scss */
+.sec-reg-steps .step {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+/* line 61, ../scss/passport_h5.scss */
+.sec-reg-status {
+  padding: 40px 0 0;
+  text-align: center;
+}
+/* line 64, ../scss/passport_h5.scss */
+.sec-reg-status .reg-succ {
+  width: 126px;
+  height: 30px;
+  margin: 0 0 20px;
+}
+/* line 69, ../scss/passport_h5.scss */
+.sec-reg-status .status-msg {
+  font-size: 15px;
+}
+/* line 71, ../scss/passport_h5.scss */
+.sec-reg-status .status-msg h2, .sec-reg-status .status-msg p {
+  margin: 0 0 8px;
+}

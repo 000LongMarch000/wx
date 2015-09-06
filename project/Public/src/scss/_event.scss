@@ -1,0 +1,132 @@
+@import "compass";
+@import "vars";
+
+.event-popular {
+  .required-img {
+    @include opacity(0);
+    height: 1px;
+    width: 1px;
+    line-height: 1px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+  .coupon-goods {
+    padding: 5px 0 0;
+  }
+  .sec-pages-wrap {
+    padding: 10px 20px;
+  }
+  .sec-pages {
+    .item, .item-upload {
+      @include inline-block();
+      width: 100px;
+      height: 153px;
+      margin-right: 5px;
+      text-align: center;
+      color: #777;
+      &:hover .btns {
+        @include opacity(.6);
+      }
+    }
+    .img-placeholder {
+      background: #efefef;
+      width: 100px;
+      height: 153px;
+      cursor: pointer;
+      line-height: 153px;
+      font-size: 30px;
+      color: #bababa;
+    }
+    .page-img {
+      position: relative;
+      height: 153px;
+      margin: 0 0 5px;
+    }
+    .btns {
+      background: #000;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      @include opacity(.2);
+      text-align: center;
+      height: 20px;
+      a {
+        color: #fff;
+        margin: 0 3px;
+        line-height: 20px;
+      }
+    }
+  }
+  .sec-prize {
+    background: #f8f8f8;
+    border: 1px solid #e8e8e8;
+    width: 700px;
+    .hd {
+      border-bottom: 1px solid #e8e8e8;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 10px;
+      position: relative;
+      .btn-del {
+        position: absolute;
+        right: 10px;
+        top: 0;
+      }
+    }
+    .bd {
+      padding: 10px;
+    }
+  }
+  .cond, .prize-type, .prize-coupon-url {
+    padding: 8px 0 0;
+  }
+  .opts {
+    margin: 0 0 15px;
+  }
+  .form-actions {
+    margin: 15px 0 0;
+  }
+}
+
+/*==========  活动统计  ==========*/
+.event-status {
+  margin: 0 0 15px;
+  li {
+    @include inline-block();
+    width: 17%;
+    white-space: nowrap;
+  }
+  .num {
+    font-size: 1.2em;
+    color: $color_red;
+    margin: 0 3px;
+  }
+}
+
+.event-summary {
+  .sec {
+    margin: 0 0 10px;
+    border-top: 1px solid #e8e8e8;
+    padding: 10px 0 0;
+    .hd {
+      font-weight: bold;
+      padding: 0 0 15px;
+    }
+  }
+  .num {
+    font-size: 1.1em;
+    color: $color_red;
+    margin: 0 3px;
+  }
+}
+
+.event-prizes {
+  .sec {
+    padding: 10px 0;
+    margin: 0;
+    .hd {
+      margin: 0 0 15px;
+    }
+  }
+}

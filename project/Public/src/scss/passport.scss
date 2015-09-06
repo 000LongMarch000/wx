@@ -1,0 +1,163 @@
+@import "reset";
+@import "common";
+@import "icheck/red";
+@import "iconfont";
+@import "icons";
+@import "widgets";
+@import "form";
+@import "goods";
+
+@import "compass";
+@import "vars";
+
+body {
+  font-family: $font;
+  font-size: $font_size;
+}
+
+.page-passport {
+  background: #2b1612;
+  .footer {
+    padding: 100px 0 0;
+    text-align: center;
+    font-size: 12px;
+    height: 55px;
+    color: #fff;
+    line-height: 55px;
+    @include opacity(.36);
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.passport-bg {
+  background: image-url("p_bg.jpg") no-repeat 50% 50%;
+  background-size: auto;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.page-passport {
+  .mod-title {
+    width: 420px;
+    padding: 65px 0 50px;
+    text-align: center;
+    margin: 0 auto;
+    small {
+      font-size: 20px;
+      color: #c8c8c8;
+    }
+  }
+  .logo {
+    background: image-url("p_logo.png") no-repeat;
+    display: block;
+    width: 232px;
+    height: 44px;
+    margin: 0 auto 17px;
+    span {
+      visibility: hidden;
+    }
+  }
+}
+
+.passport-panel {
+  background: #fff;
+  width: 340px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  @include border-radius(3px);
+  .input-xlarge {
+    width: 319px;
+  }
+}
+
+.mod-passport {
+
+  .mod-hd {
+    h3 {
+      font-size: 20px;
+      color: #8e8584;
+      margin: 0 0 35px;
+      padding: 0;
+      text-align: center;
+    }
+     h4 {
+      font-size: 16px;
+      color: #000;
+      margin: 0 0 20px;
+      padding: 0;
+      text-align: center;
+    }
+  }
+  .mod-bd {
+    .wx-qrcodeImg{
+      text-align: center;
+    }
+    .wx-qrcodeName{
+      color:#999;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+  .form-group-line {
+    position: relative;
+  }
+  .btn-retrieve-pw {
+    position: absolute;
+    right: 12px;
+    _right: 52px;
+    top: 11px;
+  }
+  .go-reg {
+    padding: 10px 0 15px;
+    text-align: center;
+    color: #b4b4b4;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .oauth-logins {
+    padding: 10px 20px 20px;
+    text-align: center;
+    .hint {
+      color: #ccc;
+      margin: 0 0 15px;
+    }
+    .ico {
+      background: image-url("p_icos.png") no-repeat;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      display: inline-block;
+      *zoom: 1;
+      vertical-align: middle;
+      margin: 0 15px;
+      span {
+        visibility: hidden;
+      }
+      &:hover {
+        background-position: 0 -30px;
+      }
+    }
+    .ico-qq {
+      background-position: -30px 0;
+      &:hover {
+        background-position: -30px -30px;
+      }
+    }
+    .ico-weibo {
+      background-position: -60px 0;
+      width: 34px;
+      &:hover {
+        background-position: -60px -30px;
+      }
+    }
+  }
+  label.error {
+    margin-top: 5px;
+    display: block;
+  }
+}

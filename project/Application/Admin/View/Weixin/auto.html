@@ -1,0 +1,102 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'style'}>
+<{/block}>
+
+<{block 'content'}>
+<div class="page-header">
+  <h2 class="page-title">自动回复设置</h2>
+  <div class="btns">
+    <a href="/admin/shop/lists" >返回</a>
+  </div>
+</div>
+
+<div class="cont-wrap">
+  <{include file="../Shop/common/weixin_tabs.html"}>
+
+  <div class="">
+    <div class="">
+      <{if $wxin}>
+      <div class="wx-auto">
+        <ul id="J_tabItems" class="tab-items clearfix">
+          <li class="hover">
+            <a href="/admin/weixin/attention">
+              <i class="wx-ico ico-reply-follow"></i>
+              <p>关注自动回复</p>
+              <div class="icon-arrow"></div>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/weixin/message">
+              <i class="wx-ico ico-reply-msg-g"></i>
+              <p>消息自动回复</p>
+              <div class="icon-arrow"></div>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/weixin/keyword">
+              <i class="wx-ico ico-reply-droid-g"></i>
+              <p>关键词机器人</p>
+              <div class="icon-arrow"></div>
+            </a>
+          </li>
+        </ul>
+
+        <ul id="J_tabDescs" class="tab-descs Clearfix">
+          <li class="current-item clearfix">
+            <img src="/src/img/ss_reply_follow.png">
+            <p>
+              <a class="btn btn-large btn-primary" href="/admin/weixin/attention">立刻设置</a><br><br>
+              当粉丝关注您的公众号时，会自动发送一条消息给粉丝<br>可以设置多条图文消息，或一条文字消息<br>
+              让粉丝第一时间看到您的店铺和营销活动
+            </p>
+          </li>
+          <li class="clearfix">
+            <img src="/src/img/ss_reply_msg.png">
+            <p>
+              <a class="btn btn-large btn-primary" href="/admin/weixin/message">立刻设置</a><br><br>
+              当粉丝给您发送消息时，会自动回复一条文字或图文信息<br>
+              可以作为客服自动应答<br>
+              也可以带上热卖商品或营销活动链接
+            </p>
+          </li>
+          <li class="clearfix">
+            <img src="/src/img/ss_reply_droid.png">
+            <p>
+              <a class="btn btn-large btn-primary" href="/admin/weixin/keyword">立刻设置</a><br><br>
+              当粉丝给您发送特定关键词时，会自动回复特定图文或文字消息<br>
+              比如粉丝发送“特价”<br>
+              您的公众号会自动回复一条包含5个特价商品的图文消息
+            </p>
+          </li>
+        </ul>
+      </div>
+      <{else}>
+         <p class="Error-info"><s class="ico"></s>请先<a href="/admin/weixin/basic" >配置微信公共账号</a>，才能使用该功能</p>
+      <{/if}>
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(function(){
+  var items = $('#J_tabItems'),
+      descs = $('#J_tabDescs');
+
+  items.on('mouseenter', 'li', function(){
+    var index = items.find('li').index($(this)),
+        hoverI = items.find('li.hover').find('i'),
+        i = $(this).find('i');
+
+    items.find('li.hover').removeClass('hover');
+    hoverI.attr('class', hoverI.attr('class')+'-g');
+    descs.find('li.current-item').removeClass('current-item');
+
+    $(this).addClass('hover');
+    i.attr('class', i.attr('class').replace('-g',''));
+    descs.find('li').eq(index).addClass('current-item');
+  })
+});
+</script>
+<{/block}>

@@ -1,0 +1,83 @@
+/*=============================
+=            utils            =
+=============================*/
+/*-----  End of utils  ------*/
+/* line 4, ../scss/ie6.scss */
+.f_ie {
+  background: #fff;
+  padding: 10px;
+  text-align: center;
+  position: absolute;
+  width: 600px;
+  top: 10px;
+  left: 50%;
+  margin-left: -300px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+
+/* line 5, ../scss/ie6.scss */
+.f_ie .info {
+  padding: 10px 5px 5px;
+  font-size: 14px;
+}
+
+/* line 6, ../scss/ie6.scss */
+.f_ie .close {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* line 7, ../scss/ie6.scss */
+.f_ie ul {
+  padding: 0 0 10px;
+}
+
+/* line 8, ../scss/ie6.scss */
+.f_ie li {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+/* line 9, ../scss/ie6.scss */
+.f_ie li a {
+  background: url('../img/f_ie6.jpg') no-repeat;
+  display: block;
+  width: 171px;
+  height: 54px;
+  text-indent: -9999px;
+}
+
+/* line 10, ../scss/ie6.scss */
+.f_ie .cr a {
+  background-position: 0 10px;
+}
+
+/* line 11, ../scss/ie6.scss */
+.f_ie .cr a:hover {
+  background-position: 0 -70px;
+}
+
+/* line 12, ../scss/ie6.scss */
+.f_ie .ff a {
+  background-position: -184px 10px;
+}
+
+/* line 13, ../scss/ie6.scss */
+.f_ie .ff a:hover {
+  background-position: -184px -70px;
+}
+
+/* line 14, ../scss/ie6.scss */
+.f_ie .ie-edge a {
+  background-position: -369px 10px;
+}
+
+/* line 15, ../scss/ie6.scss */
+.f_ie .ie-edge a:hover {
+  background-position: -369px -70px;
+}

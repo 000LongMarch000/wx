@@ -1,0 +1,59 @@
+@import "vars";
+
+/*reset*/
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,
+del, dfn, em, img, q, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  list-style: none;
+}
+
+body {
+  font-size: 12px;
+}
+
+h1 { font-size: 2em; line-height: 1; margin-bottom: 0.5em; }
+h2 { font-size: 1.5em; margin-bottom: 0.5em; }
+h3 { font-size: 1.2em; line-height: 1; margin-bottom: 0.3em; }
+h4 { font-size: 1em; line-height: 1.25; margin-bottom: 0.2em; }
+h5 { font-size: 1em; font-weight: bold; margin-bottom: 0.2em; }
+h6 { font-size: 1em; font-weight: bold; }
+
+p           { margin: 0 0 0.5em; }
+a     { color: $color_link; text-decoration: none; outline: 0; }
+a:hover   { color: $color_link_light; text-decoration: none; }
+.lnk    { color: $color_link; cursor: pointer; }
+a.lnk   { text-decoration: none; }
+a.lnk:hover { text-decoration: underline; }
+img     { border: none; -ms-interpolation-mode: bicubic; }
+
+input, button, select, textarea { outline: 0; }
+
+.gray           { color:$color_gray; }
+.red            { color:$color_red; }
+.orange         { color:$color_orange; }
+.green          { color:$color_green; }
+.blue           { color:$color_blue; }
+.black          { color:$color_black; }
+
+.f-l             { float:left; }
+.f-r             { float:right; }
+.t-r      { text-align:right !important;}
+.t-l      { text-align:left !important;}
+.t-c      { text-align:center !important;}
+s.ico     { display: inline-block; *display:inline; zoom:1; overflow: hidden; }
+
+.clearfix:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow:hidden;}
+* html .clearfix { zoom:1; }
+*+html .clearfix { zoom:1; }
+.clearfix { display: block; }
+.clear { clear:both; }
+
+.hide { display: none; }

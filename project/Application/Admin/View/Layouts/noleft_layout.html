@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+  <title>有量微店 移动电商智能营销平台</title>
+  <link rel="stylesheet" href="<{autover assets_path=$assets_path filepath='/css/index.css'}>" />
+  <{block 'style' }>
+  <{/block}>
+  <{if $DEBUG}>
+  <script type="text/javascript" src="<{$assets_path}>/js/sea.js" id="seajsnode"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/sea/plugin-text.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/sea/plugin-css.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/config.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/jquery-1.11.0.js"></script>
+
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/underscore.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/json2.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/handlebars-1.3.0.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/jquery.transit.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/jquery.qtip.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/icheck.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/style-select.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/jquery.validate.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/accounting.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/libs/nprogress.js"></script>
+
+  <script type="text/javascript" src="<{$assets_path}>/js/main.js"></script>
+  <script type="text/javascript" src="<{$assets_path}>/js/main.use.js"></script>
+  <{else}>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/sea.js'}>" id="seajsnode"></script>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/jquery-1.11.0.js'}>"></script>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/libs/index.js'}>"></script>
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/main.js'}>"></script>
+  <{/if}>
+  <{block 'header_script'}>
+  <{/block}>
+  <!--[if lt IE 7]>
+  <link rel="stylesheet" href="<{autover assets_path=$assets_path filepath='/css/ie6.css'}>" />
+  <script type="text/javascript" src="<{autover assets_path=$assets_path filepath='/js/ie6.js'}>"></script>
+  <![endif]-->
+</head>
+<body class="page-yl">
+<{include file="../Common/header.html"}>
+
+<div class="main main-no-side container">
+  <{block 'content'}>
+  <{/block}>
+</div>
+
+<{include file="../Common/footer.html"}>
+
+<{block 'footer_script'}>
+<{/block}>
+<{include file="../Common/tracker.html"}>
+</body>
+</html>

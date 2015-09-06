@@ -1,0 +1,79 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'content'}>
+
+<div class="page-header">
+  <h2 class="page-title">手机店铺</h2>
+  <div class="btns">
+    <a href="javascript:history.go(-1);">返回</a>
+  </div>
+</div>
+
+<div class="cont-wrap">
+  <{include file="./common/mobile_tabs.html"}>
+
+  <div class="data-list-toolbar">
+    <div class="btns">
+      <a class="btn btn-add-page">添加自定义页面</a>
+    </div>
+  </div>
+
+  <div id="J_mpagesList" class="data-list list-skin-1">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-goods-media"><div class="cell">页面名称</div></th>
+          <th><div class="cell">地址</div></th>
+          <th><div class="cell">更新时间</div></th>
+          <th><div class="cell">操作</div></th>
+        </tr>
+      </thead>
+      <tbody>
+        <{foreach from=$pages item=page}>
+        <tr id="l_<{$page._id}>" data-id="<{$page._id}>" data-qr="<{$page.qr_url}>" data-link="<{$page.url}>">
+            <td><div class="cell mpage-name"><{$page.title}></div></td>
+            <td><div class="cell t-l"><{$page.url}></div></td>
+            <td><div class="cell"><{if $page.lastmodify}><{$page.lastmodify|date_format:'%Y-%m-%d %H:%M:%S'}><{/if}></div></td>
+          <td><div class="cell opts">
+            <a href="#"><i class="ico ico-code-2d"></i></a>
+            <a href="javascript:;" class="btn-share">分享</a>
+            <a href="javascript:;" class="btn-edit">设置</a>
+            <a href="/admin/mobile/mpageedit?id=<{$page._id}>" target="_blank">装修</a>
+            <a href="javascript:;" class="btn-del">删除</a>
+          </div></td>
+        </tr>
+        <{foreachelse}>
+        <tr>
+          <td colspan="4">
+            <p class="note">暂无页面，请<a href="javascript:;" class="btn-add-page">添加</a></p>
+          </td>
+        </tr>
+        <{/foreach}>
+      </tbody>
+    </table>
+  </div>
+</div>
+<{/block}>
+
+<{block 'footer_script'}>
+<script type="text/x-tpl" id="T_editMPage">
+<form action="/admin/mobile/mpagetitle" method="post">
+  <div class="form-group">
+    <label class="ctl-label">页面名称：</label>
+    <input type="text" class="input-text input-xlarge" name="title" value="{{title}}">
+    {{#if id}}
+      <input type="hidden" name="id" value="{{id}}">
+    {{/if}}
+  </div>
+  <div class="form-group">
+    <button class="btn btn-large btn-primary" type="submit">{{#if id}}保存{{else}}下一步{{/if}}</button>
+  </div>
+</form>
+</script>
+
+<script>
+seajs.use(['p.mpages_list'], function(app){
+  app.init();
+});
+</script>
+<{/block}>

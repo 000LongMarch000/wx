@@ -1,0 +1,209 @@
+/*=============================
+=            utils            =
+=============================*/
+/*-----  End of utils  ------*/
+/* line 5, ../scss/desktop.scss */
+.page-desktop .main {
+  margin-bottom: 20px;
+}
+
+/* line 10, ../scss/desktop.scss */
+.mod-desktop {
+  padding: 20px;
+  /*main*/
+  /*side*/
+}
+/* line 12, ../scss/desktop.scss */
+.mod-desktop .desktop-main {
+  width: 740px;
+  overflow: hidden;
+  float: left;
+}
+/* line 17, ../scss/desktop.scss */
+.mod-desktop .desktop-side {
+  width: 380px;
+  overflow: hidden;
+  float: right;
+}
+/* line 23, ../scss/desktop.scss */
+.mod-desktop .shop-chart {
+  height: 435px;
+  margin: 0 0 15px;
+}
+/* line 27, ../scss/desktop.scss */
+.mod-desktop .features-list {
+  position: relative;
+  margin-right: -20px;
+  overflow: hidden;
+}
+/* line 31, ../scss/desktop.scss */
+.mod-desktop .features-list .item {
+  float: left;
+  width: 308px;
+  padding: 25px;
+  border: 1px solid #eee;
+  margin-right: 20px;
+  font-size: 1.2em;
+  color: #999999;
+}
+/* line 39, ../scss/desktop.scss */
+.mod-desktop .features-list .item .event-ico {
+  display: inline-block;
+  _display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  margin: 0 15px 0 0;
+}
+/* line 46, ../scss/desktop.scss */
+.mod-desktop .features-list .item:hover {
+  border-color: #ea4f2b;
+}
+/* line 52, ../scss/desktop.scss */
+.mod-desktop .user-media {
+  *zoom: 1;
+  display: block;
+  margin: 0 0 10px;
+}
+/* line 46, ../scss/_vars.scss */
+.mod-desktop .user-media:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden;
+}
+/* line 55, ../scss/desktop.scss */
+.mod-desktop .user-media .user-img {
+  width: 100px;
+  float: left;
+}
+/* line 58, ../scss/desktop.scss */
+.mod-desktop .user-media .user-img img {
+  display: block;
+  width: 100px;
+  height: 100px;
+}
+/* line 64, ../scss/desktop.scss */
+.mod-desktop .user-media .user-name {
+  margin: 0 0 10px 115px;
+  padding: 8px 0 0;
+}
+/* line 68, ../scss/desktop.scss */
+.mod-desktop .user-media .user-verify {
+  margin: 0 0 5px;
+}
+/* line 70, ../scss/desktop.scss */
+.mod-desktop .user-media .user-verify .iconfont {
+  color: #ababab;
+  margin: 0 6px 0 0;
+  vertical-align: top;
+}
+/* line 75, ../scss/desktop.scss */
+.mod-desktop .user-media .user-verify .verified {
+  color: #ff9900;
+}
+/* line 81, ../scss/desktop.scss */
+.mod-desktop .user-media .user-infos {
+  *zoom: 1;
+  display: block;
+  margin: 0 -10px 0 115px;
+}
+/* line 46, ../scss/_vars.scss */
+.mod-desktop .user-media .user-infos:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden;
+}
+/* line 86, ../scss/desktop.scss */
+.mod-desktop .user-revenue {
+  padding: 20px 0 0;
+  border-top: 1px solid #eee;
+}
+/* line 89, ../scss/desktop.scss */
+.mod-desktop .user-revenue h5 {
+  font-weight: normal;
+  font-size: 12px;
+}
+/* line 93, ../scss/desktop.scss */
+.mod-desktop .user-revenue .f-price {
+  font-size: 1.6em;
+  font-weight: normal;
+}
+/* line 99, ../scss/desktop.scss */
+.mod-desktop .bx-status .bd {
+  color: #888888;
+}
+/* line 102, ../scss/desktop.scss */
+.mod-desktop .bx-status td {
+  border-right: 1px solid #eee;
+  padding: 3px 10px;
+}
+/* line 106, ../scss/desktop.scss */
+.mod-desktop .bx-status .last {
+  border: none;
+}
+/* line 109, ../scss/desktop.scss */
+.mod-desktop .bx-status .num {
+  font-size: 1.6em;
+  margin: 0 0 10px;
+  font-weight: normal;
+}
+/* line 116, ../scss/desktop.scss */
+.mod-desktop .bx-articles .bd {
+  height: 130px;
+  overflow: hidden;
+}
+/* line 122, ../scss/desktop.scss */
+.mod-desktop .articles-list .item {
+  *zoom: 1;
+  display: block;
+  margin: 0 0 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 16px;
+  line-height: 16px;
+  font-size: 12px;
+}
+/* line 46, ../scss/_vars.scss */
+.mod-desktop .articles-list .item:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden;
+}
+/* line 132, ../scss/desktop.scss */
+.mod-desktop .articles-list a {
+  color: #999999;
+}
+/* line 135, ../scss/desktop.scss */
+.mod-desktop .articles-list .time {
+  float: right;
+}
+
+/* line 141, ../scss/desktop.scss */
+.qrcode-content {
+  text-align: center;
+}
+/* line 143, ../scss/desktop.scss */
+.qrcode-content .qrcode-tit {
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+/* line 148, ../scss/desktop.scss */
+.qrcode-content .qrcode-imgTit {
+  color: #999;
+}
+/* line 151, ../scss/desktop.scss */
+.qrcode-content .qrcode-Btn {
+  width: 310px;
+  margin: 10px auto;
+  text-align: left;
+}

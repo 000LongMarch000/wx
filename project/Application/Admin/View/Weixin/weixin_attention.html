@@ -1,0 +1,46 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'style'}>
+<{/block}>
+
+<{block 'content'}>
+
+<div class="page-title">
+  <h2><{if $act eq 'attention'}>关注自动回复<{else}>消息自动回复<{/if}></h2>
+  <div class="btns"><a href="javascript:history.go(-1)">返回</a></div>
+</div>
+<ul class="wx-nav clearfix">
+  <li class="fitst active"><a href="/admin/weixin/<{$weixin.msg_type}>?type=1">文字</a></li>
+  <li class=""><a href="/admin/weixin/<{$weixin.msg_type}>?type=2">图文</a></li>
+</ul>
+<div class="wx-cont">
+</div>
+
+<{/block}>
+
+<{block 'footer_script'}>
+<script src="<{$assets_path}>/kindeditor/kindeditor.js"></script>
+<script src="<{$assets_path}>/kindeditor/lang/zh_CN.js"></script>
+<script>
+seajs.use(['m.text_edit'], function(Edit){
+  $(function(){
+    new Edit({
+      data:<{$weixin1}>,
+      content:$('.wx-cont'),
+      types:<{$componentKeys}>,
+      onSave:function(data){
+        WD.ajax({
+          url:'/admin/weixin/msgsave',
+          type:'POST',
+          data:data,
+          success:function(){
+            $.notify('操作成功');
+            location.reload();
+          }
+        });
+      }
+    })
+  })
+})
+</script>
+<{/block}>

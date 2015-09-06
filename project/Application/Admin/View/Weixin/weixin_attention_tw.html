@@ -1,0 +1,67 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'style'}>
+
+<{/block}>
+
+<{block 'content'}>
+
+
+<div class="page-title">
+  <h2><{if $act eq 'attention'}>关注自动回复<{else}>消息自动回复<{/if}></h2>
+  <div class="btns"><a href="/admin/weixin/auto">返回</a></div>
+</div>
+<ul class="wx-nav clearfix">
+  <li class="first"><a href="/admin/weixin/<{$weixin.msg_type}>?type=1">文字</a></li>
+  <li class="active"><a href="/admin/weixin/<{$weixin.msg_type}>?type=2">图文</a></li>
+</ul>
+<div class="wx-cont">
+</div>
+
+
+
+<script src="<{$assets_path}>/js/libs/jquery.uploadify.js"></script>
+<script src="<{$assets_path}>/js/libs/jquery-ui.js"></script>
+
+<{/block}>
+
+<{block 'footer_script'}>
+<script type="text/javascript">
+  seajs.use(['m.imgtext'], function(ImgText){
+    $(function(){
+      new ImgText({
+        content:$('.wx-cont'),
+
+        data:<{$weixin1}>,
+
+        types:<{$componentKeys}>,
+
+        onSave:function(data){
+            $.each(data.msg_data, function(index, value){
+              for(var i in value){
+                if(i !="itemId"){
+                  var name = "msg_data["+value.itemId+"]["+i+"]";
+                  data[name] = value[i];
+                }
+                
+              }
+            })
+            delete(data.msg_data);
+            WD.ajax({
+              url:'/admin/weixin/msgsave',
+              type:'POST',
+              data:data,
+              success:function(){
+                $.notify('操作成功');
+                location.reload();
+              }
+            });
+        }
+
+      })
+    })
+
+  })
+</script>
+
+<{/block}>

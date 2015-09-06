@@ -1,156 +1,228 @@
-<{extends '../Layouts/default.html'}>
-            <{block 'content'}> 
-            <div class="span3">
-                <{include file="../Common/sidebar_nav.html"}>
+<{extends '../Layouts/noleft_layout.html'}>
+
+<{block 'style'}>
+<link rel="stylesheet" href="<{$assets_path}>/css/desktop.css" />
+<{/block}>
+
+<{block 'content'}>
+<div class="mod-desktop clearfix">
+  <div class="desktop-main">
+    <{if $undeliveryCount}><div class="alert"><a class="f-r orange" href="/admin/order/lists">查看全部</a>您有 <span class="red"><{$undeliveryCount}></span> 笔成交订单需要处理</div><{/if}>
+    <div id="J_shopChart" class="shop-chart loading">
+
+    </div>
+    <div class="features-list clearfix">
+      <a href="/admin/product/add" class="item">
+        <i class="event-ico ico-dk-sell"></i>卖东西
+      </a>
+      <a href="/admin/component/" class="item">
+        <i class="event-ico ico-dk-event"></i>搞活动
+      </a>
+    </div>
+  </div>
+  <div id="J_deskSide" class="desktop-side">
+    <div class="bx bx-user-info">
+      <div class="bd">
+        <div class="user-media">
+          <div class="user-img">
+            <img src="http://qr.wdwd.com/qr?size=100&txt=http://<{$shop_url}>"> <br>
+            <p class="gray t-c">扫一扫，分享微店</p>
+          </div>
+          <div class="user-name"><{if $shop.shop_title}><{$shop.shop_title}><{else}>有量商家<{/if}>　<a href="/admin/shop/info">修改</a></div>
+          <div class="user-infos">
+            <div class="user-verify">
+              <{if $shop.authenticated neq 2}><i class="iconfont">&#xe62f;</i>未认证商户<{else}><i class="iconfont verified">&#xe62f;</i>已认证商户<{/if}>
+              <{if $shop.authenticated eq 0}>
+                　<a href="/admin/account/auth">上传资料通过认证</a>
+              <{else if $shop.authenticated eq 1}>
+                　<a href="/admin/account/auth">认证审核中</a>
+              <{/if}>
             </div>
-        <div class="span9">
-            <script type="text/javascript" src="lib/jqplot/jquery.jqplot.min.js"></script>
-            <script type="text/javascript" charset="utf-8" src="javascripts/graphDemo.js"></script>
-
-<div class="stats">
-    <p class="stat"><span class="number">53</span>tickets</p>
-    <p class="stat"><span class="number">27</span>tasks</p>
-    <p class="stat"><span class="number">15</span>waiting</p>
+            <div class="user-shop">
+              店铺地址：<{$shop_url}>
+            </div>
+          </div>
+        </div>
+        <div class="user-revenue">
+          <h5>本月收入</h5>
+          <table width="100%">
+            <tr>
+              <td><span class="num red">￥<strong class="f-price"><{$income}></strong></span></td>
+              <td class="t-r">
+                <{if $income > 0}>
+                <a href="/admin/withdraw/index" class="btn">提现</a>
+                <{/if}>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="bx bx-status">
+      <div class="bd">
+        <table width="100%">
+          <tr>
+            <td width="30%">
+              <strong class="num"><{$productCount}></strong>
+              <p>销售商品</p>
+            </td>
+            <td width="30%">
+              <strong class="num"><{$productDownCount}></strong>
+              <p>下架商品</p>
+            </td>
+            <td width="40%" class="last">
+              <strong class="num"><{$orderCount}></strong>
+              <p>本月成交笔数</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="bx bx-articles">
+      <div class="hd">
+        <h3>有料</h3>
+        <div class="more">
+          <a href="/admin/account/notice">查看更多</a>
+        </div>
+      </div>
+      <div class="bd">
+        <div class="articles-list">
+          <ul>
+            <{foreach from=$notice item="item"}>
+            <li class="item">
+                <a href="<{$item.url}>" target="_blank">
+                    <span class="time"><{$item.create_time|date_format:'%Y-%m-%d'}></span>
+                    <{$item.title}>
+                </a>
+            </li>
+            <{/foreach}>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h1 class="page-title">Dashboard</h1>
+<{/block}>
 
-<div class="row-fluid">
-    <div class="block">
-        <p class="block-heading" data-toggle="collapse" data-target="#chart-container">Performance Chart</p>
-        <div id="chart-container" class="block-body collapse in">
-            <div id="line-chart"></div>
-        </div>
-    </div>
-</div>
+<{block 'footer_script'}>
+<script src="<{$assets_path}>/js/libs/highcharts.js"></script>
+<script>
+$(function(){
+  $(document.body).addClass('page-desktop');
 
-<div class="row-fluid">
-    <div class="block span6">
-        <div class="block-heading" data-toggle="collapse" data-target="#tablewidget">Users</div>
-        <div id="tablewidget" class="block-body collapse in">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td>Tompson</td>
-                  <td>the_mark7</td>
-                </tr>
-                <tr>
-                  <td>Ashley</td>
-                  <td>Jacobs</td>
-                  <td>ash11927</td>
-                </tr>
-                <tr>
-                  <td>Audrey</td>
-                  <td>Ann</td>
-                  <td>audann84</td>
-                </tr>
-                <tr>
-                  <td>John</td>
-                  <td>Robinson</td>
-                  <td>jr5527</td>
-                </tr>
-                <tr>
-                  <td>Aaron</td>
-                  <td>Butler</td>
-                  <td>aaron_butler</td>
-                </tr>
-                <tr>
-                  <td>Chris</td>
-                  <td>Albert</td>
-                  <td>cab79</td>
-                </tr>
-              </tbody>
-            </table>
-            <p><a href="users.html">More...</a></p>
-        </div>
-    </div>
-    <div class="block span6">
-        <div class="block-heading" data-toggle="collapse" data-target="#widget1container">Collapsible </div>
-        <div id="widget1container" class="block-body collapse in">
-            <h2>Using Ruby?</h2>
-            <p>This template was developed with <a href="http://middlemanapp.com/" target="_blank">Middleman</a> and includes .erb layouts and views.</p>
-            <p>All of the views you see here (sign in, sign up, users, etc) are already split up so you don't have to waste your time doing it yourself!</p>
-            <p>The layout.erb file includes the header, footer, and side navigation and all of the views are broken out into their own files.</p>
-            <p>If you aren't using Ruby, there is also a set of plain HTML files for each page, just like you would expect.</p>
-        </div>
-    </div>
-</div>
-<div class="copyrights">Collect from <a href="http://www.mycodes.net/" title="后台模板" target="_blank">后台模板</a></div>
-<div class="row-fluid">
-    <div class="block span6">
-        <div class="block-heading" data-toggle="collapse" data-target="#widget2container">History<span class="label label-warning">+10</span></div>
-        <div id="widget2container" class="block-body collapse in">
-            <table class="table">
-              <tbody>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Mark Otto</p>
-                      </td>
-                      <td>
-                          <p>Amount: $1,247</p>
-                      </td>
-                      <td>
-                          <p>Date: 7/19/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Audrey Ann</p>
-                      </td>
-                      <td>
-                          <p>Amount: $2,793</p>
-                      </td>
-                      <td>
-                          <p>Date: 7/12/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Mark Tompson</p>
-                      </td>
-                      <td>
-                          <p>Amount: $2,349</p>
-                      </td>
-                      <td>
-                          <p>Date: 3/10/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>
-                          <p><i class="icon-user"></i> Ashley Jacobs</p>
-                      </td>
-                      <td>
-                          <p>Amount: $1,192</p>
-                      </td>
-                      <td>
-                          <p>Date: 1/19/2012</p>
-                          <a href="#">View Transaction</a>
-                      </td>
-                  </tr>
-                    
-              </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="block span6">
-        <p class="block-heading">Not Collapsible</p>
-        <div class="block-body">
-            <h2>Tip of the Day</h2>
-            <p>Fava bean jícama seakale beetroot courgette shallot amaranth pea garbanzo carrot radicchio peanut leek pea sprouts arugula brussels sprout green bean. Spring onion broccoli chicory shallot winter purslane pumpkin gumbo cabbage squash beet greens lettuce celery. Gram zucchini swiss chard mustard burdock radish brussels sprout groundnut. Asparagus horseradish beet greens broccoli brussels sprout bitterleaf groundnut cress sweet pepper leek bok choy shallot celtuce scallion chickpea radish pea sprouts.</p>
-            <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-        </div>
-    </div>
-</div>
+  $.getJSON('/admin/order/amountweekly', function(data){
+    if (data && data.status == 'success') {
+      var series = data.data;
+      $.each(series, function(idx, item){
+        item.y = idx;
+      });
+      $('#J_shopChart').highcharts({
+        title: {
+          text: '7天成交曲线图'
+        },
+        chart: {
+          type: 'area'
+        },
+        series: series,
+        xAxis: {
+          type: 'datetime'
+        },
+        yAxis: [{
+          title: {
+            text: '成交笔数',
+            style: {
+              color: Highcharts.getOptions().colors[0]
+            }
+          }
+        }, {
+          title: {
+            text: '收入',
+            style: {
+              color: Highcharts.getOptions().colors[1]
+            }
+          },
+          opposite: true
+        }]
+      });
+    }
+  });
+});
 
-        </div>
-        <{/block}>
+
+</script>
+<{*
+<{if $isFollow }>
+<script>
+seajs.use(['m.dialog','m.placeholder'], function($dlg, $placeholder){
+  $dlg($);
+  $placeholder($);
+
+  var dlg=$.dlg({
+    title:'绑定微信号',
+    width:600,
+    closeHandler:function(){
+      WD.ajax({
+        url:'/admin/passport/ignorewechat',
+        type:'post',
+        success:function(d){
+        }
+      })
+    },
+    html:'<div class="qrcode-content"><p class="qrcode-tit">微信扫描二维码，关注公众号获取激活码！</p><div><img src="/src/img/qrcode_for_gh.jpg" width="258" height="258" /></div><form id="J_windowQrcode" action="/admin/passport/bindwechat" method="POST"><div class="qrcode-Btn"><input name="invite_code" type="text" class="input-text input-xlarge required" placeholder="请输入激活码" /></div><div class="qrcode-Btn"><button type="submit" class="btn btn-primary btn-large btn-line">立刻激活有量微店</button></div></form></div>'
+  });
+  dlg.el.find('.close').hide();
+
+  $('#J_windowQrcode').find('input[placeholder]').placeholder();
+  $('#J_windowQrcode').validate({
+    submitHandler:function(form){
+      WD.ajaxForm(form, {
+        success:function(data){
+          dlg.hide();
+        }
+      })
+    }
+  });
+});
+</script>
+<{/if}>
+*}>
+
+
+<{if $guide != '0'}>
+<script id="T_guideDesktop" type="text/x-tpl">
+<div class="guide-cont">
+  <div class="guide-desktop">
+    <a href="javascript:;" class="btn-lnk btn-import" data-url="/admin/product/add"><span>导入商品</span></a><a href="javascript:;" data-url="/admin/shop/info" class="btn-lnk btn-decorate"><span>装修店铺</span></a>
+    <img class="qrcode" src="http://qr.wdwd.com/qr?size=130&txt=<{$shop_url}>" width="130" height="130">
+  </div>
+</div>
+</script>
+<script>
+seajs.use(['m.modal'], function($modal){
+  seajs.use('<{$assets_path}>/css/guide.css');
+  $modal($);
+
+  var tpl = $('#T_guideDesktop').html(),
+      $el = $(tpl).appendTo(document.body);
+
+  $.modal();
+  $el.on('click', '.btn-lnk', function(e){
+    var url = $(this).data('url');
+    WD.ajax({
+      url: '/admin/shop/guide/type/desktop',
+      success: function(){
+        location.href = url;
+      }
+    });
+  });
+});
+</script>
+<{/if}>
+
+
+<!-- bd推广 -->
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc631606e0415060094801d9edf51e571' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<{/block}>

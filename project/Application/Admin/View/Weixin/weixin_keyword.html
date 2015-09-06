@@ -1,0 +1,52 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'style'}>
+<{/block}>
+
+<{block 'content'}>
+
+  <div class="Main" id="Main">
+    <div class="page-title">
+      <h2>关键词机器人</h2>
+      <div class="btns"><a href="javascript:history.go(-1)">返回</a></div>
+    </div>
+
+    <div class="wx-cont">
+      <ul id="J_menu" class="wx-menu-list">
+        <li>
+            <a href="/admin/weixin/addkeyword" class="Add-keyword"><i class="iconfont ">&#xe626;</i> 添加关键词</a>
+        </li>
+        <{foreach from=$weixin item=item key=key}>
+        <li>
+            <div class="col-0"><{$item.msg_keyword}></div>
+            <div class="col-1"><i>回复：</i><{if $item.msg_info_type==1}>文字信息<{elseif $item.msg_info_type==2}>图文信息<{/if}></div>
+            <div class="col-2">
+                <a href="/admin/weixin/editkeyword?id=<{$item.id}>" class="Edit">
+                    <i class="iconfont">&#xe657;</i>编辑
+                </a>
+                <a href="/admin/weixin/deletekeyword?id=<{$item.id}>" class="J_btnDel red">
+                    <i class="iconfont">&#xe625;</i>删除
+                </a>
+            </div>
+        </li>
+        <{/foreach}>
+      </ul>
+    </div>
+  </div>
+
+<script>
+seajs.use(['m.confirm'], function(confirm){
+    confirm($);
+
+    $('#J_menu').on('click', '.J_btnDel', function(e){
+        var $this = $(this);
+        e.preventDefault();
+        $.confirm('确定要删除？', function(){
+            location.href= $this.attr('href')
+        })
+    })
+})
+
+</script>
+
+<{/block}>

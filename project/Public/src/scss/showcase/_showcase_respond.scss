@@ -1,0 +1,83 @@
+@import "compass";
+@import "vars";
+
+//respond to device
+@if $is_mobile {
+  @include respond-device("android-mdp") {
+  }
+  @include respond-device("ip6") {
+    .comp-pdt {
+      .pdt-img {
+        height: 175px;
+        img {
+          max-height: 175px;
+        }
+      }
+    }
+    .pdt-list-1b2s {
+      .item-big {
+        .pdt-img {
+          height: 375px - 8px*2;
+          img {
+            max-height: 375px - 8px*2;
+          }
+        }
+      }
+    }
+  }
+  @include respond-device("ip6+") {
+    .comp-pdt {
+      .pdt-img {
+        height: 195px;
+        img {
+          max-height: 195px;
+        }
+      }
+    }
+    .pdt-list-1b2s {
+      .item-big {
+        .pdt-img {
+          height: 414px - 8px;
+          img {
+            max-height: 414px - 8px;
+          }
+        }
+      }
+    }
+  }
+  @include respond-device("android-hdp") {
+    .comp-pdt {
+      .pdt-img {
+        height: 177px;
+        img {
+          max-height: 177px;
+        }
+      }
+    }
+    .pdt-list-1b2s {
+      .item {
+        width: 177px;
+      }
+      .item-big {
+        width: 355px;
+        .pdt-cont {
+          padding-top: 25px;
+        }
+        .list-item {
+          height: 480px;
+        }
+        .pdt-img {
+          width: 355px - 8px;
+          img {
+            max-height: 355px - 8px;
+          }
+        }
+      }
+    }
+    .pdt-list-2col {
+      .item {
+        width: 177px;
+      }
+    }
+  }
+}

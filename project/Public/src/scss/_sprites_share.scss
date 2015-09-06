@@ -1,0 +1,34 @@
+$share-douban: -5px -5px 16px 16px;
+$share-qq-weibo: -5px -31px 16px 16px;
+$share-qq: -5px -57px 16px 16px;
+$share-renren: -5px -83px 16px 16px;
+$share-weibo: -5px -109px 16px 16px;
+$share-wy-weibo: -5px -135px 16px 16px;
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite) {
+  @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.share-ico {
+  background-image: image-url('sp_share.png');
+}
+

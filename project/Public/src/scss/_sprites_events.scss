@@ -1,0 +1,45 @@
+$auth-company: -5px -5px 80px 80px;
+$auth-personal: -5px -95px 80px 80px;
+$auth-shop: -5px -185px 80px 80px;
+$dk-event: -5px -275px 90px 90px;
+$dk-promot: -5px -375px 99px 97px;
+$dk-sell: -5px -482px 90px 90px;
+$event-apply: -5px -582px 80px 80px;
+$event-bigwheel: -5px -672px 80px 80px;
+$event-card: -5px -762px 80px 80px;
+$event-more: -5px -852px 80px 80px;
+$event-popular: -5px -942px 81px 81px;
+$event-survey: -5px -1033px 80px 80px;
+$shop-bdzhida: -5px -1123px 80px 80px;
+$shop-mobile: -5px -1213px 80px 80px;
+$shop-offline: -5px -1303px 80px 80px;
+$shop-weibo: -5px -1393px 80px 80px;
+$shop-wx: -5px -1483px 80px 80px;
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite) {
+  @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.event-ico {
+  background-image: url('../img/sp_events.png');
+}
+

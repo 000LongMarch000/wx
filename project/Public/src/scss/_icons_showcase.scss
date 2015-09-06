@@ -1,0 +1,25 @@
+@import "sprites_showcase";
+@import "vars";
+
+i.sc-ico {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+$sc-sprites:
+  $sc-2col, $sc-3col, $sc-board, $sc-btn, $sc-division, $sc-form, $sc-image, $sc-images, $sc-input, $sc-link, $sc-list, $sc-telephone, $sc-msg, $sc-map, $sc-audio,
+  $sc-product, $sc-product_list, $sc-qr, $sc-radio, $sc-richtext, $sc-select, $sc-share, $sc-shop, $sc-space, $sc-text, $sc-title, $sc-video,
+  $st-arr-b, $st-arr-l-g, $st-arr-l, $st-arr-r-g, $st-arr-r, $st-arr-t,
+  $st-edit-up, $st-edit-down, $st-edit-menu, $st-edit-del;
+$sc-icons:
+  sc-2col, sc-3col, sc-board, sc-btn, sc-division, sc-form, sc-image, sc-images, sc-input, sc-link, sc-list, sc-telephone, sc-msg, sc-map, sc-audio,
+  sc-product, sc-product_list, sc-qr, sc-radio, sc-richtext, sc-select, sc-share, sc-shop, sc-space, sc-text, sc-title, sc-video,
+  st-arr-b, st-arr-l-g, st-arr-l, st-arr-r-g, st-arr-r, st-arr-t,
+  st-edit-up, st-edit-down, st-edit-menu, st-edit-del;
+
+@each $icon in $sc-icons {
+  $i: index($sc-icons, $icon);
+  .ico-#{$icon} {
+    @include sprite(nth($sc-sprites, $i));
+  }
+}

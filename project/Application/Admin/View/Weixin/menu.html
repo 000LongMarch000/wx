@@ -1,0 +1,56 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'content'}>
+<div class="page-header">
+  <h2 class="page-title">自定义菜单</h2>
+  <div class="btns">
+    <a href="/admin/shop/lists">返回</a>
+  </div>
+</div>
+
+<div class="cont-wrap">
+  <{include file="../Shop/common/weixin_tabs.html"}>
+
+	<div class="cont-wrap"><{if $wxin}><{if $wxin_info_check}>
+		<ul class="wx-menu-list">
+			<li><{if $count>=3}>
+				<span class="alert"><i class="iconfont">&#xe623;</i> 最多添加3个一级菜单</span><{else}>
+				<a href="/admin/weixin/addmenu"><i class="iconfont">&#xe626;</i> 添加菜单</a><{/if}>
+			</li><{foreach from=$menus item=item key=key}>
+			<li>
+				<div class="col-0"><{$item.name}></div>
+				<div class="col-1"><{if $item.type=='view'}>打开：<{$item.msg_data.url}><{elseif $item.type=='click'}>回复：<{if $item.msg_info_type=='1'}>文字信息<{elseif $item.msg_info_type=="2"}>图文信息<{/if}><{/if}></div>
+				<div class="col-2"><a href="/admin/weixin/addmenu?id=<{$item.id}>"><i class="iconfont">&#xe657;</i> 编辑</a><a href="/admin/weixin/deletemenu?id=<{$item.id}>" class="J_btnDel red"><i class="iconfont">&#xe625;</i> 删除</a></div><{if $item.sec}>
+					<ul class="wx-submenu-list"><{foreach from=$item.sec item=sec_item key=sec_key}>
+						<li>
+							<!--[if lt IE 8]><div class="sub-helper"></div><![endif]-->
+							<div class="col-0"><{$sec_item.name}></div>
+							<div class="col-1"><{if $sec_item.type=='view'}>打开：<{$sec_item.msg_data.url}><{elseif $sec_item.type=='click'}>回复：<{if $sec_item.msg_info_type=='1'}>文字信息<{elseif $sec_item.msg_info_type=="2"}>图文信息<{/if}><{/if}></div>
+						</li><{/foreach}>
+					</ul><{/if}>
+			</li><{/foreach}>
+		</ul><{else}>
+		<div class="alert-info"><i class="icon-info"></i>该功能需要填写APP ID和APP Secret，<a href="/admin/weixin/basic">去填写</a></div><{/if}><{else}>
+		<div class="alert-info"><i class="icon-error"></i>请先<a href="/admin/weixin/basic">配置微信公共账号</a>，才能使用该功能</div><{/if}>
+	</div>
+</div>
+<{/block}>
+
+<{block 'footer_script'}>
+<script>
+	seajs.use([],function(){
+		$('.J_btnDel').click(function(e){
+			e.preventDefault();
+			var url=$(this).attr('href');
+			$.confirm('确认删除吗？',function(){
+				WD.ajax({
+					url:url,
+					success:function(){
+						location.reload();
+					}
+				});
+			});
+		});
+	});
+</script>
+<{/block}>

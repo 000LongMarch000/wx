@@ -1,0 +1,251 @@
+/*============================
+=            公共            =
+============================*/
+.goods-img {
+  border: 1px solid $border-gray;
+  @include vertial-img(70px);
+}
+
+/*============================
+=            添加商品            =
+============================*/
+.mod-goods-create {
+  padding: 20px 0;
+  .goods-imgs-list {
+    width: 700px;
+    .item, .item-more {
+      float: left;
+      position: relative;
+      width: 102px;
+      height: 130px;
+      overflow: hidden;
+      margin: 0 10px 10px 0;
+    }
+    .item-more {
+      @include transition(all .5s);
+    }
+    .item-main {
+      .btn-set-default {
+        display: none !important;
+      }
+    }
+    .disabled {
+      @include opacity(.4);
+    }
+  }
+  .goods-img {
+    border: 1px solid $border-gray;
+    @include vertial-img(100px);
+    .btns {
+      background: #fff;
+      position: absolute;
+      width: 100px;
+      left: 1px;
+      top: 100px - 16px + 1px;
+      height: 16px;
+      overflow: hidden;
+      font-size: 12px;
+      line-height: 14px;
+      @include opacity(.7);
+      @include transition(.5s opacity);
+      text-align: center;
+      .iconfont {
+        color: #777;
+        font-size: 11px;
+        margin: 0 2px;
+      }
+    }
+    &:hover {
+      .btns {
+        @include opacity(.9);
+      }
+      .btn-set-default {
+        display: block;
+      }
+    }
+    .btn-set-default {
+      display: none;
+      vertical-align: top;
+      position: absolute;
+      padding: 2px 0;
+      top: 30px;
+      left: 50%;
+      width: 60px;
+      margin-left: -30px;
+      font-size: 12px;
+    }
+  }
+  .upload-img {
+    position: absolute;
+    width: 102px;
+    height: 102px;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    input {
+      visibility: hidden;
+    }
+    &:hover {
+      background: #c0c0c0;
+      @include opacity(0.5);
+    }
+    &.disabled {
+      cursor: default;
+    }
+  }
+  .uploadify-queue-item {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 1px;
+    top: 1px;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    .loading {
+      margin-top: 16px;
+    }
+  }
+  .goods-img-title {
+    height: 20px;
+    line-height: 20px;
+    white-space: nowrap;
+    text-align: center;
+    margin: 5px 0 0;
+  }
+  .goods-props-list {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    padding: 17px 26px;
+    margin: 10px 0 0;
+    h4 {
+      font-weight: normal;
+      font-size: 1em;
+      margin: 0 0 15px;
+      padding: 0;
+    }
+    .btn-add-prop {
+      margin: 20px 0 10px;
+      display: inline-block;
+      *zoom: 1;
+    }
+    td {
+      padding: 7px 0;
+      vertical-align: top;
+      text-align: center;
+    }
+    .input-mini {
+      width: 130px * 0.6;
+    }
+    .opts {
+      width: 100px;
+      text-align: center;
+      padding: 15px 0 0;
+      a {
+        margin: 0 5px;
+        color: #999;
+        &:hover {
+          color: #000;
+        }
+      }
+      .iconfont {
+        font-size: 12px;
+      }
+    }
+  }
+  .hot-tags-list {
+    $tag_colors: #fe7360 #8cc8ec #b094de #f4ce77 #b5ec67 #96b2df;
+    padding: 8px 0 0;
+    .item {
+      background: #8cc8ec;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      padding: 0 10px;
+      height: 24px;
+      line-height: 24px;
+      color: #fff;
+      &:hover {
+        background: darken(#8cc8ec, 10%);
+      }
+    }
+    $i: 1;
+    @each $color in $tag_colors {
+      .i#{$i} {
+        background: $color;
+        &:hover {
+          background: darken($color, 10%);
+        }
+      }
+      $i:$i+1;
+    }
+  }
+  .sec-goods-props {
+    padding: 20px 40px;
+  }
+  .sec-goods-shipping {
+    background: #f8f8f8;
+    padding: 10px 5px;
+    border: 1px solid #e9e9e9;
+    margin: 10px 0 0;
+    width: 350px;
+    .form-group {
+      padding-left: 90px;
+    }
+    .ctl-label {
+      margin-left: -100px;
+      width: 90px;
+    }
+  }
+  .sec-adv-setting {
+    padding: 20px 0 0;
+  }
+  .link-adv-setting {
+    padding: 0 0 0 30px;
+    line-height: 30px;
+  }
+  .sec-yl-promote {
+    background: $bg_gray;
+    border: 1px solid $border_gray;
+    padding: 15px 25px;
+    margin: 0 0 15px;
+  }
+  textarea.input-text {
+    width: 98%;
+    height: 100px;
+  }
+  .sec-more {
+    padding: 0 40px;
+  }
+  .form-actions {
+    margin-left: 0;
+  }
+}
+
+.mod-goods-complete {
+  .download-facetoface{
+    width:125px;
+    text-align: center;
+    margin: 10px 0;
+  }
+  .wgt-share {
+    width: 380px;
+  }
+  .complete-status {
+    margin: 0 0 25px;
+  }
+  .form-actions {
+    padding: 20px 0;
+    margin: 0;
+    border-top: 1px solid $border_gray;
+    margin-top: 30px;
+  }
+}
+
+/*==========  优惠券  ==========*/
+.promotion-rules {
+  padding: 10px 0 0;
+  li {
+    padding: 5px 0;
+  }
+}

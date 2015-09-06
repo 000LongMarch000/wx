@@ -1,0 +1,89 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'content'}>
+<div class="page-header">
+  <h2 class="page-title">公众号配置</h2>
+  <div class="btns">
+    <a href="/admin/shop/lists">返回</a>
+  </div>
+</div>
+<div class="cont-wrap">
+  <{if $wx_list.admin_name=='' || $wx_list.original_id=='' ||$wx_list.admin_uname=='' || $wx_list.admin_email==''}>
+  <div class="alert-info" id="wxset_tips_noset">
+    <p>使用微信自动回复等功能您需要先申请开通微信公众号，请保存后获取微信公众平台需要的回调URL和TOKEN等信息</p>
+  </div>
+  <{else}>
+  <div class="alert-info" id="wxset_tips_set">
+    <p>请将以下信息，填写到公众平台(<a href="http://mp.weixin.qq.com" target="_blank">mp.weixin.qq.com</a>)-功能-高级功能-开发模式</p>
+    <p>URL：<{$wx_list.url}></p>
+    <p>Token：<{$wx_list.token}></p>
+    <p>请先在本页面保存后，再将以上信息填写到微信公众平台</p>
+  </div>
+  <{/if}>
+
+   <{include file="../Shop/common/weixin_tabs.html"}>
+   <br/>
+
+  <form id="J_weixinSetting" action="/admin/weixin/wxsave" method="post">
+    <input type="hidden" name="url" value="<{$wx_list.url}>">
+    <input type="hidden" name="token" value="<{$wx_list.token}>">
+    <div class="sec">
+      <h4 class="sec-title">公众号账号信息 <small><a href="https://mp.weixin.qq.com/" target="_blank">点此申请微信公众号</a></small></h4>
+      <ul>
+        <li class="form-group">
+          <label class="ctl-label"><em>*</em> 登录邮箱：</label>
+          <input type="text" name="admin_email" value="<{$wx_list.admin_email }>" id="admin_email" class="input-text required">
+        </li>
+        <li class="form-group">
+          <label class="ctl-label"><em>*</em> 公众号名称：</label>
+          <input type="text" name="admin_uname" value="<{$wx_list.admin_uname }>" id="admin_uname" class="input-text required">
+        </li>
+        <li class="form-group">
+          <label class="ctl-label"><em>*</em> 原始ID：</label>
+          <input type="text" name="original_id" value="<{$wx_list.original_id }>" id="original_id" class="input-text required">
+        </li>
+        <li class="form-group">
+          <label class="ctl-label"><em>*</em> 微信号：</label>
+          <input type="text" name="admin_name" value="<{$wx_list.admin_name }>" id="admin_name" class="input-text required">
+        </li>
+      </ul>
+    </div>
+    <hr>
+    <div class="sec">
+      <h4 class="sec-title">认证号高级接口配置<small><a href="https://mp.weixin.qq.com" target="_blank">去微信申请认证</a></small></h4>
+      <ul>
+        <li class="form-group">
+          <label class="ctl-label">AppID：</label>
+          <input type="text" name="appid" value="<{$wx_list.appid}>" class="input-text">
+        </li>
+        <li class="form-group">
+          <label class="ctl-label">AppSecret：</label>
+          <input type="text" name="appsecret" value="<{$wx_list.appsecret}>" class="input-text">
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn btn-large btn-primary" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+<{/block}>
+
+<{block 'footer_script'}>
+<script>
+$(function(){
+  $('#J_weixinSetting').validate({
+    submitHandler: function(form){
+      WD.ajaxForm(form, {
+        success: function(res){
+          $.notify('保存成功', function(){
+            location.href = '<{$backurl}>';
+          });
+        }
+      });
+    }
+  });
+});
+</script>
+<{/block}>

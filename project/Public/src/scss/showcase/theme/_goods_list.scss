@@ -1,0 +1,91 @@
+@import "compass";
+@import "showcase/theme/vars";
+
+/*==============================
+=            config            =
+==============================*/
+$is_mobile: true;
+
+.goods-head{
+  @include title-block();
+  @include clearfix();
+  background: #e6e6e6;
+  overflow: hidden;
+  .link-shop{
+    display: inline-block;
+    img{
+      width:28px;
+      height:28px;
+      @include border-radius(28px);
+      border:2px solid #fff;
+      vertical-align: middle;
+      margin-left: 25px;
+    }
+    span{
+      font-size: 13px;
+      color:#4b4b4b;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+  }
+
+  .link-qq{
+    float: right;
+    padding:0 16px 0 0;
+    i{
+      color:$color_font_black;
+      font-size: 20px;
+    }
+  }
+
+}
+.goods-sort{
+  background: #fff;
+  @include hairline(#dedede, top, bottom);
+  margin: 0 0 $block_safe 0;
+
+  ul{
+    @include title-block();
+    display: table;
+    table-layout: fixed;
+    width:100%;
+  }
+  li{
+    display: table-cell;
+    text-align: center;
+    a{
+      color:#4b4b4b;
+      font-size: 14px;
+      display: inline-block;
+      padding:0 5px;
+      height:100%;
+      .goods-sort-price{
+        display: inline-block;
+        margin-right: 3px;
+      }
+      .goods-sort-up{
+        display: inline-block;
+        i{
+          margin-bottom:2px;
+        }
+      }
+      .goods-sort-down{
+        display: inline-block;
+        i{
+          margin-bottom:-4px;
+        }
+      }
+    }
+    a.current{
+      color:$color_orange;
+      border-bottom:2px solid $color_orange;
+    }
+  }
+}
+
+.loading-hint {
+  margin: 20px 0;
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+}

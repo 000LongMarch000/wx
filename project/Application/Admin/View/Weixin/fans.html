@@ -1,0 +1,38 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'content'}>
+<div class="Layout-page">
+  <div class="Main">
+    <div class="Wmenu">
+      <{include file="./menus.html"}>
+    </div>
+
+    <h2 class="Cont-title">粉丝消息推送</h2>
+    <{if $wxin}>
+    <div class="Wcont">
+      <div class="Fansmsg">
+        <div class="Tips">
+          <p>通过外部平台向粉丝推送的消息，无法出现在微信公众账号“历史消息”栏目。 
+<br />因此，请登录微信公众账号平台(mp.weixin.qq.com)发送推送消息。</p>
+        </div>
+        <a href="http://mp.weixin.qq.com" class="Btn-b" target="_blank">去微信</a>
+      </div>
+      <div class="Fansmsg">
+        <h3>微信公众账号平台群发功能示意：</h3>
+        <p><img src="/img/wxht.jpg" alt=""></p>
+      </div>
+    </div>
+    <{else}>
+         <p class="Error-info"><s class="ico"></s>请先<a href="/admin/weixin/basic" >配置微信公共账号</a>，才能使用该功能</p>
+    <{/if}>
+  </div>
+</div>
+<script src="/js/json2.js"></script>
+<script src="/js/jquery-min.js"></script>
+<script src="/js/jquery-ui-min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+<script src="/js/validation.js"></script>
+<script src="/js/messenger.js"></script>
+
+<{/block}>

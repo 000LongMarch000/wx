@@ -1,0 +1,51 @@
+ <form id="pageform" action="#">
+   <ul  class="Form-vertical-">
+    <li class="Form-group">
+       <label class="Form-label">页面名称：</label> 
+       <div class="Form-controls">
+         <input type="text"  class="input-text input-large" value="<{$page.title}>" name="title" id="title" maxlength="20"/>
+         <p class="Help-block">最多只能输入20个汉字。</p>
+       </div>
+     </li>
+   </ul>
+   <hr>
+   <ul>
+     <li class="Form-group">
+     <div class="Form-controls">
+       <input type="hidden" name="id" value="<{$page._id}>" id="J_pageId" />
+       <{if $page.data.id}>
+       <button type="submit" class="Btn-b">保存</button>　
+       <{else}>
+       <button type="submit" class="Btn-b">下一步</button>　
+       <{/if}>
+     </div>
+   </li>
+ </ul>
+</form>
+
+<script src="/js/messenger.js"></script>
+<script>
+$('#pageform').submit(function(e) {
+  e.preventDefault();
+  var data = $('#pageform').serialize();
+  $.ajax({
+      type:'POST',
+      url:'/admin/mobile/mpagesavetitle',
+      data: data,
+      dataType:'json',
+      success:function(resp) {
+          if(resp.success == 'true'){
+              Message.success('设置成功，正在跳转...');
+              setTimeout(function(){
+                var href;
+                if ($('#J_pageId').val()) href = '/admin/mobile/mpages';
+                else if (resp.data.id) href = '/admin/mobile/mpageedit?id=' + resp.data.id;
+                location.href = href;
+              }, 1000);
+          } else {
+              Message.error(resp.msg);
+          }
+      }
+  });
+});
+</script>

@@ -1,0 +1,120 @@
+<script type="text/x-tpl" id="T_media">
+<div class="media-gallery">
+  <div class="media-frame">
+    <div class="media-menus clearfix">
+      <div class="tabs">
+        <% if (menus.uploader){ %>
+          <a href="javascript:;" class="menu-item" data-type="uploader">上传图片</a>
+        <% } %>
+        <% if (menus.library){ %>
+          <a href="javascript:;" class="menu-item" data-type="library">图片库</a>
+        <% } %>
+        <% if (menus.goods){ %>
+          <a href="javascript:;" class="menu-item" data-type="goods">商品</a>
+          <a href="javascript:;" class="menu-item" data-type="goods_search" style="display:none;">搜索结果</a>
+        <% } %>
+      </div>
+
+      <% if (menus.goods){ %>
+      <form class="media-search" action="/admin/data/searchProducts" method="get" onsubmit="return false;">
+        <select name="type">
+          <option value="title">名称</option>
+          <option value="sku">货号</option>
+        </select>
+        <input type="text" class="input-text" name="key_word" placeholder="请输入商品名称或货品编号">
+        <button class="btn btn-mini btn-primary" type="submit">搜索</button>
+      </form>
+      <% } %>
+    </div>
+    <div class="media-frame-content">
+    </div>
+    <div class="media-frame-toolbar">
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/x-tpl" id="T_mediaUpload">
+<div class="meida-uploader">
+  <div class="uploader-btn">
+    <input type="file" id="J_btnUpload_<%= id %>" class="uploader-input" name="file">
+  </div>
+  <p class="help-block">最大允许上传图片大小 1MB</p>
+  <% if (typeof(hint) != 'undefined') { %>
+    <div class="media-hint"><%= hint %></div>
+  <% } %>
+</div>
+</script>
+
+<script type="text/x-tpl" id="T_mediaBrowser">
+<div class="media-browser <% if (type) { %>media-browser-<%=type%><% } %>">
+  <% if (typeof(hint) != 'undefined') { %>
+    <div class="media-hint"><%= hint %></div>
+  <% } %>
+  <div class="media-items">
+  </div>
+  <div class="pagination"></div>
+</div>
+</script>
+
+<script type="text/x-tpl" id="T_mediaBrowserItems">
+<ul>
+<% _.each(data, function(item){ %>
+<li class="item<% if(item.active) { %> active<% } %>" data-id="<%= item.id %>">
+  <%if (item.published==0){ %> <div class="disabled-icon">已下架</div> <% } %>
+  <div class="thumb <%= item._thumbCls %>">
+    <img src="<%- item.url %><% if (type == 'goods' || type == 'goods_search') { %>_120x120.jpg<% } %>">
+  </div>
+  <%if (item._name) { %>
+    <div class="item-name"><%- item._name %></div>
+  <% } %>
+  <s class="arr"></s>
+</li>
+<% }); %>
+</ul>
+</script>
+
+
+<script type="text/x-tpl" id="T_mediaCrop">
+<div class="media-crop">
+  <div class="upload-errors"></div>
+  <div class="crop-img">
+    <img src="<%- url %>">
+  </div>
+  <div class="crop-info">剪裁区域大小：100x100</div>
+  <div class="media-img-info">
+    图片原始大小：<%- w %>x<%- h %>
+  </div>
+</div>
+</script>
+
+<script type="text/x-tpl" id="T_mediaToolbar">
+<% if (type == 'library') { %>
+  <div class="meida-toolbar">
+    <% if (crop) { %>
+      <button class="Btn-b btn-crop">剪裁</button>
+    <% } %>
+    <button class="Btn-b btn-select">确定</button>
+  </div>
+<% } else if (type == 'goods' || type == 'goods_search') { %>
+  <div class="meida-toolbar">
+    <button class="Btn-b btn-select">确定</button>
+  </div>
+<% } else if (type == 'crop') { %>
+  <div class="meida-toolbar">
+    <button class="Btn-a btn-cancel">取消</button>
+    <button class="Btn-b btn-save-crop">确定</button>
+  </div>
+  <% } %>
+</script>
+
+<link rel="stylesheet" href="/ym/css/media_gallery.css">
+<link rel="stylesheet" href="/ym/js/uploadify/uploadify.css" type="text/css" />
+<link rel="stylesheet" href="/ym/js/jcrop/jquery.jcrop.min.css" type="text/css" />
+<script src="/ym/js/jquery-ui-min.js"></script>
+<script src="/ym/js/uploadify/jquery.uploadify.min.js"></script>
+<script src="/ym/js/jcrop/jquery.jcrop.min.js"></script>
+<script src="/ym/js/underscore/underscore-min.js"></script>
+<script src="/ym/js/messenger.js"></script>
+<script src="/ym/js/pagination.js"></script>
+<script src="/ym/js/media_gallery.js"></script>

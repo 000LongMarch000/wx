@@ -1,0 +1,207 @@
+@import "compass";
+@import "showcase/theme/vars";
+@import "showcase/theme/common";
+@import "showcase/theme/goods_list";
+
+.shop-hd{
+  margin-bottom:4px;
+
+}
+.shop-placard {
+  position:relative;
+  width: 100%;
+  height: 173px;
+  overflow: hidden;
+  z-index:2;
+  .placard-mask{
+    position: absolute;
+    z-index:2;
+    width:100%;
+    height:100%;
+    background: #000;
+    @include opacity(.35);
+  }
+
+  .shop-logo{
+    position: absolute;
+    top:8px;
+    left:50%;
+    margin-left: -32px;
+    width:60px;
+    height:60px;
+    @include border-radius(60px);
+    border:2px solid #fff;
+    z-index:9
+  }
+
+  .shop-title{
+    position: absolute;
+    font-size:15px;
+    color:#fff;
+    z-index:9;
+    left:0px;
+    top:80px;
+    width:100%;
+    text-align: center;
+  }
+
+  .cert-info{
+    position: absolute;
+    margin-left: -24px;
+    z-index:9;
+    top:103px;
+    left:50%;
+
+  }
+
+  .contact-info{
+    @include title-block();
+    position: absolute;
+    z-index:9;
+    background: rgba(255, 255, 255, 0.4);
+    background: none\9;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#c0ffffff, endColorstr=#c0ffffff)\9;
+    bottom: 0px;
+    left:0px;
+    width:100%;
+    color:#4b4b4b;
+    font-size:13px;
+    a{
+      color:#4b4b4b;
+      font-size:13px;
+    }
+    .kefu{
+      float: left;
+      margin-left: $click_safe;
+    }
+    .weixin{
+      float: left;
+      margin-left: 11px;
+      a, span{
+        display: inline-block;
+        width:132px;
+        margin-left: 2px;
+        @include text-overflow();
+        vertical-align: middle;
+      }
+    }
+    .qrcode{
+      float: right;
+      padding-right: $click_safe;
+    }
+  }
+
+  .shop-floor{
+    position:absolute;
+    z-index:9;
+    top:70px;
+    height:40px;
+    width:50px;
+    background:rgba(255,255,255,0.35);
+    color:#fff;
+    text-align:center;
+    font-size: 0.8em;
+    .shop-floor-content{
+      position:absolute;
+      width:100%;
+      left:0px;
+      top: 0;
+      text-align:center;
+    }
+    i{
+      display: inline-block;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      top: 5px;
+      color:#fff;
+    }
+    .shop-floor-tit{
+      position: absolute;
+      width: 40px;
+      top: 20px;
+
+      color:#fff;
+      font-size:11px;
+      text-align: center;
+    }
+  }
+
+
+  .shop-hd-qq{
+    left:0px;
+    @include border-radius(0px 18px 18px 0px , 0px 18px 18px 0px);
+    i{
+      left:13px;
+    }
+    .shop-floor-tit{
+      left:3px;
+    }
+  }
+
+
+  .shop-hd-like{
+    right:0px;
+    @include border-radius(18px 0px 0px 18px , 18px 0px 0px 18px);
+    i{
+      left: 20px;
+    }
+    i.active{
+      color:#ea4f2b
+    }
+    .shop-floor-tit{
+
+      left: 8px;
+      @include text-overflow();
+    }
+  }
+}
+
+.shop-notice{
+  margin:$block_safe;
+  padding:0 20px;
+  @include hairline(#dedede);
+  background:#fff;
+  .shop-notice-content{
+    h3{
+      color:#111;
+      text-align: left;
+      height:54px;
+      line-height: 54px;
+      margin-bottom: 0px;
+      font-size: 15px;
+      color:#8c8c8c;
+      @include hairline(#e4e4e4, bottom);
+      i{
+        color:$color_orange;
+        font-size: 25px;
+        margin-right: 15px;
+      }
+      span{
+        vertical-align: middle;
+        font-size:16px;
+      }
+    }
+    p{
+      font-size:13px;
+      color:#777;
+      margin:13px 0 0 0;
+      padding-bottom: 15px;
+      text-align: justify;
+      word-break:break-word;
+    }
+  }
+}
+
+
+
+.go-list{
+  display: block;
+  @include title-block();
+  @include hairline(#dedede);
+  text-align: center;
+  font-size: 15px;
+  color:#4b4b4b;
+  background: #fff;
+}

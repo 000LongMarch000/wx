@@ -1,0 +1,65 @@
+$sc-2col: -5px -5px 34px 28px;
+$sc-3col: -5px -43px 34px 28px;
+$sc-audio: -5px -81px 24px 34px;
+$sc-board: -5px -125px 30px 29px;
+$sc-btn: -5px -164px 32px 15px;
+$sc-division: -5px -189px 36px 18px;
+$sc-form: -5px -217px 31px 33px;
+$sc-image: -5px -260px 32px 24px;
+$sc-images: -5px -294px 34px 31px;
+$sc-input: -5px -335px 34px 14px;
+$sc-link: -5px -359px 31px 30px;
+$sc-list: -5px -399px 28px 20px;
+$sc-map: -5px -429px 34px 31px;
+$sc-msg: -5px -470px 32px 32px;
+$sc-product: -5px -512px 34px 28px;
+$sc-product_list: -5px -550px 33px 32px;
+$sc-qr: -5px -592px 32px 32px;
+$sc-radio: -5px -634px 33px 13px;
+$sc-richtext: -5px -657px 34px 26px;
+$sc-select: -5px -693px 30px 32px;
+$sc-share: -5px -735px 32px 31px;
+$sc-shop: -5px -776px 33px 32px;
+$sc-space: -5px -818px 36px 24px;
+$sc-telephone: -5px -852px 31px 33px;
+$sc-text: -5px -895px 25px 28px;
+$sc-title: -5px -933px 32px 28px;
+$sc-video: -5px -971px 32px 32px;
+$st-arr-b: -5px -1013px 16px 16px;
+$st-arr-l-g: -5px -1039px 16px 16px;
+$st-arr-l: -5px -1065px 16px 16px;
+$st-arr-r-g: -5px -1091px 16px 16px;
+$st-arr-r: -5px -1117px 16px 16px;
+$st-arr-t: -5px -1143px 16px 16px;
+$st-edit-del: -5px -1169px 9px 10px;
+$st-edit-down: -5px -1189px 9px 10px;
+$st-edit-menu: -5px -1209px 9px 10px;
+$st-edit-up: -5px -1229px 9px 10px;
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite) {
+  @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.sc-ico {
+  background-image: url('../img/sp_sc.png');
+}
+

@@ -1,0 +1,25 @@
+@import "compass/css3";
+@import "vars";
+
+.form-group-line {
+  padding: 0 0 13px;
+}
+.input-text {
+  height: 42px;
+  line-height: 42px;
+  -webkit-appearance: none;
+  @include border-radius(1px);
+}
+.input-line {
+  @include box-sizing(border-box);
+  height: 46px;
+  width: 100%;
+}
+.btn {
+  @include border-radius(1px);
+}
+.btn-large {
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.25em;
+}

@@ -1,0 +1,158 @@
+@import "compass";
+@import "vars";
+
+.refund-list{
+	.list-shopname{
+	  max-width:145px;
+	  @include text-overflow
+	}
+}
+
+.refund-info{
+	height:65px;
+	position: relative;
+	text-align:center;
+	background:#fafafa;
+	border:1px solid #eee;
+	margin:0 0 20px 0;
+	padding:15px 0 0 0;
+	overflow:hidden;
+	.line{
+		position:absolute;
+		top:53px;
+		height:3px;
+		width:205px;
+		background:#eaeaea;
+		border-top:#a6a6a6;
+		@include border-radius(2px);
+		
+	}
+	.line.active{
+		background:#4dcd70;
+		border-top:#37924f;
+	}
+	.line.first{
+		left:118px;
+	}
+	.line.second{
+		left:363px;
+	}
+
+	ul {
+		margin:0 0 0 40px;
+		width:1000px;	
+		li{
+			float:left;
+			width:115px;
+			margin:0 130px 0 0;
+			font-size:14px;
+			color:#777;
+			.num-icon{
+				display: inline-block;
+				width:28px;
+				height:28px;
+				line-height: 28px;
+				background: #eaeaea;
+				color:#777;
+				font-size:16px;
+				@include border-radius(14px)
+			}
+		}
+		li.active{
+			color:#090909;
+			.num-icon{
+				background: #4dcd70;
+				color:#fff;
+				font-size:16px;
+			}
+		}
+
+	}
+	
+}
+
+.refund-desc{
+	text-align:center;
+	padding-bottom:30px;
+	h2{
+		font-size:16px;
+		font-weight: bold;
+		height:80px;
+		line-height: 90px;
+	}
+	p{
+		width: 420px;
+
+		color:#777;
+		margin:0 auto;
+		text-align:left;
+		line-height:2.5em;
+		font-size:14px;
+	}
+	.refund-btn{
+		margin:30px auto 0 auto;
+		width:250px;
+		text-align:left;
+		.first{
+			margin-left: 0px;
+		}
+		.last{
+			margin-left: 20px;
+		}
+	}
+}
+
+.refund-agree-desc{
+	p{
+		width:auto;
+		text-align: center;
+	}
+}
+.refund-buyer-desc{
+	font-size:12px;
+	color:#ccc;
+	span{
+		font-size: 14px;
+		color:#777;
+	}
+	p{
+		margin-bottom: 0px;
+	}
+	padding:20px;
+}
+
+.refund-money{
+	color:$color_red;
+}
+
+.refund-order-info{
+	height:70px;
+	padding:0px 0 10px 0;
+	overflow:hidden;
+	img{
+		float: left;
+		border: 1px solid #ddd;
+	}
+	.title{
+		margin:10px 0 0 80px;
+	}
+}
+
+.refund-seller-info{
+	margin-top:-20px;
+	border-top:none;
+	ul{
+
+	}
+}
+
+.refund-dialog-txt{
+	width:300px;
+	margin:20px auto;
+}
+
+.reject-content{
+	text-align:center;
+	margin-top:20px;	
+}
+

@@ -1,88 +1,90 @@
 <?php
 namespace Admin\Controller;
-use Admin\Controller\CommonController;
-class IndexController extends CommonController {
-    public function __construct() {
-        $this->setLoginExcept(array('login', 'verify', 'register', 'reg', 'logout'));
+use Admin\Controller;
+use Common\Lib;
+class IndexController extends AdminController {
+    public function __construct(){
         parent::__construct();
-    }
-    
-    public function index() {
-        $this->display();
+        $this->assign('menu', 'desktop');
     }
 
-    public function login() {
-        if ($_GET['err']) {
-            $this->assign('error', $_GET['err']);
-        }
-        $this->display();
-    }
+    public function index(){
+        $encodeShopId = $this->shop['shop_id'];
+        $shopId = \Common\Lib\Idhandler::decode($encodeShopId);
+        $tradeMdl = D('Trade');
+        $shopMdl = D('Shop');
+        $productMdl = D('Products');
+        $shopStatisticsMdl = D('ShopStatistics');
+        $tradeTransactionsMdl = D('TradeTransactions');
 
-    public function verify() {
-        $p = I("post.");
-        $userMdl = D("User");
-        $res = $userMdl->verify($p['loginname'], $p['password']);
-        if ('success' == $res['status']) {
-            //写session
-            $this->_setLoginSession($res['data']['user']);
-            $this->redirect('/');
-        }
-        else {
-            $this->redirect('/login?err=' . $res['msg']);
-        }
-    }
+        $filter = array('shop_id' => $shopId, 'status' => 'open', 'financial_status' => 'paid');
+        $paidCount = $tradeMdl->getCount($filter);
 
-    public function register() {
-        $p = I("post.");
-        $userMdl = D("User");
-        $this->display();
-    }
+        $filter = array('shop_id' => $shopId, 'financial_status' => 'paid', 'fulfillment_status' => '');
+        $undeliveryCount = $tradeMdl->getCount($filter);
+        //$undeliveryCount = 0;
 
-    public function reg() {
-        header('Content-type: application/json');
-        $p = I("post.");
-        $necessaryArgs = array(
-            'loginname' => '用户名',
-            'password' => '密码',
-            'password_confirm' => '确认密码',
-        );
-        foreach ($necessaryArgs as $k => $v) {
-            if (!isset($p[$k]) || empty($p[$k])) {
-                echo json_encode(array('status' => 'fail', 'msg' => $v . "不能为空"));
-                exit;
-            }
-        }
+        $shopInfo = $shopMdl->findByShopId($shopId);
+        $productCount = $productMdl->getCount(array('shop_id' => $shopId, 'published' => 1, 'status' => 1));
 
-        if ($p['password'] != $p['password_confirm']) {
-            echo json_encode(array('status' => 'fail', 'msg' => "两次密码不一致"));
-            exit;
-        }
+        $productDownCount = $productMdl->getCount(array('shop_id' => $shopId, 'published' => 0, 'status' => 1));
 
+        $start = strtotime(date('Y-m-01'));
+        
+        /*
+        $params['shop_id']  = $shopId;
+        $parasm['status'] = 'open'; 
+        $params['financial_status'] = 'paid';
+        $params['created_at'] = array('between', $start.",".time());
+
+        $orderCount = $tradeMdl->getCount($params);
+        $income = $tradeMdl->getTotalAmount($params);
+        */
+
+        $params['shop_id']  = $shopId;
+        $parasm['kind'] = 'capture'; 
+        $params['status'] = 'success';
+        $params['created_at'] = array('between', $start.",".time());
+
+        $orderCount = $tradeTransactionsMdl->getCount($params);
+        $income = $tradeTransactionsMdl->getTotalAmount($params);
+
+        /*
+        $month = date("Y-m");
+        $filter = "LEFT(`date`, 7) = '{$month}' and shop_id = {$shopId}";
+        $income = $shopStatisticsMdl->sumAmount($filter);
+        */
+        //微信关注
         $userMdl = D('User');
-        $filter = array('loginname' => $p['loginname']);
-        $row = $userMdl->getRow($filter);
-        if ($row) {
-            echo json_encode(array('status' => 'fail', 'msg' => "用户名已存在"));
-            exit;
-        }
-
-        $user = $userMdl->createNew($p);
-        if ($user) {
-            $this->_setLoginSession($user);
-            echo json_encode(array('status' => 'success', 'data' => array('redirect_url' => '/')));
-            exit;
+        $follower = $userMdl->findWechatFollower($shopId);
+        if ($follower || session('ignoreWechat')) {
+            $isFollow = true;
         }
         else {
-            echo json_encode(array('status' => 'fail', 'msg' => "注册失败"));
-            exit;
+            $isFollow = false;
         }
-    }
 
-    public function logout() {
+        //引导页面
+        $shopSettingMdl = D('ShopSetting');
+        $guideRs = $shopSettingMdl->findByKey($shopId, 'guide_desktop');
+        $this->assign('guide', $guideRs ? 0 : 1);
+
+        //有料列表
+        $noticeMdl = D('Notice');
+        $notice = $noticeMdl->getList('5', '1');
+
+        $this->assign('notice', $notice);
+
+        $this->assign('isFollow', $isFollow);
+        $this->assign('shop', $shopInfo);
+        $this->assign('productCount', number_format($productCount));
+        $this->assign('productDownCount', number_format($productDownCount));
+        $this->assign('orderCount', number_format($orderCount));
+        $this->assign('paidCount', number_format($paidCount));
+        $this->assign('undeliveryCount', number_format($undeliveryCount));
+        $this->assign('income', $income ? number_format($income, 2) : 0);
+
+        $this->assign('shop_url', C('LOCAL_URL1').'shop/'.\Common\Lib\Idhandler::encode($shopId));
         $this->display();
-    }
-
-    private function _setLoginSession($user) {
-        session('user', $user);
     }
 }

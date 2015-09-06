@@ -1,0 +1,74 @@
+@import "compass";
+@import "vars";
+
+.table-header {
+  margin: 0 0 8px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/*===========================
+=            订单等            =
+===========================*/
+.table-skin-3 {
+  thead {
+    th {
+      font-weight: normal;
+      border-bottom: 1px solid $border_light;
+      padding: 7px 10px;
+    }
+  }
+  td {
+    border-bottom: 1px solid $border_light;
+    padding: 5px 10px;
+    text-align: center;
+  }
+  tr:last-child {
+    td {
+      border: none;
+    }
+  }
+  .last {
+    td {
+      border: none;
+    }
+  }
+}
+
+.table-skin-3-1 {
+  td {
+    padding: 5px 10px;
+  }
+
+  tr.sec-top {
+    td {
+      border-top: 1px solid $border_light;
+      padding-top: 20px;
+    }
+  }
+
+  tr.sec-bottom {
+    td {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+
+/*===========================
+=            文章            =
+===========================*/
+.table-skin-4 {
+  td {
+    border-bottom: 1px dashed $border_light;
+    padding: 10px 10px;
+  }
+  tr:last-child {
+    td {
+      border: none;
+    }
+  }
+}
+

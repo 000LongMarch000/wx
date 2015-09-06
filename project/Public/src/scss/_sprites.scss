@@ -1,0 +1,36 @@
+$code-2d: -5px -5px 16px 16px;
+$item-hl: -5px -31px 30px 30px;
+$logo-taobao: -5px -71px 33px 33px;
+$move-handler: -5px -114px 8px 23px;
+$nav-folder: -5px -147px 20px 20px;
+$nav-shop: -5px -177px 20px 20px;
+$nav-timer: -5px -207px 20px 20px;
+$wb-approve-co: -5px -237px 16px 14px;
+
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 3);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 4);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 1);
+  $sprite-offset-y: nth($sprite, 2);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite($sprite) {
+  @include sprite-position($sprite);
+  background-repeat: no-repeat;
+  overflow: hidden;
+  display: block;
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+.ico {
+  background-image: image-url('sp.png');
+}
+

@@ -1,0 +1,19 @@
+.withdraw {
+  @extend .alert-info;
+  padding: 20px;
+  background: none;
+  
+  > span {
+    margin-left: 100px;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  
+  .help {
+    margin-left: 15px;
+    padding: 6px 12px 8px;
+    background: #fafafa;
+  }
+}

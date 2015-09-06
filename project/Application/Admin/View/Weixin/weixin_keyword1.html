@@ -1,0 +1,137 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'style'}>
+<link rel="stylesheet" href="/ym/css/admin.css">
+<link rel="stylesheet" href="/ym/css/layout.css">
+<{/block}>
+
+<{block 'content'}>
+
+   <div class="page-title">
+      <h2>关键词机器人</h2>
+      <div class="btns"><a href="javascript:history.go(-1)">返回</a></div>
+    </div>
+
+    <div id="J_wxCont" class="wx-cont border">
+        
+    </div>
+
+<script id="J_tplKeyWord" type="text/x-tpl">
+  <div class="kw-input" style="padding:5px 30px">
+    <form id="J_keyword">
+      <em class="red">*</em> 关键词：　
+      <input type="text" class="input-text required" name="msg_keyword" value="{{msg_keyword}}" >
+    </form>
+  </div>
+
+  <div class="kw-cont">
+    <input type="hidden" name="which-one" class="Which-one" value="" />
+    <input type="hidden" name="id" value="" />
+    <ul id="J_nav" class="wx-nav clearfix">
+      <li class="first active"><a href="javascript:void(0)">文字</a></li>
+      <li><a href="javascript:void(0)">图文</a></li>
+    </ul>
+    <div id="J_tabList" class="wt-tab">
+      <div class="tab-panel" id="J_text"></div>
+      <div class="tab-panel" style="display:none" id="J_imgText"></div>
+    </div>
+  </div>
+</script>
+
+<{/block}>
+
+<{block 'footer_script'}>
+<script src="<{$assets_path}>/js/libs/jquery.uploadify.js"></script>
+<script src="<{$assets_path}>/js/libs/jquery-ui.js"></script>
+<script src="<{$assets_path}>/kindeditor/kindeditor.js"></script>
+<script src="<{$assets_path}>/kindeditor/lang/zh_CN.js"></script>
+<script>
+
+seajs.use(['m.imgtext', 'm.text_edit'], function(Imgtext, Text){
+    $(function(){
+      var data = <{if $weixin1}><{$weixin1}><{else}>{shop_id:<{$shop_id}>}<{/if}>,
+        tpl = Handlebars.compile($('#J_tplKeyWord').html()),
+        valid;
+
+      $('#J_wxCont').html(tpl(data));
+
+      valid = $('#J_keyword').validate({});
+
+      $('#J_nav').on('click', 'li', function(){
+          var li = $('#J_nav li'),
+              tab = $('#J_tabList .tab-panel'),
+              index = li.index($(this));
+
+          li.removeClass('active');
+          $(this).addClass('active');
+
+          tab.hide().eq(index).show();
+          $('input[name=which-one]').val(index);
+      });
+
+      $('#J_nav li').eq(data.msg_info_type-1).trigger('click');
+
+      new Imgtext({
+          content:$('#J_imgText'),
+          types:<{$componentKeys}>,
+          data:data,
+          onSave:function(data){
+              if(valid.form()){
+                $.each(data.msg_data, function(index, value){
+                  for(var i in value){
+                    if(i!='itemId'){
+                      var name = "msg_data["+value.itemId+"]["+i+"]";
+                      data[name] = value[i];
+                    }
+                  }
+                });
+
+                delete(data.msg_data);
+
+                $.extend(data, serialize());
+                WD.ajax({
+                  url:'/admin/weixin/savekeyword',
+                  type:'POST',
+                  data:data,
+                  success:function(){
+                    $.notify('操作成功');
+                    location.href = '/admin/weixin/keyword';
+                  }
+                });
+              }
+          }
+      });
+
+      new Text({
+          data:data,
+          content:$('#J_text'),
+          types:<{$componentKeys}>,
+          width:'100%',
+          onSave:function(data){
+            if(valid.form()){
+              $.extend(data, serialize());
+              data['text[content]'] = data.content;
+              WD.ajax({
+                url:'/admin/weixin/savekeyword',
+                type:'POST',
+                data:data,
+                success:function(){
+                  $.notify('操作成功');
+                  location.href = '/admin/weixin/keyword';
+                }
+              });
+            }
+          }
+      });
+    });
+
+  function serialize(){
+    var cont = $('#J_wxCont')
+    return {
+      msg_keyword:cont.find('[name=msg_keyword]').val(),
+      which:cont.find('[name=which-one]').val()
+    }
+  }
+})
+</script>
+<{/block}>

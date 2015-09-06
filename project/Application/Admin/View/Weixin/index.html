@@ -1,0 +1,69 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'style'}>
+<link rel="stylesheet" href="/ym/css/admin.css">
+<link rel="stylesheet" href="/ym/css/layout.css">
+<{/block}>
+
+<{block 'content'}>
+<div class="page-header">
+  <h2 class="page-title">手机店铺</h2>
+  <div class="btns">
+    <a href="javascript:history.go(-1);">返回</a>
+  </div>
+</div>
+
+<div class="cont-wrap">
+  <{include file="../Shop/common/weixin_tabs.html"}>
+
+  <div class="Layout-page">
+    <div class="Main">
+      <div class="Fansmsg Qcode Clearfix">
+        <!-- 站点信息 -->
+        <div class="Fl Shop-demo">
+          <h3 class="Cb">效果示意</h3>
+          <div class="Demo-img">
+            <img src="/ym/img/mobshop_demo.jpg">
+          </div>
+        </div>
+        <div class="Fl Shop-share">
+          <h3 class="Cb">店铺二维码</h3>
+          <div class="Fl">
+            <p><img src="<{$website_qr_code}>" alt="" id="qrcode" class="qcodeimg"></p>
+            <button class="Btn-a" onclick="return downimg();" style="width:147px; padding: 0;">下载店铺二维码</button>
+            <div class="m10"></div>
+
+            <h3 class="Cb">店铺地址：</h3>
+            <p style="margin-top:-20px;">
+              <a href="<{$share_qr_code}>" target="_blank"><{$share_qr_code}></a>
+            </p>
+          </div>
+          <div class="Share Icon-hover" data-url="<{$share_qr_code}>">
+            <div class="Fl">分享到：</div>
+            <ul class="Fl">
+              <li data-app="wx"><i class="Icon-s-wx"></i><br>微信</li>
+              <li data-app="yx"><i class="Icon-s-yx"></i><br>易信</li>
+              <li data-app="qq"><i class="Icon-s-qq"></i><br>QQ</li>
+            </ul>
+          </div>
+        </div>
+        <!-- 站点信息 -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/ym/js/jquery-ui-min.js"></script>
+<script src="/ym/js/messenger.js"></script>
+<script src="/ym/js/ZeroClipboard/ZeroClipboard.min.js"></script>
+<script src="/ym/js/index.js"></script>
+<script>
+    function downimg(){
+        var str = $('#qrcode').attr('src');
+        if(str!=''){
+            window.open('/admin/download/qrcode?url='+encodeURIComponent(str));
+        }
+    }
+</script>
+<{/block}>

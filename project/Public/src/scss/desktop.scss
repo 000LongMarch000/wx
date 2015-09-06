@@ -1,0 +1,156 @@
+@import "compass";
+@import "vars";
+
+.page-desktop {
+  .main {
+    margin-bottom: 20px;
+  }
+}
+
+.mod-desktop {
+  padding: 20px;
+  .desktop-main {
+    width: 740px;
+    overflow: hidden;
+    float: left;
+  }
+  .desktop-side {
+    width: 380px;
+    overflow: hidden;
+    float: right;
+  }
+  /*main*/
+  .shop-chart {
+    height: 435px;
+    margin: 0 0 15px;
+  }
+  .features-list {
+    position: relative;
+    margin-right: -20px;
+    overflow: hidden;
+    .item {
+      float: left;
+      width: 358px - 25px*2;
+      padding: 25px;
+      border: 1px solid $border-light;
+      margin-right: 20px;
+      font-size: 1.2em;
+      color: $color_gray;
+      .event-ico {
+        display: inline-block;
+        _display: inline;
+        *zoom: 1;
+        vertical-align: middle;
+        margin: 0 15px 0 0;
+      }
+      &:hover {
+        border-color: $color_red;
+      }
+    }
+  }
+  /*side*/
+  .user-media {
+    @include clearfix();
+    margin: 0 0 10px;
+    .user-img {
+      width: 100px;
+      float: left;
+      img {
+        display: block;
+        width: 100px;
+        height: 100px;
+      }
+    }
+    .user-name {
+      margin: 0 0 10px 115px;
+      padding: 8px 0 0;
+    }
+    .user-verify {
+      margin: 0 0 5px;
+      .iconfont {
+        color: #ababab;
+        margin: 0 6px 0 0;
+        vertical-align: top;
+      }
+      .verified {
+        color: $color_orange;
+      }
+    }
+    .user-shop {
+    }
+    .user-infos {
+      @include clearfix();
+      margin: 0 -10px 0 115px;
+    }
+  }
+  .user-revenue {
+    padding: 20px 0 0;
+    border-top: 1px solid $border_light;
+    h5 {
+      font-weight: normal;
+      font-size: 12px;
+    }
+    .f-price {
+      font-size: 1.6em;
+      font-weight: normal;
+    }
+  }
+  .bx-status {
+    .bd {
+      color: #888888;
+    }
+    td {
+      border-right: 1px solid $border_light;
+      padding: 3px 10px;
+    }
+    .last {
+      border: none;
+    }
+    .num {
+      font-size: 1.6em;
+      margin: 0 0 10px;
+      font-weight: normal;
+    }
+  }
+  .bx-articles {
+    .bd {
+      height: 130px;
+      overflow: hidden;
+    }
+  }
+  .articles-list {
+    .item {
+      @include clearfix();
+      margin: 0 0 10px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 16px;
+      line-height: 16px;
+      font-size: 12px;
+    }
+    a {
+      color: $color_gray;
+    }
+    .time {
+      float: right;
+    }
+  }
+}
+
+.qrcode-content{
+  text-align: center;
+  .qrcode-tit{
+    font-weight:700;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  .qrcode-imgTit{
+    color:#999;
+  }
+  .qrcode-Btn{
+    width:310px;
+    margin:10px auto;
+    text-align: left;
+  }
+}

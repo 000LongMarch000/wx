@@ -1,0 +1,38 @@
+<div id="J_shareItem" class="wgt-share">
+  <div class="share-code">
+    <{*<img src="<{$assets_path}>/img/test/code_125x125.jpg" width="125" height="125">*}>
+    <img src="<{$product.qrcode}>" width="125" height="125">
+    <p class="hint">扫一扫，分享朋友圈</p>
+    <a href="#" onclick="return downimg();">下载二维码</a>
+  </div>
+  <input type="text" class="input-text input-xlarge" readonly value="<{$product.product_url}>">
+  <a href="<{$product.product_url}>" target="_blank">打开</a>
+  <a href="javascript:;" class="btn-copy">复制</a>
+  <ul class="share-btns">
+    <li><a href="javascript:;" data-share="qq"><i class="share-ico ico-share-qq"></i> QQ空间</a></li>
+    <li><a href="javascript:;" data-share="weibo"><i class="share-ico ico-share-weibo"></i> 微博</a></li>
+    <li><a href="javascript:;" data-share="renren"><i class="share-ico ico-share-renren"></i> 人人网</a></li>
+    <li><a href="javascript:;" data-share="qq-weibo"><i class="share-ico ico-share-qq-weibo"></i> 腾讯微博</a></li>
+    <li><a href="javascript:;" data-share="douban"><i class="share-ico ico-share-douban"></i> 豆瓣</a></li>
+  </ul>
+</div>
+
+<script>
+seajs.use(['m.sharegoods'], function(Share){
+  $(function(){
+    new Share('#J_shareItem', {
+      tpl: false,
+      data: {
+        link: '<{$product.product_url}>',
+        img: '<{$product.product_img}>',
+        title: '我在有量发布了一个新商品【<{$product.title}>】,戳这里:<{$product.product_url}>'
+      }
+    });
+  });
+});
+
+function downimg() {
+    window.open('/download.php?a=qrcode&url='+encodeURIComponent('<{$product.qrcode_large}>'));
+    return false;
+}
+</script>

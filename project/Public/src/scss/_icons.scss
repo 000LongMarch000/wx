@@ -1,0 +1,166 @@
+@import "sprites";
+@import "sprites_share";
+@import "sprites_events";
+@import "sprites_wx";
+@import "vars";
+
+i.ico {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  margin: 0 2px 0 0;
+}
+
+.ico-loading {
+  background: image-url("loading.gif") no-repeat center center;
+  width: 16px;
+  height: 16px;
+}
+
+.ico-arr-down {
+  @include arr(down);
+}
+.ico-arr-left {
+  @include arr(left);
+}
+.ico-arr-right {
+  @include arr(right);
+}
+.ico-arr-up {
+  @include arr(up);
+}
+.ico-nav-folder {
+  @include sprite($nav-folder);
+}
+.ico-nav-shop {
+  @include sprite($nav-shop);
+}
+.ico-nav-timer {
+  @include sprite($nav-timer);
+}
+.ico-code-2d {
+  @include sprite($code-2d);
+}
+.ico-logo {
+  border: 1px solid $border_gray;
+}
+.ico-logo-taobao {
+  @include sprite($logo-taobao);
+}
+.ico-wb-approve-co {
+  @include sprite($wb-approve-co);
+}
+.ico-item-hl {
+  @include sprite($item-hl);
+}
+.ico-move-handler {
+  @include sprite($move-handler);
+}
+
+
+
+i.share-ico {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: -3px;
+}
+
+.ico-share-qq {
+  @include sprite($share-qq);
+}
+
+.ico-share-weibo {
+  @include sprite($share-weibo);
+}
+
+.ico-share-wy-weibo {
+  @include sprite($share-wy-weibo);
+}
+
+.ico-share-qq-weibo {
+  @include sprite($share-qq-weibo);
+}
+
+.ico-share-renren {
+  @include sprite($share-renren);
+}
+
+.ico-share-douban {
+  @include sprite($share-douban);
+}
+
+
+
+
+.ico-auth-personal {
+  @include sprite($auth-personal);
+}
+.ico-auth-company {
+  @include sprite($auth-company);
+}
+.ico-auth-shop {
+  @include sprite($auth-shop);
+}
+.ico-event-survey {
+  @include sprite($event-survey);
+}
+.ico-event-apply {
+  @include sprite($event-apply);
+}
+.ico-event-bigwheel {
+  @include sprite($event-bigwheel);
+}
+.ico-event-card {
+  @include sprite($event-card);
+}
+.ico-event-popular {
+  @include sprite($event-popular);
+}
+.ico-event-more {
+  @include sprite($event-more);
+}
+.ico-shop-mobile {
+  @include sprite($shop-mobile);
+}
+.ico-shop-weibo {
+  @include sprite($shop-weibo);
+}
+.ico-shop-wx {
+  @include sprite($shop-wx);
+}
+.ico-shop-bdzhida {
+  @include sprite($shop-bdzhida);
+}
+.ico-shop-offline {
+  @include sprite($shop-offline);
+}
+.ico-dk-sell {
+  @include sprite($dk-sell);
+}
+.ico-dk-event {
+  @include sprite($dk-event);
+}
+.ico-dk-promot {
+  @include sprite($dk-promot);
+}
+
+.ico-reply-droid {
+  @include sprite($reply-droid);
+}
+.ico-reply-droid-g {
+  @include sprite($reply-droid-g);
+}
+.ico-reply-follow {
+  @include sprite($reply-follow);
+}
+.ico-reply-follow-g {
+  @include sprite($reply-follow-g);
+}
+.ico-reply-msg {
+  @include sprite($reply-msg);
+}
+.ico-reply-msg-g {
+  @include sprite($reply-msg-g);
+}

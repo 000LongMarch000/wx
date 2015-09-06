@@ -1,0 +1,149 @@
+$font: "微软雅黑", "Microsoft YaHei", "Hiragino Sans GB", Helvetica, Arial, sans-serif;
+$font_size: 14px;
+
+$color_base: #333;
+$color_black: #333;
+$color_dark: #414141;
+$color_red: #ea4f2b;
+$color_blue: #016afa;
+$color_green: #80b534;
+$color_yellow: #ffefb1;
+$color_gray: #999999;
+$color_light_gray: #888888;
+$color_orange: #ff9900;
+
+$color_link: #237efb;
+$color_link_light: #005fe2;
+$color_link_dark: #333333;
+
+$bg_gray: #fafafa;
+$border_light: #eee;
+$border_gray: #ddd;
+
+$size_320: 320px;
+$size_480: 480px;
+
+/*=============================
+=            utils            =
+=============================*/
+@function to-list($args...) {
+  @return append((), $args);
+}
+
+
+/*-----  End of utils  ------*/
+
+
+
+
+@mixin text-overflow(){
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin clearfix(){
+  &:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow:hidden;}
+  *zoom: 1;
+  display: block;
+}
+
+@mixin arr($pos, $color: #ccc, $size: 5px) {
+  border: $size dashed transparent;
+  @if $pos == up {
+    border-bottom: $size solid $color;
+  } @else if $pos == right {
+    border-left: $size solid $color;
+  } @else if $pos == down {
+    border-top: $size solid $color;
+  } @else {
+    border-right: $size solid $color;
+  }
+  width: 0;
+  height: 0;
+  font-size: 0;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: -3px;
+}
+
+@mixin size($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+}
+
+@mixin vertial-img($size) {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  overflow: hidden;
+  *display: block;
+  *font-size: $size * 0.873;
+  *font-family: Arial;
+  width: $size;
+  height: $size;
+  img {
+    vertical-align: middle;
+  }
+}
+
+@mixin pdt_img($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  overflow: hidden;
+  text-align: center;
+  display: block;
+  img {
+    max-width: $size;
+    max-height: $size;
+    vertical-align: middle;
+  }
+}
+
+@mixin hairline($color, $sides...) {
+  @if length($sides) == 0 {
+    $sides: top right bottom left;
+  }
+  position: relative;
+  &:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    @include box-sizing(border-box);
+    @each $side in $sides {
+      border-#{$side}: 1px solid $color;
+    }
+  }
+  @media (-webkit-device-pixel-ratio: 2) {
+    &:before {
+      @include transform-origin(0, 0);
+      width: 200%;
+      height: 200%;
+      @include scale(0.5);
+    }
+  }
+  @media (-webkit-device-pixel-ratio: 1.5) {
+    &:before {
+      width: 150%;
+      height: 150%;
+      @include transform-origin(0, 0);
+      @include scale(0.6666);
+    }
+  }
+  @media (-webkit-device-pixel-ratio: 3) {
+    &:before {
+      width: 300%;
+      height: 300%;
+      @include transform-origin(0, 0);
+      @include scale(0.3333);
+    }
+  }
+}

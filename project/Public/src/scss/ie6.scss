@@ -1,0 +1,15 @@
+@import "compass";
+@import "vars";
+
+.f_ie { background: #fff; padding: 10px; text-align:center; position: absolute; width: 600px; top: 10px; left: 50%; margin-left: -300px; border: 1px solid #ccc; z-index: 999;  }
+.f_ie .info { padding:10px 5px 5px; font-size:14px; }
+.f_ie .close { position: absolute; right: 10px; top: 5px; font-size: 14px; font-weight: bold; }
+.f_ie ul { padding: 0 0 10px; }
+.f_ie li { display:inline-block; *display:inline; zoom:1; }
+.f_ie li a { background:image-url('f_ie6.jpg') no-repeat; display:block; width:171px; height:54px; text-indent:-9999px; }
+.f_ie .cr a { background-position: 0 10px; }
+.f_ie .cr a:hover { background-position: 0 -70px; }
+.f_ie .ff a { background-position: -184px 10px; }
+.f_ie .ff a:hover { background-position: -184px -70px; }
+.f_ie .ie-edge a { background-position: -369px 10px; }
+.f_ie .ie-edge a:hover { background-position: -369px -70px; }
