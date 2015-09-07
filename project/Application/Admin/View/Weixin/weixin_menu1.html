@@ -386,7 +386,7 @@
                 data=$elem.val();
             if(data){
               data=decodeURIComponent(data);
-              data=JSON2.parse(data);
+              data=JSON.parse(data);
             }else{
               data={
                 shop_id:'<{$shop_id}>'
@@ -409,7 +409,7 @@
                 $this.before($('<div class="text-kindeditor">'));
                 $this.prevAll('.text-kindeditor').html(data.content);
                 $this.html('编辑文字消息');
-                data=JSON2.stringify(data);
+                data=JSON.stringify(data);
                 data=encodeURIComponent(data);
                 $elem.val(data);
                 dlg.close();
@@ -421,7 +421,7 @@
                 data=$elem.val();
             if(data){
               data=decodeURIComponent(data);
-              data=JSON2.parse(data);
+              data=JSON.parse(data);
             }else{
               data={
                 shop_id:'<{$shop_id}>'
@@ -462,7 +462,7 @@
                       url:data.msg_data[i].url
                     }
                   }
-                  d=JSON2.stringify(d);
+                  d=JSON.stringify(d);
                   d=encodeURIComponent(d);
                   $elem.val(d);
                   dlg.close();
@@ -511,7 +511,7 @@
                       for(var name in d){
                         if(d[name]&&name.match(/qq/)){
                           d[name]=decodeURIComponent(d[name]);
-                          d[name]=JSON2.parse(d[name]);
+                          d[name]=JSON.parse(d[name]);
                           if(d[name].content){
                             d[name]={
                               content:d[name].content
@@ -520,7 +520,7 @@
                             d[name].items=d[name].msg_data;
                             delete d[name].msg_data;
                           }
-                          d[name]=JSON2.stringify(d[name]);
+                          d[name]=JSON.stringify(d[name]);
                         }
                         if(d[name]&&name.match(/url/))
                           d[name]=d[name].indexOf('http://')<0?'http://'+d[name]:d[name];
