@@ -12,7 +12,6 @@ class IndexController extends Controller {
     public function __construct() {
         $logfile = RUNTIME_PATH . 'Logs/request.log';
         error_log(http_build_query($_GET) . "\n", 3, $logfile);
-        error_log('aaaaa' . "\n", 3, $logfile);
         //$keyword = $keywordMdl->getList($this->_shopId, $kwd); 
 
         $options = array(
@@ -28,7 +27,6 @@ class IndexController extends Controller {
     }
 
     public function index() {
-
         $type = $this->_wechat->getRev()->getRevType();
         \Common\Lib\Utils::log('wechat', 'request.log', $type);
 
@@ -50,6 +48,17 @@ class IndexController extends Controller {
         $event = $this->_wechat->getRevEvent();
         $data = $this->_wechat->getRevData();
         \Common\Lib\Utils::log('wechat', 'request.log', $data);
+
+        $fromusername = $data['FromUserName'];
+        $filter = array('openid' => $fromusername);
+        $userMdl = D('User');
+        $user = $userMdl->getRow($filter);
+
+        $userid = '';
+        if($user) {
+            $userid = $user['id'];
+        }
+
         switch ($event['event']) {
             case 'subscribe':
                 $messageMdl = D('Message');
@@ -60,7 +69,7 @@ class IndexController extends Controller {
                 $menuMdl = D('Menu');
                 $menu = $menuMdl->getRow($data['EventKey']);
                 \Common\Lib\Utils::log('wechat', 'request.log', $menu);
-                $this->reply($menu);
+                $this->reply($menu, $userid);
                 break;
             default:
                 break;
@@ -133,10 +142,12 @@ class IndexController extends Controller {
                 if($count >= 5) {
                     $rs['content'] = '您是银牌会员，已经创建5次链接，如果需要再次创建，请升级到金牌会员';
                 }
-                $due_at = time() + 7 * 86400;
+                //$due_at = time() + 7 * 86400;
+                $due_at = $user['due_at'];
                 break;
             case '3':
-                $due_at = time() + 30 * 86400;
+                //$due_at = time() + 30 * 86400;
+                $due_at = $user['due_at'];
                 break;
             default:
                 break;
@@ -223,30 +234,36 @@ class IndexController extends Controller {
 */
     }
 
-    protected function reply($message) {
-	if (!$message) {
-	    //do nothing
-	}
-	if (1 == $message['msg_info_type']) {
+    protected function reply($message, $userid='') {
+	    if (!$message) {
+	        //do nothing
+	        $this->_wechat->text('欢迎使用微淘秀')->reply();
+	    }
+	    if (1 == $message['msg_info_type']) {
             $text = str_replace('<br />', "\n", $message['content']);
             $text = str_replace('target="_blank"', '', $text);
             $text = str_replace('&nbsp;', ' ', $text);
-	    $this->_wechat->text($text)->reply();
-	}
-	else {
-	    $data = unserialize($message['msg_data']);
-	    $news = array();
-	    foreach ($data as $v) {
-		$news[] = array(
-		    'Title' => $v['title'],
-		    'Description' => $v['text'],
-		    'PicUrl' => $v['picurl'],
-		    'Url' => $v['url'],
-		);
+            $text = $text?$text:'欢迎使用微淘秀';
+	        $this->_wechat->text($text)->reply();
+	    } else {
+	        $data = unserialize($message['msg_data']);
+            \Common\Lib\Utils::log('wechat', 'request.log', $data);
+	        $news = array();
+	        foreach ($data as $v) {
+                \Common\Lib\Utils::log('wechat', 'request.log', $v);
+                if($userid && $v['url']) {
+                    $v['url'] = str_replace("{id}", $userid, $v['url']);               
+                }
+                \Common\Lib\Utils::log('wechat', 'request.log', $v);
+		        $news[] = array(
+		            'Title' => $v['title'],
+		            'Description' => $v['text'],
+		            'PicUrl' => $v['picurl'],
+		            'Url' => $v['url'],
+		        );
+	        }
+            \Common\Lib\Utils::log('wechat', 'request.log', $news);
+	        $this->_wechat->news($news)->reply();
 	    }
-        $logfile = RUNTIME_PATH . 'Logs/request.log';
-        error_log(json_encode($news) . "\n", 3, $logfile);
-	    $this->_wechat->news($news)->reply();
-	}
     }
 }

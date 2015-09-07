@@ -91,7 +91,7 @@ class PubController extends Controller {
             $referrerUri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             $state = base64_encode($referrerUri);
             #$redirectUri = 'http://www.sandbox.wdwd.com/admin/data/login';
-            $redirectUri = 'http://i.shopflow.cn/admin/data/login';
+            $redirectUri = 'http://wechat.shopflow.cn/admin/data/login';
             $authorizeUrl = $wechat->getOauthRedirect($redirectUri, $state, 'snsapi_base');
             header('Location: ' . $authorizeUrl);
             exit;
