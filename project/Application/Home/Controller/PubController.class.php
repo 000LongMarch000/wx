@@ -16,67 +16,59 @@ class PubController extends Controller {
             $this->wx();
         }
 
-        //抛数据到模版中
-
         $thirdparty_type = session('thirdparty_type');
         $thirdparty_uid = session('thirdparty_uid');
-        $unionid = session('unionid');
-        if(!$passport_id && $thirdparty_type && $thirdparty_uid){
-             $plat_arr = $this->passport($shop_id, $thirdparty_type, $thirdparty_uid, $unionid);
+        $user_id = session('user_id');
 
-             $passport_id = $plat_arr['passport_id'];
+        if(!$user_id && $thirdparty_type && $thirdparty_uid){
+             $plat_arr = $this->passport($thirdparty_type, $thirdparty_uid);
+             $user_id = $plat_arr['user_id'];
         }
 
         $this->assign('thirdparty_type', $thirdparty_type);
         $this->assign('thirdparty_uid', $thirdparty_uid);
 
-        $this->assign('passport_id', $passport_id);
+        $this->assign('user_id', $user_id);
 
         //全局的变量
         $this->assign('payurl', C('PAYURL'));
     }
 
     //处理平台ID
-    public function passport($shop_id='', $thirdparty_type='', $thirdparty_uid='', $unionid = ''){
-        if(session('passport_id')){
-           return array('passport_id' => session('passport_id'));
+    public function passport($thirdparty_type='', $thirdparty_uid=''){
+        if(session('user_id')){
+           return array('user_id' => session('user_id'));
         }
 
-        //$return = array('passport_id' => '');
-        $passport_id = '';
-        $passportMdl = D('Passport');
+        $user_id = '';
+        $userMdl = D('User');
         $params = array();
-        $params['platform'] = $thirdparty_type;
         $params['openid'] = $thirdparty_uid;
-        $params['unionid'] = $unionid;
-        $params['from'] = 'yl_h5';
-
         //根据thirdparty 获得用户的passport
-        $passportRes = $passportMdl->getTokenByTp($thirdparty_type, $thirdparty_uid, $unionid);
+        $userRes = $userMdl->getRow($params);
 
-        $this->utils->log('wd', 'pub.log', json_encode($params));
-        $this->utils->log('wd', 'pub.log', json_encode($passportRes));
-        //$this->utils->log('oauth', 'wx.log', json_encode($passportRes));
         //如果thirdparty id 不存在，创建passport
-        if($passportRes['result'] == 'error' || !$passportRes['data']['id']){
-            $passport = $passportMdl->createByTp(array('thirdparty' => json_encode($params)));
-            $this->utils->log('wd', 'pub.log', json_encode($passport));
-            if(isset($passport['data']['passport_id']) && $passport['data']['passport_id']){
-                $passport_id = $passport['data']['passport_id'];
-                session('passport_id', $passport_id);
-            }
+        if($userRes){
+            $user = $userRes;
+            $user_id = \Common\Lib\Idhandler::encode($userRes['id']);
         }else{
-            //更新unionid 
-            $res = $passportMdl->changeTp(array('data' => json_encode($params)));
-            $this->utils->log('wd', 'pub.log', json_encode($res));
-            $passport_id = \Common\Lib\Idhandler::encode($passportRes['data']['id']);
+            $params['level'] = 0;
+            $params['created_at'] = time();
+            $params['updated_at'] = time();
+            $params['due_at'] = time();
+            
+            $userRes = $userMdl->saveData($params);
+            if($userRes['status'] == 'success') {
+                $user_id = \Common\Lib\Idhandler::encode($userRes['data']);
+                $user = $params;
+            }
         }
 
-        if($passport_id) {
-            //$this->utils->log('initinfo', 'passport.log', "wd pub pasport_id " .  $passport_id . ' ' . \Common\Lib\Idhandler::decode($passport_id)); 
-            $this->session_data(\Common\Lib\Idhandler::decode($passport_id));
+        if($user_id) {
+            session('user_id', $user_id);
+            session('user', $user);
         }
-        $return['passport_id'] = $passport_id;
+        $return['user_id'] = $user_id;
         return $return;
     }
 
@@ -85,6 +77,7 @@ class PubController extends Controller {
         $wx_oauth_conf = C('WEIXIN');
         $wechat = new \Common\Lib\Wechat($wx_oauth_conf);
 
+        $_COOKIE['wxopenid'] = '2oeHfxwAIkN6fPscPnZRLssOtQsXw';
         if (!$_COOKIE['wxopenid']) {
             $req_path = explode('?', $_SERVER['REQUEST_URI']);
             //$referrerUri = 'http://' . $_SERVER['HTTP_HOST'] . $req_path[0];
@@ -97,7 +90,6 @@ class PubController extends Controller {
             exit;
         }elseif(isset($_COOKIE['wxopenid']) && $_COOKIE['wxopenid']){
             $uid = $_COOKIE['wxopenid'];
-
             session('thirdparty_uid', $uid);
             session('thirdparty_type', 'wechat');
             session('unionid', $_COOKIE['unionid']);

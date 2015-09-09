@@ -19,21 +19,6 @@ $common = array(
          'right_delimiter' => '}>',
     ),
 
-    //for upload
-    'UPLOAD_SITEIMG_QINIU' => array (
-        'maxSize' => 5 * 1024 * 1024,//文件大小
-        'rootPath' => './',
-        'saveName' => array ('uniqid', ''),
-        'driver' => 'Qiniu',
-        'subName' => '',
-        'driverConfig' => array (
-            'secrectKey' => 'CXttxdSfLgXclD_N0DKTHfBOK2miLfMRn5oDFkOr',
-            'accessKey' => 'Utrebjyb9UZDv4DrEz2nBHfDAP1poKaGRdPuQY5y',
-            'domain' => 'yunmao-pic.qiniudn.com',
-            'bucket' => 'yunmao-pic',
-        ),
-    ),
-
     'PAGE_LIMIT' => 10,
 
     'WEIXIN' => array('appid' => 'wx5c5eb81395daa40c', 'appsecret' => '2486f856156e4cee1ffe231658558b26', 'token' => '2d5d7e74c17bdcc3f753f3d46fc3abc0'),

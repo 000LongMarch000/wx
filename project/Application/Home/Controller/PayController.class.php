@@ -5,7 +5,8 @@ use Home\Controller\PubController;
 
 class PayController extends PubController {
     public function index() {
-        $uid = $_GET['uid'];
+        $user = session('user');
+        $this->assign('user', $user);
         $this->display();
     }
 }
