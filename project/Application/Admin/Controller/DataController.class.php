@@ -18,14 +18,8 @@ class DataController extends Controller {
         $wechat = array(
             'token' => $token,
         );
-        session('wechat', $wechat);
 
-        $wechatData = array(
-            'access_token' => $token['access_token'],
-            'code' => $_GET['code'],
-            'state' => $_GET['state'],
-        );
-        setcookie('wxopenid', $wechat['token']['openid'], 0, '/', 'wdwd.com');
+        setcookie('wxopenid', $wechat['token']['openid'], 0, '/', 'shopflow.cn');
         $_COOKIE['wxopenid'] = $wechat['token']['openid'];
 
         if ($_GET['state']) {

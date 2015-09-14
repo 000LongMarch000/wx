@@ -77,7 +77,7 @@ class PubController extends Controller {
         $wx_oauth_conf = C('WEIXIN');
         $wechat = new \Common\Lib\Wechat($wx_oauth_conf);
 
-        $_COOKIE['wxopenid'] = '2oeHfxwAIkN6fPscPnZRLssOtQsXw';
+        //$_COOKIE['wxopenid'] = '2oeHfxwAIkN6fPscPnZRLssOtQsXw';
         if (!$_COOKIE['wxopenid']) {
             $req_path = explode('?', $_SERVER['REQUEST_URI']);
             //$referrerUri = 'http://' . $_SERVER['HTTP_HOST'] . $req_path[0];
