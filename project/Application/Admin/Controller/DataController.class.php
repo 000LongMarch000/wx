@@ -22,6 +22,14 @@ class DataController extends Controller {
         setcookie('wxopenid', $wechat['token']['openid'], 0, '/', 'shopflow.cn');
         $_COOKIE['wxopenid'] = $wechat['token']['openid'];
 
+        /*
+        setcookie('nickname', $wechat['token']['nickname'], 0, '/', 'shopflow.cn');
+        $_COOKIE['nickname'] = $wechat['token']['nickname'];
+
+        setcookie('unionid', $wechat['token']['unionid'], 0, '/', 'shopflow.cn');
+        $_COOKIE['unionid'] = $wechat['token']['unionid'];
+         */
+
         if ($_GET['state']) {
             $url = base64_decode($_GET['state']);
             header('Location: ' . $url);

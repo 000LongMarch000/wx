@@ -6,17 +6,10 @@
 <body>
 <div>
 <div>
+    支付成功
     <{if $user.level}>
     您已经是<{if $user.level == '1'}>银牌<{elseif $user.level == '2'}>金牌<{/if}>会员
-    <{else}>
-    您还不是会员。
     <{/if}>
-</div>
-<div>
-    <a href="/pay/alipay/index/user/<{$user.id}>/level/1"> 购买银牌会员</a>
-</div>
-<div>
-    <a href="/pay/alipay/index/user/<{$user.id}>/level/2"> 购买金牌会员</a>
 </div>
 </body>
 </html>

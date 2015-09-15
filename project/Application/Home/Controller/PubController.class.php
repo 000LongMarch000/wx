@@ -11,10 +11,10 @@ class PubController extends Controller {
         $this->assign('ENV', C('ENV'));
 
         //处理微信
-        if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')){
-            $this->assign('in_wechat', 1);
+        //if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')){
+            //$this->assign('in_wechat', 1);
             $this->wx();
-        }
+        //}
 
         $thirdparty_type = session('thirdparty_type');
         $thirdparty_uid = session('thirdparty_uid');
@@ -77,7 +77,7 @@ class PubController extends Controller {
         $wx_oauth_conf = C('WEIXIN');
         $wechat = new \Common\Lib\Wechat($wx_oauth_conf);
 
-        //$_COOKIE['wxopenid'] = '2oeHfxwAIkN6fPscPnZRLssOtQsXw';
+        $_COOKIE['wxopenid'] = '2oeHfxwAIkN6fPscPnZRLssOtQsXw';
         if (!$_COOKIE['wxopenid']) {
             $req_path = explode('?', $_SERVER['REQUEST_URI']);
             //$referrerUri = 'http://' . $_SERVER['HTTP_HOST'] . $req_path[0];
@@ -92,7 +92,7 @@ class PubController extends Controller {
             $uid = $_COOKIE['wxopenid'];
             session('thirdparty_uid', $uid);
             session('thirdparty_type', 'wechat');
-            session('unionid', $_COOKIE['unionid']);
+            //session('unionid', $_COOKIE['unionid']);
         }
     }
 
