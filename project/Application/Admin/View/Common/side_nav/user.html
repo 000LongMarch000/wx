@@ -1,0 +1,13 @@
+<div class="side-navs">
+  <div class="nav-sec">
+    <div class="hd">
+      <i class="ico ico-nav-shop"></i>会员管理
+    </div>
+    <ul class="navs">
+      <li><a <{if in_array($mLeft, array('user_lists'))}>class="cur"<{/if}> href="/admin/user/lists">会员列表</a></li>
+      <{*
+      <li><a <{if in_array($mLeft, array('user_add', 'user_edit'))}>class="cur"<{/if}> href="/admin/user/add">添加会员</a></li>
+      *}>
+    </ul>
+  </div>
+</div>

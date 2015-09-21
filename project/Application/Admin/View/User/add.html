@@ -1,0 +1,62 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'style'}>
+<link rel="stylesheet" href="<{$assets_path}>/css/jquery-ui.css" />
+<{/block}>
+
+<{block 'content'}>
+<div class="page-header">
+  <h2 class="page-title"><{if $act eq 'add'}>创建<{else}>编辑<{/if}>会员</h2>
+</div>
+<div class="mod-goods-create">
+  <form id="J_goodsForm" class="form" action="" method="post">
+    <input type="hidden" name="id" value="<{$user.id}>">
+    <div id="J_commonOpts">
+      <div class="form-group">
+        <label class="ctl-label">昵称：</label>
+        <input type="text" class="input-text large" placeholder="请输入昵称" name="nickname" value="<{$user.nickname}>">
+      </div>
+    </div>
+    <div id="J_commonOpts">
+      <div class="form-group">
+        <label class="ctl-label">等级：</label>
+        <select name="level">
+            <option value="0" <{if $user.level == '0'}>selected<{/if}>无</option>
+            <option value="1" <{if $user.level == '1'}>selected<{/if}>>银牌</option>
+            <option value="2" <{if $user.level == '2'}>selected<{/if}>>金牌</option>
+        </select>
+      </div>
+    </div>
+    <div id="J_timeLimit" class="form-group">
+      <label class="ctl-label">过期时间：</label>
+      <input id="J_timeLimitEnd" type="text" class="input-calendar required" name="due_at" data-now="<{$curr_time}>" value="<{$user.due_at|date_format:'%Y-%m-%d'}>">
+    </div>
+
+    <div class="sec-more">
+      <div class="form-actions">
+        <button class="btn btn-large btn-primary" type="submit">发布</button>
+        <button class="btn btn-large" type="button" onclick="history.go(-1);">取消</button>
+      </div>
+    </div>
+  </form>
+</div>
+<{/block}>
+
+<{block 'footer_script'}>
+<script src="<{$assets_path}>/js/??libs/jquery-ui.js,libs/jquery-ui-timepicker-addon.js"></script>
+<script src="<{$assets_path}>/js/??libs/bloodhound.js,libs/typeahead.jquery.js,libs/bootstrap-tagsinput.js"></script>
+<script>
+$('#J_timeLimitEnd').datepicker({
+    onSelect: function(){
+      var time = $(this).datepicker('getDate');
+      $('#J_timeLimitEnd')
+        .datepicker('option', 'minDate', time);
+    }
+});
+seajs.use(['p.goods_edit.js'], function(app){
+
+  app.init({
+  });
+});
+</script>
+<{/block}>
