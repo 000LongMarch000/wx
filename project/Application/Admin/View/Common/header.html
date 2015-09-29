@@ -5,7 +5,9 @@
     </div>
     <div class="navs-list">
       <ul>
-        <li <{if $menu == 'product'}>class="cur"<{/if}>><a href="/admin/product/add">我的设置</a></li>
+        <li <{if $menu == 'product'}>class="cur"<{/if}>><a href="/admin/product/lists">商品列表</a></li>
+        <li <{if $menu == 'user'}>class="cur"<{/if}>><a href="/admin/user/lists">用户列表</a></li>
+        <li <{if $menu == 'weixin'}>class="cur"<{/if}>><a href="/admin/weixin/menu">微信菜单</a></li>
         <li><a href="/admin/passport/logout">退出</a></li>
       </ul>
     </div>

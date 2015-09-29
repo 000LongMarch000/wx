@@ -1,0 +1,103 @@
+<{extends '../Layouts/default.html'}>
+
+<{block 'content'}>
+<div class="page-header">
+  <h2 class="page-title">会员列表</h2>
+</div>
+
+<div class="cont-wrap cont-wrap-list">
+  <div class="data-list-toolbar">
+    <div class="search-bar search-bar-upper">
+      <form action="/admin/user/lists/search/y" method="get">
+        <select name="f" class="wgt-select" width="100">
+            <option value="id" <{if $field == 'id'}> selected <{/if}>>会员编号</option>
+            <option value="id" <{if $field == 'nickname'}> selected <{/if}>>会员昵称</option>
+        </select>
+        <input name="q" type="text" class="input-search" placeholder="输入搜索内容" value="<{$fv}>">
+        <button class="btn" type="submit">搜索</button>
+      </form>
+    </div>
+    <{*
+    <div id="J_goodsListActions" class="btns">
+      <a href="/admin/product/add" class="btn btn-primary">创建销售商品</a>
+    </div>
+    *}>
+  </div>
+  <div id="J_goodsList" class="data-list list-skin-1">
+    <table>
+      <thead>
+        <tr>
+          <th class="col-goods-media"><div class="cell">会员编号</div></th>
+          <th><div class="cell">openid</div></th>
+          <th><div class="cell">昵称</div></th>
+          <th><div class="cell">等级</div></th>
+          <th><div class="cell">创建时间</div></th>
+          <th><div class="cell">过期时间</div></th>
+          <th><div class="cell">操作</div></th>
+        </tr>
+      </thead>
+      <tbody>
+        <{foreach from=$users item=item key=key}>
+        <tr id="g_<{$item.id}>" data-id="<{$item.id}>">
+          <td><div class="cell">
+              <{$item.id}>
+          </div></td>
+          <td><div class="cell">
+               <{$item.openid}>
+          </div></td>
+          <td><div class="cell">
+               <{$item.nickname}>
+          </div></td>
+          <td><div class="cell">
+               <{if $item.level == '1'}>银牌<{elseif $item.level == '2'}>金牌<{else}>暂无<{/if}>
+          </div></td>
+          <td><div class="cell">
+               <{$item.created_at|date_format:"%Y-%m-%d %H:%M"}>
+          </div></td>
+          <td><div class="cell">
+               <{$item.due_at|date_format:"%Y-%m-%d %H:%M"}>
+          </div></td>
+          <td><div class="cell opts">
+            <a href="/admin/user/edit/id/<{$item.id}>">编辑</a>
+          </div></td>
+        </tr>
+        <{/foreach}>
+      </tbody>
+    </table>
+  </div>
+
+  <{$page}>
+</div>
+
+<{/block}>
+
+<{block 'footer_script'}>
+<script id="T_goodsListEdit" type="text/x-tpl">
+<form id="J_formGoodsListEdit" class="form">
+  <div class="form-group">
+    <label class="ctl-label">改价方式：</label>
+    <select name="type" class="select">
+      <option value="0">减价</option>
+      <option value="1">涨价</option>
+      <option value="2">一口价</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <div class="ctl J_toggle">打 <input type="text" name="value" class="input-text input-mini required number" min="0.1" max="9.9" decimal="1" value=""> 折 <span class="help-inline">必须大于0，精确到0.1</span></div>
+    <div class="ctl hide J_toggle">涨 <input type="text" name="value" class="input-text input-mini required number" min="0.1" decimal="1" value=""> 倍 <span class="help-inline">必须大于0，精确到0.1</span></div>
+    <div class="ctl hide J_toggle">一口价：<input type="text" name="value" class="input-text input-small required number" min="0.01" decimal="2" value=""> 元 <span class="help-inline">必须大于0，精确到0.01</span></div>
+    <div class="help-block">一旦确定， 改价方式将不能修改。只能修改本页选中的价格。</div>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">确定</button>
+    <button type="button" class="btn btn-close">取消</button>
+  </div>
+</form>
+</script>
+<script src="<{$assets_path}>/js/libs/plupload/plupload.full.min.js"></script>
+<script>
+seajs.use(['p.goods_list'], function(app){
+  app.init();
+});
+</script>
+<{/block}>

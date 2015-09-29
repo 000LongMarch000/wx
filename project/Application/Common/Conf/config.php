@@ -38,6 +38,8 @@ $common = array(
         'notify_url' => 'http://wechat.shopflow.cn/pay/alipay/notify',
         'return_url' => 'http://wechat.shopflow.cn/pay/alipay/back',
     ),
+
+    'LOCALHOST' => 'http://i.shopflow.cn/',
 );
 
 return array_merge($common, $conf);

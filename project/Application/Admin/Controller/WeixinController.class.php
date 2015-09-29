@@ -8,7 +8,7 @@ class WeixinController extends AdminController {
 
     public function __construct(){
         parent::__construct();
-        $this->assign('menu', 'product');
+        $this->assign('menu', 'weixin');
         $this->assign('mLeft', 'weixin_' . strtolower(ACTION_NAME));
         $this->weixin = C('WEIXIN');    
     }

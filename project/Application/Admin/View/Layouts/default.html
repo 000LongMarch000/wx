@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
-  <title>有量微店 移动电商智能营销平台</title>
+  <title>shopflow</title>
   <link rel="stylesheet" href="<{autover assets_path=$assets_path filepath='/css/index.css'}>" />
   <{block 'style' }>
   <{/block}>
@@ -47,7 +47,13 @@
 <div class="main container">
   <div class="main-side">
     <{block 'side'}>
-    <{include file="../Common/side_nav/product.html"}>
+    <{if $menu == 'product'}>
+        <{include file="../Common/side_nav/product.html"}>
+    <{elseif $menu == 'weixin'}>
+        <{include file="../Common/side_nav/weixin.html"}>
+    <{elseif $menu == 'user'}>
+        <{include file="../Common/side_nav/user.html"}>
+    <{/if}>
     <{/block}>
   </div>
 
