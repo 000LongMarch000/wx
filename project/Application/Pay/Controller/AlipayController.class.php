@@ -25,7 +25,7 @@ class AlipayController extends CommonController {
 
     public function buy() {
         $level = $_GET['level'];
-        $user_id = $_GET['user_id'];
+        $user_id = $_GET['user'];
         if(!$user_id || !$level || !in_array($level, array('1','2'))) {
             echo "参数错误";
             exit();
@@ -70,7 +70,7 @@ class AlipayController extends CommonController {
         }
 
         //生成交易链接
-        $sHtml = "<form id='buyfrm' name='buyfrm' action='http://wechat.shopflow.cn/pay/alipay/pay' method='post'>";
+        $sHtml = "<form id='buyfrm' name='buyfrm' action='http://wechat.shopflow.cn/pay/index.php' method='post'>";
         $sHtml.= "<input type='hidden' name='out_trade_no' value='" . $trade_id . "'/>";
         $sHtml.= "<input type='hidden' name='subject' value='" . $product['title'] . "'/>";
         $sHtml.= "<input type='hidden' name='total_fee' value='" . $product['price'] . "'/>";
@@ -114,52 +114,6 @@ class AlipayController extends CommonController {
         $html_text = $alipaySubmit->buildRequestForm($parameter,"get", "确认");
         echo $html_text;
         exit;
-    }
-
-    public function notify() {
-        \Common\Lib\Utils::log('alipay', 'notify.log', $_POST);
-        $alipay_config = C('ALIPAY_CONFIG');
-        $alipayNotify = new \AlipayNotify($alipay_config);
-        $verify_result = $alipayNotify->verifyNotify();
-        
-        if ($verify_result) {//验证成功
-        	$out_trade_no = $_POST['out_trade_no'];
-        	$trade_no = $_POST['trade_no'];
-        	$trade_status = $_POST['trade_status'];
-            if ($_POST['trade_status'] == 'TRADE_FINISHED') {
-        		//判断该笔订单是否在商户网站中已经做过处理
-        			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
-        			//如果有做过处理，不执行商户的业务程序
-        				
-        		//注意：
-        		//退款日期超过可退款期限后（如三个月可退款），支付宝系统发送该交易状态通知
-        
-                //调试用，写文本函数记录程序运行情况是否正常
-                //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
-            }
-            else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
-        		//判断该笔订单是否在商户网站中已经做过处理
-        			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
-        			//如果有做过处理，不执行商户的业务程序
-        				
-        		//注意：
-        		//付款完成后，支付宝系统发送该交易状态通知
-        
-                //调试用，写文本函数记录程序运行情况是否正常
-                //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
-            }
-        
-        	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
-                
-        	echo "success";		//请不要修改或删除
-        }
-        else {
-            //验证失败
-            echo "fail";
-        
-            //调试用，写文本函数记录程序运行情况是否正常
-            //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
-        }
     }
 
     public function back() {
@@ -221,11 +175,10 @@ class AlipayController extends CommonController {
                     $res = $tradeMdl->execute($sql);
 
                     \Common\Lib\Utils::log('trade', 'alipay.log', $res);
-
                     echo "<script>localtion.href='/home/pay/success'</script>";
                     exit();
                 }
-        		//判断该笔订单是否在商户网站中已经做过处理
+        		    //判断该笔订单是否在商户网站中已经做过处理
         			//如果没有做过处理，根据订单号（out_trade_no）在商户网站的订单系统中查到该笔订单的详细，并执行商户的业务程序
         			//如果有做过处理，不执行商户的业务程序
             }

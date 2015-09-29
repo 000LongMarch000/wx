@@ -5,10 +5,13 @@
 </head>
 <body>
 <div>
-<div>
+    <{if $error}>
+    <{$error}>
+    <{else}>
     支付成功
-    <{if $user.level}>
-    您已经是<{if $user.level == '1'}>银牌<{elseif $user.level == '2'}>金牌<{/if}>会员
+    <{if $level}>
+    您已经是<{$level}>
+    <{/if}>
     <{/if}>
 </div>
 </body>
