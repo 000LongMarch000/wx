@@ -28,19 +28,26 @@ class PayController extends PubController {
                 $res = $tradeMdl->saveData($params);
                 \Common\Lib\Utils::log('trade', 'alipay.log', $res);
 
+                $userMdl = D('User');
+                $user = $userMdl->getRow(array('id' => $trade['user_id']));
+                $due_at = $user['due_at'];
+                if($due_at < time()) {
+                    $due_at = time();
+                }
+
                 //更新用户的due_at    
                 $level = $trade['level'];
                 switch($level) {
                     case '1':
-                        $due_at = time() + 5 * 86400;
+                        $due_at += 5 * 86400;
                         break;
                     case '2':
-                        $due_at = time() + 30 * 86400;
+                        $due_at += 30 * 86400;
                         break;
                     default:
                         break;
                 }
-                $userMdl = D('User');
+
                 $uparams['id'] = $trade['user_id'];
                 $uparams['level'] = $level;
                 $uparams['due_at'] = $due_at;

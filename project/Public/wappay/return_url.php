@@ -24,6 +24,7 @@ require_once("lib/alipay_notify.class.php");
 //计算得出通知验证结果
 $alipayNotify = new AlipayNotify($alipay_config);
 $verify_result = $alipayNotify->verifyReturn();
+
 if($verify_result) {//验证成功
     if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
 	    $url = "http://wechat.shopflow.cn/home/pay/success?" . $_SERVER['QUERY_STRING'];
