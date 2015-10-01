@@ -1,3 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  	<meta name="format-detection" content="telephone=no">
+  	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+  	<link rel="stylesheet" type="text/css" href="css/success.css" />
+	<title></title>
+</head>
+<body>
+    <{if $error}>
+    <div class="title"><{$error}></title>
+    <{else}>
+    <div class="title">支付成功 !</div>
+    <{if $level}>
+	<div class="subtitle">恭喜，您已经成为<{$level}></div>
+    <{/if}>
+    <{/if}>
+
+	
+</body>
+</html>
+
 <html>
 <head>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -5,14 +29,7 @@
 </head>
 <body>
 <div>
-    <{if $error}>
-    <{$error}>
-    <{else}>
-    支付成功
-    <{if $level}>
-    您已经是<{$level}>
-    <{/if}>
-    <{/if}>
-</div>
+
+    </div>
 </body>
 </html>

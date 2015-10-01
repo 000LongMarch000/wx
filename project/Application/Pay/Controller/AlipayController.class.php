@@ -70,7 +70,7 @@ class AlipayController extends CommonController {
         }
 
         //生成交易链接
-        $sHtml = "<form id='buyfrm' name='buyfrm' action='http://wechat.shopflow.cn/pay/index.php' method='post'>";
+        $sHtml = "<form id='buyfrm' name='buyfrm' action='http://wechat.shopflow.cn/wappay/index.php' method='post'>";
         $sHtml.= "<input type='hidden' name='out_trade_no' value='" . $trade_id . "'/>";
         $sHtml.= "<input type='hidden' name='subject' value='" . $product['title'] . "'/>";
         $sHtml.= "<input type='hidden' name='total_fee' value='" . $product['price'] . "'/>";
