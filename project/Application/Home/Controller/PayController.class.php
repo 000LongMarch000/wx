@@ -42,6 +42,7 @@ class PayController extends PubController {
                 }
                 $userMdl = D('User');
                 $uparams['id'] = $trade['user_id'];
+                $uparams['level'] = $level;
                 $uparams['due_at'] = $due_at;
 
                 \Common\Lib\Utils::log('trade', 'alipay.log', $uparams);
