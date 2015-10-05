@@ -6,6 +6,12 @@ use Home\Controller\PubController;
 class PayController extends PubController {
     public function index() {
         $user = session('user');
+        $userMdl = D('user');
+        $userRes = $userMdl->getRow(array('id' => $user['id']));
+        if($userRes) {
+            $user = $userRes;
+            session('user', $user);
+        }
         $user['id'] = \Common\Lib\Idhandler::encode($user['id']);
         $this->assign('user', $user);
         $this->display();
@@ -38,10 +44,10 @@ class PayController extends PubController {
                 //更新用户的due_at    
                 $level = $trade['level'];
                 switch($level) {
-                    case '1':
+                    case '2':
                         $due_at += 5 * 86400;
                         break;
-                    case '2':
+                    case '3':
                         $due_at += 30 * 86400;
                         break;
                     default:
@@ -67,10 +73,10 @@ class PayController extends PubController {
             $level = $trade['level'];
             $level_str = '';
             switch($level) {
-                case '1':
+                case '2':
                     $level_str = '银牌会员';
                     break;
-                case '2':
+                case '3':
                     $level_str = '金牌会员';
                     break;
                 default:

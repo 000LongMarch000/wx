@@ -26,19 +26,19 @@ class AlipayController extends CommonController {
     public function buy() {
         $level = $_GET['level'];
         $user_id = $_GET['user'];
-        if(!$user_id || !$level || !in_array($level, array('1','2'))) {
+        if(!$user_id || !$level || !in_array($level, array('3','2'))) {
             echo "参数错误";
             exit();
         }
 
         $product = array();
         switch($level) {
-            case '1':
+            case '2':
                 $product['title'] = '银牌会员';
                 $product['desc'] = '欢迎您成为银牌会员';
                 $product['price'] = '0.01';
                 break;
-            case '2':
+            case '3':
                 $product['title'] = '金牌会员';
                 $product['desc'] = '欢迎您成为金牌会员';
                 $product['price'] = '0.01';
@@ -70,12 +70,12 @@ class AlipayController extends CommonController {
         }
 
         //生成交易链接
-        $sHtml = "<form id='buyfrm' name='buyfrm' action='http://wechat.shopflow.cn/wappay/index.php' method='post'>";
+        $sHtml = "<form id='buyfrm' name='buyfrm' action='http://wechat.vtshow.top/wappay/index.php' method='post'>";
         $sHtml.= "<input type='hidden' name='out_trade_no' value='" . $trade_id . "'/>";
         $sHtml.= "<input type='hidden' name='subject' value='" . $product['title'] . "'/>";
         $sHtml.= "<input type='hidden' name='total_fee' value='" . $product['price'] . "'/>";
         $sHtml.= "<input type='hidden' name='body' value='" . $product['desc'] . "'/>";
-        $sHtml.= "<input type='hidden' name='show_url' value='http://wechat.shopflow.cn/home/pay/index' />";
+        $sHtml.= "<input type='hidden' name='show_url' value='http://wechat.vtshow.top/home/pay/index' />";
 
 		//submit按钮控件请不要含有name属性
         $sHtml = $sHtml."<input type='submit' value='确认'></form>";

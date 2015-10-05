@@ -49,7 +49,7 @@
                <{$item.nickname}>
           </div></td>
           <td><div class="cell">
-               <{if $item.level == '1'}>银牌<{elseif $item.level == '2'}>金牌<{else}>暂无<{/if}>
+               <{if $item.level == '2'}>银牌<{elseif $item.level == '3'}>金牌<{else}>暂无<{/if}>
           </div></td>
           <td><div class="cell">
                <{$item.created_at|date_format:"%Y-%m-%d %H:%M"}>

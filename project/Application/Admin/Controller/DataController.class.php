@@ -19,7 +19,7 @@ class DataController extends Controller {
             'token' => $token,
         );
 
-        setcookie('wxopenid', $wechat['token']['openid'], 0, '/', 'shopflow.cn');
+        setcookie('wxopenid', $wechat['token']['openid'], 0, '/', 'vtshow.top');
         $_COOKIE['wxopenid'] = $wechat['token']['openid'];
 
         /*

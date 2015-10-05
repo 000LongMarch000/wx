@@ -1,0 +1,106 @@
+2015-10-05 15:34:50
+Array
+(
+    [body] => 欢迎您成为金牌会员
+    [is_success] => T
+    [notify_id] => RqPnCoPT3K9%2Fvwbh3InVamx7wfaTbpSyQNfoOMLogQo0gs8gVoRdAyPn9YWFnaw6nlnI
+    [notify_time] => 2015-10-05 15:36:19
+    [notify_type] => trade_status_sync
+    [out_trade_no] => 18YDG
+    [payment_type] => 1
+    [seller_id] => 2088411553059153
+    [service] => alipay.wap.create.direct.pay.by.user
+    [subject] => 金牌会员
+    [total_fee] => 0.01
+    [trade_no] => 2015100500001000580065308112
+    [trade_status] => TRADE_SUCCESS
+    [sign] => 7335108c77b95ce2e084a8e8611c3956
+    [sign_type] => MD5
+)
+2015-10-05 15:34:50
+Array
+(
+    [id] => 4
+    [status] => success
+    [pay_from] => taobao
+    [pay_no] => 2015100500001000580065308112
+    [paid_at] => 1444030490
+    [updated_at] => 1444030490
+    [pay_user] => 
+)
+2015-10-05 15:34:50
+Array
+(
+    [status] => success
+    [msg] => 修改保存成功
+)
+2015-10-05 15:34:50
+Array
+(
+    [id] => 4
+    [level] => 2
+    [due_at] => 1444462490
+)
+2015-10-05 15:34:50
+Array
+(
+    [status] => success
+    [msg] => 修改保存成功
+)
+2015-10-05 15:34:50
+update items set due_at = 1444462490 where user_id = 4 and due_at > 1444030490
+2015-10-05 15:34:50
+b:0;
+2015-10-05 15:44:52
+Array
+(
+    [body] => 欢迎您成为金牌会员
+    [is_success] => T
+    [notify_id] => RqPnCoPT3K9%2Fvwbh3InVamx7wFMeVB56g%2FsWQDtXm%2F3eMz5Bp0OnBIBJTUf6y6QcDIxN
+    [notify_time] => 2015-10-05 15:46:20
+    [notify_type] => trade_status_sync
+    [out_trade_no] => 1VFGM
+    [payment_type] => 1
+    [seller_id] => 2088411553059153
+    [service] => alipay.wap.create.direct.pay.by.user
+    [subject] => 金牌会员
+    [total_fee] => 0.01
+    [trade_no] => 2015100500001000580065308662
+    [trade_status] => TRADE_SUCCESS
+    [sign] => 953709784507186f20bfa0a511b9ba2b
+    [sign_type] => MD5
+)
+2015-10-05 15:44:52
+Array
+(
+    [id] => 6
+    [status] => success
+    [pay_from] => taobao
+    [pay_no] => 2015100500001000580065308662
+    [paid_at] => 1444031092
+    [updated_at] => 1444031092
+    [pay_user] => 
+)
+2015-10-05 15:44:52
+Array
+(
+    [status] => success
+    [msg] => 修改保存成功
+)
+2015-10-05 15:44:52
+Array
+(
+    [id] => 4
+    [level] => 3
+    [due_at] => 1447054490
+)
+2015-10-05 15:44:52
+Array
+(
+    [status] => success
+    [msg] => 修改保存成功
+)
+2015-10-05 15:44:52
+update items set due_at = 1447054490 where user_id = 4 and due_at > 1444031092
+2015-10-05 15:44:52
+b:0;

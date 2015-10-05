@@ -117,7 +117,7 @@ class IndexController extends Controller {
         switch($level) {
             case '1':
                 if($count >= 1) {
-                    $rs['content'] = '您还不是会员，只能创建1次链接';
+                    $rs['content'] = '您还不是会员，只能创建1次链接，<a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                 }else{
                     $yesterday_end = strtotime(date('Y-m-d', time()));
                     $ifilter['due_at'] = array('lt', time());
@@ -126,13 +126,13 @@ class IndexController extends Controller {
                     //$count = $itemsMdl->getCount($ifilter);
                     //\Common\Lib\Utils::log('wechat', 'request.log', $itemsMdl->getLastSql());
                     if($itemsMdl->getCount($ifilter) > 0) {
-                        $rs['content'] = '您还不是会员，今天已经创建了1次链接，请等后天再创建';
+                        $rs['content'] = '您还不是会员，今天已经创建了1次链接，请等后天再创建, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                     }else{
                         $yesterday_start = $yesterday_end - 86400;
                         $ifilter['updated_at'] = array('between', array($yesterday_start, $yesterday_end));
                         \Common\Lib\Utils::log('wechat', 'request.log', $ifilter);
                         if($itemsMdl->getCount($ifilter) > 0) {
-                            $rs['content'] = '您还不是会员，昨天已经创建了1次链接，请等明天再创建';
+                            $rs['content'] = '您还不是会员，昨天已经创建了1次链接，请等明天再创建, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                         }
                     }
                 }
@@ -140,7 +140,7 @@ class IndexController extends Controller {
                 break;
             case '2':
                 if($count >= 5) {
-                    $rs['content'] = '您是银牌会员，已经创建5次链接，如果需要再次创建，请升级到金牌会员';
+                    $rs['content'] = '您是银牌会员，已经创建5次链接，, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                 }
                 //$due_at = time() + 7 * 86400;
                 $due_at = $user['due_at'];
@@ -214,7 +214,7 @@ class IndexController extends Controller {
             }
 
             if($id) {
-                $rs['content'] = 'http://i.shopflow.cn/show/' . \Common\Lib\Idhandler::encode($id);
+                $rs['content'] = 'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id);
             }else{
                 $rs['content'] = '操作错误';
             }

@@ -31,6 +31,7 @@ const URL_COMPAT        =   3;  // 兼容模式
 // 类文件后缀
 const EXT               =   '.class.php'; 
 
+
 // 系统常量定义
 defined('THINK_PATH')   or define('THINK_PATH',     __DIR__.'/');
 defined('APP_PATH')     or define('APP_PATH',       dirname($_SERVER['SCRIPT_FILENAME']).'/');
@@ -69,6 +70,7 @@ if(version_compare(PHP_VERSION,'5.4.0','<')) {
 }else{
     define('MAGIC_QUOTES_GPC',false);
 }
+
 define('IS_CGI',(0 === strpos(PHP_SAPI,'cgi') || false !== strpos(PHP_SAPI,'fcgi')) ? 1 : 0 );
 define('IS_WIN',strstr(PHP_OS, 'WIN') ? 1 : 0 );
 define('IS_CLI',PHP_SAPI=='cli'? 1   :   0);
@@ -89,6 +91,7 @@ if(!IS_CLI) {
         define('__ROOT__',  (($_root=='/' || $_root=='\\')?'':$_root));
     }
 }
+
 
 // 加载核心Think类
 require CORE_PATH.'Think'.EXT;

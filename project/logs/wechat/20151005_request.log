@@ -1,0 +1,334 @@
+2015-10-05 14:44:43
+event
+2015-10-05 14:44:43
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444027580
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 14:45:24
+event
+2015-10-05 14:45:24
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444027622
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 14:46:53
+event
+2015-10-05 14:46:53
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444027710
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 14:47:38
+event
+2015-10-05 14:47:38
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444027755
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 14:49:03
+event
+2015-10-05 14:49:03
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444027841
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 14:49:37
+event
+2015-10-05 14:49:37
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444027874
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 14:50:15
+event
+2015-10-05 14:50:15
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444027913
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:00:32
+text
+2015-10-05 15:00:32
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444028530
+    [MsgType] => text
+    [Content] => https://item.taobao.com/item.htm?spm=a217v.7782581.1998716749.1.FBm12p&id=43449402051
+    [MsgId] => 6202055311052646956
+)
+2015-10-05 15:00:32
+Array
+(
+    [uid] => 4
+    [due_at] => Array
+        (
+            [0] => lt
+            [1] => 1444028432
+        )
+
+    [updated_at] => Array
+        (
+            [0] => between
+            [1] => Array
+                (
+                    [0] => 1443888000
+                    [1] => 1443974400
+                )
+
+        )
+
+)
+2015-10-05 15:01:17
+text
+2015-10-05 15:01:17
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444028574
+    [MsgType] => text
+    [Content] => https://item.taobao.com/item.htm?spm=a217v.7782581.1998716749.1.FBm12p&id=43449402051
+    [MsgId] => 6202055500031207999
+)
+2015-10-05 15:02:39
+text
+2015-10-05 15:02:39
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444028657
+    [MsgType] => text
+    [Content] => https://item.taobao.com/item.htm?spm=a217v.7782581.1998716749.1.FBm12p&id=43449402051
+    [MsgId] => 6202055856513493590
+)
+2015-10-05 15:05:10
+text
+2015-10-05 15:05:10
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444028808
+    [MsgType] => text
+    [Content] => https://item.taobao.com/item.htm?spm=a217v.7782581.1998716749.1.FBm12p&id=43449402051
+    [MsgId] => 6202056505053555333
+)
+2015-10-05 15:24:25
+event
+2015-10-05 15:24:25
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444029963
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:28:29
+event
+2015-10-05 15:28:29
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030207
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:29:08
+event
+2015-10-05 15:29:08
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030245
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:34:25
+event
+2015-10-05 15:34:25
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030562
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:37:14
+text
+2015-10-05 15:37:14
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030732
+    [MsgType] => text
+    [Content] => https://item.taobao.com/item.htm?spm=a217v.7782581.1998716749.3.FBm12p&id=45687611035
+    [MsgId] => 6202064768570633262
+)
+2015-10-05 15:37:35
+text
+2015-10-05 15:37:35
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030753
+    [MsgType] => text
+    [Content] => https://item.taobao.com/item.htm?spm=a217v.7782581.1998716749.4.FBm12p&id=44568405714
+    [MsgId] => 6202064858764946482
+)
+2015-10-05 15:38:19
+text
+2015-10-05 15:38:19
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030796
+    [MsgType] => text
+    [Content] => https://anmani.tmall.com/p/rd802047.htm?spm=a222r.7724130.1437629789.12.Ety5HY&acm=lb-zebra-6477-110665.1003.4.440201&scm=1003.4.lb-zebra-6477-110665.SHOP_1098364456_440201
+    [MsgId] => 6202065043448540219
+)
+2015-10-05 15:39:27
+text
+2015-10-05 15:39:27
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030864
+    [MsgType] => text
+    [Content] => https://detail.tmall.com/item.htm?spm=a1z10.4-b.w10650463-11182400144.3.WhHoDW&id=522642001645&sku_properties=-1:-1
+    [MsgId] => 6202065335506316370
+)
+2015-10-05 15:40:32
+text
+2015-10-05 15:40:32
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030929
+    [MsgType] => text
+    [Content] => https://detail.tmall.com/item.htm?spm=a1z10.4-b.w10650463-11182400144.13.WhHoDW&id=522621935030
+    [MsgId] => 6202065614679190624
+)
+2015-10-05 15:40:35
+text
+2015-10-05 15:40:35
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444030933
+    [MsgType] => text
+    [Content] => https://detail.tmall.com/item.htm?spm=a1z10.4-b.w10650463-11182400144.13.WhHoDW&id=522621935030
+    [MsgId] => 6202065631859059812
+)
+2015-10-05 15:42:12
+event
+2015-10-05 15:42:12
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444031030
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:44:30
+event
+2015-10-05 15:44:30
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444031167
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:44:59
+event
+2015-10-05 15:44:59
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444031196
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:45:05
+event
+2015-10-05 15:45:05
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444031202
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)
+2015-10-05 15:48:04
+event
+2015-10-05 15:48:04
+Array
+(
+    [ToUserName] => gh_098dac01e29b
+    [FromUserName] => oeHfxwAIkN6fPscPnZRLssOtQsXw
+    [CreateTime] => 1444031381
+    [MsgType] => event
+    [Event] => VIEW
+    [EventKey] => http://wechat.vtshow.top/home/pay/index
+)

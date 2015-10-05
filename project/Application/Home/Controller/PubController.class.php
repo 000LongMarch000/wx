@@ -8,7 +8,6 @@ class PubController extends Controller {
     public function __construct(){
         parent::__construct();
         $this->assign('DEBUG', C('DEBUG'));
-        $this->assign('ENV', C('ENV'));
 
         //处理微信
         if(strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger')){
@@ -55,7 +54,7 @@ class PubController extends Controller {
             $user = $userRes;
             $user_id = \Common\Lib\Idhandler::encode($userRes['id']);
         }else{
-            $params['level'] = 0;
+            $params['level'] = 1;
             $params['created_at'] = time();
             $params['updated_at'] = time();
             $params['due_at'] = time();
@@ -83,11 +82,9 @@ class PubController extends Controller {
         //$_COOKIE['wxopenid'] = '2oeHfxwAIkN6fPscPnZRLssOtQsXw';
         if (!$_COOKIE['wxopenid']) {
             $req_path = explode('?', $_SERVER['REQUEST_URI']);
-            //$referrerUri = 'http://' . $_SERVER['HTTP_HOST'] . $req_path[0];
             $referrerUri = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             $state = base64_encode($referrerUri);
-            #$redirectUri = 'http://www.sandbox.wdwd.com/admin/data/login';
-            $redirectUri = 'http://wechat.shopflow.cn/admin/data/login';
+            $redirectUri = 'http://wechat.vtshow.top/admin/data/login';
             $authorizeUrl = $wechat->getOauthRedirect($redirectUri, $state, 'snsapi_base');
             header('Location: ' . $authorizeUrl);
             exit;

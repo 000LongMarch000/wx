@@ -47,7 +47,7 @@ $alipay_config['cacert']    = getcwd().'\\cacert.pem';
 
 //访问模式,根据自己的服务器是否支持ssl访问，若支持请选择https；若不支持请选择http
 $alipay_config['transport']    = 'http';
-$alipay_config['notify_url'] = "http://wechat.shopflow.cn/wappay/notify_url.php";
-$alipay_config['return_url'] = "http://wechat.shopflow.cn/wappay/return_url.php";
+$alipay_config['notify_url'] = "http://wechat.vtshow.top/wappay/notify_url.php";
+$alipay_config['return_url'] = "http://wechat.vtshow.top/wappay/return_url.php";
 
 ?>

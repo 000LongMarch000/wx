@@ -27,7 +27,7 @@ $verify_result = $alipayNotify->verifyReturn();
 
 if($verify_result) {//验证成功
     if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
-	    $url = "http://wechat.shopflow.cn/home/pay/success?" . $_SERVER['QUERY_STRING'];
+	$url = "http://wechat.vtshow.top/home/pay/success?" . $_SERVER['QUERY_STRING'];
         echo "<script>location.href = '".$url."'</script>";
         exit();
     }
