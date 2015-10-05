@@ -63,7 +63,7 @@ class PayController extends PubController {
                     
                 \Common\Lib\Utils::log('trade', 'alipay.log', $res);
                 //更新有效商品的时间
-                $sql = "update items set due_at = $due_at where user_id = {$trade['user_id']} and due_at > " . time();
+                $sql = "update items set due_at = $due_at where uid = {$trade['user_id']} and due_at > " . time();
 
                 \Common\Lib\Utils::log('trade', 'alipay.log', $sql);
                 $res = $tradeMdl->execute($sql);
