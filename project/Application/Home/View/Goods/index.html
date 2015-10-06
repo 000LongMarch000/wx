@@ -1,0 +1,24 @@
+<html>
+<head>
+<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  	<meta name="format-detection" content="telephone=no">
+
+  	<link rel="stylesheet" type="text/css" href="/src/css/h5/reset.css" />
+  	<link rel="stylesheet" type="text/css" href="/src/css/h5/fail.css" />
+	<title>商品</title>
+</head>
+<body>
+<div style="margin:5px 5px;">
+<{foreach from=$items item="item"}>
+<div style="margin-bottom:10px;">
+<div style="margin-bottom:2px;">商品链接：<{if $item.s_url}><{$item.s_url}><{else}>http://i.vtshow.top/show/<{$item.id}><{/if}></div>
+<div style="margin-bottom:2px;">创建时间：<{$item.created_at|date_format:"%Y-%m-%d %H:%M"}></div>
+<div style="margin-bottom:2px;">过期时间：<{$item.due_at|date_format:"%Y-%m-%d %H:%M"}></div>
+</div>
+<{foreachelse}>
+<div class="title">您还没有创建商品，<a href="">查看帮助</a></div>
+<{/foreach}>
+</div>
+</body>
+</html>

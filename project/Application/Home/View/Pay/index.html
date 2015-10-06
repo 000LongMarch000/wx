@@ -12,7 +12,8 @@
 <body>
     <div class="title">
     <{if $user.level}>
-    您已经是<{if $user.level == '2'}>银牌<{elseif $user.level == '3'}>金牌<{else}>普通<{/if}>会员
+    您已经是<{if $user.level == '2'}>银牌<{elseif $user.level == '3'}>金牌<{else}>普通<{/if}>会员 <br/>
+    会员编号：<{$user.id}>
     <{else}>
     您还不是会员。
     <{/if}>

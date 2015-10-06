@@ -78,6 +78,7 @@ class IndexController extends Controller {
 
     protected function processText() {
         date_default_timezone_set("Asia/Beijing");
+        $help_url = "";
 
         $data = $this->_wechat->getRevData();
         \Common\Lib\Utils::log('wechat', 'request.log', $data);
@@ -103,7 +104,7 @@ class IndexController extends Controller {
 
         $rs['msg_info_type'] = 1;
         if(!$userid) {
-            $rs['content'] = '请输入正确的商品链接地址';
+            $rs['content'] = '请输入正确的商品链接地址, <a href="'.$help_url.'">查看帮助</a>';
             $this->reply($rs);
             exit();
         }
@@ -117,7 +118,7 @@ class IndexController extends Controller {
         switch($level) {
             case '1':
                 if($count >= 1) {
-                    $rs['content'] = '您还不是会员，只能创建1次链接，<a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
+                    $rs['content'] = '您的会员等级,只能创建1次链接，<a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                 }else{
                     $yesterday_end = strtotime(date('Y-m-d', time()));
                     $ifilter['due_at'] = array('lt', time());
@@ -126,13 +127,13 @@ class IndexController extends Controller {
                     //$count = $itemsMdl->getCount($ifilter);
                     //\Common\Lib\Utils::log('wechat', 'request.log', $itemsMdl->getLastSql());
                     if($itemsMdl->getCount($ifilter) > 0) {
-                        $rs['content'] = '您还不是会员，今天已经创建了1次链接，请等后天再创建, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
+                        $rs['content'] = '您的会员等级,今天已经创建了1次链接，请等后天再创建, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                     }else{
                         $yesterday_start = $yesterday_end - 86400;
                         $ifilter['updated_at'] = array('between', array($yesterday_start, $yesterday_end));
                         \Common\Lib\Utils::log('wechat', 'request.log', $ifilter);
                         if($itemsMdl->getCount($ifilter) > 0) {
-                            $rs['content'] = '您还不是会员，昨天已经创建了1次链接，请等明天再创建, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
+                            $rs['content'] = '您的会员等级，昨天已经创建了1次链接，请等明天再创建, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                         }
                     }
                 }
@@ -159,14 +160,19 @@ class IndexController extends Controller {
         }
 
         $content_str = $data['Content'];
+        /*
         $h_pos = strpos($content_str, 'http');
         if(!$h_pos) {
             $h_pos = strpos($content_str, 'https');
         }
         $content = substr($content_str, $h_pos, strlen($content_str)); 
+        */
+        $urls = array();
+        preg_match_all("/http[s]?:\/\/?[^\s]+/i",$content_str,$urls); 
+        $content = $urls[0][0];
 
         if(preg_match('/^http[s]?:\/\//i', $content) === 0) {
-            $rs['content'] = '请输入正确的商品链接地址';
+            $rs['content'] = '请输入正确的商品链接地址, <a href="'.$help_url.'">查看帮助</a>';
         }else{
             $url_arr = parse_url($content);
             $type = '';
@@ -220,7 +226,13 @@ class IndexController extends Controller {
             }
 
             if($id) {
-                $rs['content'] = 'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id);
+                $url = 'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id);
+                $short_url = \Common\Lib\Utils::short_url($url);
+                if(!$short_url) {
+                    $short_url = $url;
+                }
+                $itemsMdl->saveData(array('id' => $id, 's_url' => $short_url));
+                $rs['content'] = $short_url;
             }else{
                 $rs['content'] = '操作错误';
             }

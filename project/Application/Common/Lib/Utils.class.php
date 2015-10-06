@@ -182,4 +182,22 @@ class Utils
         $str=preg_replace("/&#/si","&＃",$str); //过滤script标签，如javAsCript:alert( 
         return $str; 
     }
+
+    public function short_url($str) {
+        $ch=curl_init();
+        curl_setopt($ch,CURLOPT_URL,"http://dwz.cn/create.php");
+        curl_setopt($ch,CURLOPT_POST,true);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+        $data=array('url'=>$str);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+        $strRes=curl_exec($ch);
+        curl_close($ch);
+        $arrResponse=json_decode($strRes,true);
+        \Common\Lib\Utils::log('wechat', 'request.log', $arrResponse);
+        $url = '';
+        if($arrResponse['status']==0) {
+            $url = $arrResponse['tinyurl'];
+        }
+        return $url;
+    }
 }

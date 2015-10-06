@@ -141,12 +141,23 @@ class ProductController extends AdminController {
 
         //处理搜索问题
         $fValue = '';
-        if(isset($_GET['f']) && in_array($_GET['f'], array('id'))){
+        if(isset($_GET['f']) && in_array($_GET['f'], array('id', 'tid', 'link'))){
              $field = $_GET['f'];
              $fValue = trim(urldecode($_GET['q']));
 
-             if ('id' == $field) {
-                 $filter['id'] = \Common\Lib\Idhandler::decode($fValue);
+             switch ($field) {
+                 case 'id':
+                     $filter['id'] = \Common\Lib\Idhandler::decode($fValue);
+                     break;
+                 case 'tid':
+                     $filter['nid'] = trim($fValue);
+                     $filter['platform'] = 'taobao';
+                     break;
+                 case 'link':
+                     $filter['url'] = urldecode(trim($fValue));
+                     break;
+                 default:
+                     break;
              }
         }
 

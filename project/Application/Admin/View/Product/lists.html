@@ -10,6 +10,8 @@
     <div class="search-bar search-bar-upper">
       <form action="/admin/product/lists/search/y" method="get">
         <select name="f" class="wgt-select" width="100">
+            <option value="tid" <{if $field == 'tid'}> selected <{/if}>>淘宝ID</option>
+            <option value="link" <{if $field == 'link'}> selected <{/if}>>原始链接</option>
             <option value="id" <{if $field == 'id'}> selected <{/if}>>商品编号</option>
         </select>
         <input name="q" type="text" class="input-search" placeholder="输入搜索内容" value="<{$fv}>">
