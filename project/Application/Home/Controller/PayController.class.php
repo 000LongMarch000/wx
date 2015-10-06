@@ -6,11 +6,13 @@ use Home\Controller\PubController;
 class PayController extends PubController {
     public function index() {
         $user = session('user');
-        $userMdl = D('user');
-        $userRes = $userMdl->getRow(array('id' => $user['id']));
-        if($userRes) {
-            $user = $userRes;
-            session('user', $user);
+        if($user) {
+            $userMdl = D('User');
+            $userRes = $userMdl->getRow(array('id' => $user['id']));
+            if($userRes) {
+                $user = $userRes;
+                session('user', $user);
+            }
         }
         $user['id'] = \Common\Lib\Idhandler::encode($user['id']);
         $this->assign('user', $user);

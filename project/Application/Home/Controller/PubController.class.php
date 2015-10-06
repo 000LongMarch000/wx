@@ -62,6 +62,7 @@ class PubController extends Controller {
             $userRes = $userMdl->saveData($params);
             if($userRes['status'] == 'success') {
                 $user_id = \Common\Lib\Idhandler::encode($userRes['data']);
+                $params['id'] = $userRes['data'];
                 $user = $params;
             }
         }

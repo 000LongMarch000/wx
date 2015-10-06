@@ -158,8 +158,14 @@ class IndexController extends Controller {
             exit();
         }
 
-        $content = $data['Content'];
-        if(preg_match('/^http[s]?:\/\//', $content) === 0) {
+        $content_str = $data['Content'];
+        $h_pos = strpos($content_str, 'http');
+        if(!$h_pos) {
+            $h_pos = strpos($content_str, 'https');
+        }
+        $content = substr($content_str, $h_pos, strlen($content_str)); 
+
+        if(preg_match('/^http[s]?:\/\//i', $content) === 0) {
             $rs['content'] = '请输入正确的商品链接地址';
         }else{
             $url_arr = parse_url($content);
