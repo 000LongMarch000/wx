@@ -160,6 +160,7 @@ class IndexController extends Controller {
         }
 
         $content_str = $data['Content'];
+
         /*
         $h_pos = strpos($content_str, 'http');
         if(!$h_pos) {
@@ -167,9 +168,31 @@ class IndexController extends Controller {
         }
         $content = substr($content_str, $h_pos, strlen($content_str)); 
         */
+        //获得字符串中的url
         $urls = array();
         preg_match_all("/http[s]?:\/\/?[^\s]+/i",$content_str,$urls); 
         $content = $urls[0][0];
+
+        \Common\Lib\Utils::log('wechat', 'request.log', $content);
+        //$headers = get_headers($content, TRUE);
+        //\Common\Lib\Utils::log('wechat', 'request.log', $headers);
+        //$content = $headers['Location'];
+
+        if(preg_match('/mashort.cn/', $content)){
+            $n_content = file_get_contents($content);
+            $pa = '%id=("|\')?J_Url("|\')? value=("|\')?(.*?)("|\')?>%si';
+            preg_match($pa,$n_content,$r);
+            
+            if($r) {
+                $url = urldecode($r[4]);
+                $n_query = explode('url=', $url);
+                \Common\Lib\Utils::log('wechat', 'request.log', $n_query);
+                $n_url = $n_query[1];
+                $content = $n_url;
+            }
+        }
+        
+        \Common\Lib\Utils::log('wechat', 'request.log', $content);
 
         if(preg_match('/^http[s]?:\/\//i', $content) === 0) {
             $rs['content'] = '请输入正确的商品链接地址, <a href="'.$help_url.'">查看帮助</a>';
@@ -198,9 +221,9 @@ class IndexController extends Controller {
 
             if($nid) {
                 //判断是否已经生成
-                $itemRes = $itemsMdl->getRow(array('nid' => $nid)); 
+                $itemRes = $itemsMdl->getRow(array('nid' => $nid, 'uid' => $userid)); 
             }else{
-                $itemRes = $itemsMdl->getRow(array('url' => $content)); 
+                $itemRes = $itemsMdl->getRow(array('url' => $content, 'uid' => $userid)); 
             }
             
             if($itemRes) {
