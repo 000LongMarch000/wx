@@ -172,6 +172,7 @@ class IndexController extends Controller {
         $urls = array();
         preg_match_all("/http[s]?:\/\/?[^\s]+/i",$content_str,$urls); 
         $content = $urls[0][0];
+        $o_url = $content;
 
         \Common\Lib\Utils::log('wechat', 'request.log', $content);
         //$headers = get_headers($content, TRUE);
@@ -226,16 +227,20 @@ class IndexController extends Controller {
                 $itemRes = $itemsMdl->getRow(array('url' => $content, 'uid' => $userid)); 
             }
             
+            $s_url = '';
             if($itemRes) {
                 $params['id'] = $itemRes['id'];
                 $params['uid'] = $userid;
                 $params['url'] = $content;
+                $params['o_url'] = $o_url;
                 $params['due_at'] = $due_at;
                 $params['updated_at'] = time();
                 $itemsMdl->saveData($params);
                 $id = $itemRes['id'];
+                $s_url = $itemRes['s_url'];
             }else{
                 $params['url'] = $content;
+                $params['o_url'] = $o_url;
                 $params['nid'] = $nid;
                 $params['uid'] = $userid;
                 $params['platform'] = $type;
@@ -249,13 +254,15 @@ class IndexController extends Controller {
             }
 
             if($id) {
-                $url = 'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id);
-                $short_url = \Common\Lib\Utils::short_url($url);
-                if(!$short_url) {
-                    $short_url = $url;
+                if(!$s_url) {
+                    $url = 'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id);
+                    $s_url = \Common\Lib\Utils::short_url($url);
+                    if(!$s_url) {
+                        $s_url = $url;
+                    }
+                    $itemsMdl->saveData(array('id' => $id, 's_url' => $s_url));
                 }
-                $itemsMdl->saveData(array('id' => $id, 's_url' => $short_url));
-                $rs['content'] = $short_url;
+                $rs['content'] = $s_url;
             }else{
                 $rs['content'] = '操作错误';
             }

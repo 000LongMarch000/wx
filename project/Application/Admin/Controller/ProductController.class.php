@@ -154,7 +154,7 @@ class ProductController extends AdminController {
                      $filter['platform'] = 'taobao';
                      break;
                  case 'link':
-                     $filter['url'] = urldecode(trim($fValue));
+                     $filter['o_url'] = urldecode(trim($fValue));
                      break;
                  default:
                      break;
