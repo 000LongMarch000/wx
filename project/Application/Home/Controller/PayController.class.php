@@ -47,7 +47,7 @@ class PayController extends PubController {
                 $level = $trade['level'];
                 switch($level) {
                     case '2':
-                        $due_at += 5 * 86400;
+                        $due_at += 7 * 86400;
                         break;
                     case '3':
                         $due_at += 30 * 86400;

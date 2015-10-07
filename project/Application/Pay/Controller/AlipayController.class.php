@@ -31,6 +31,7 @@ class AlipayController extends CommonController {
             exit();
         }
 
+        /*
         $product = array();
         switch($level) {
             case '2':
@@ -46,6 +47,9 @@ class AlipayController extends CommonController {
             default:
                 break;
         }
+        */
+        $products = C('PRODUCTS');
+        $product = $products[$level];
 
         //生成订单
         $current = time();
