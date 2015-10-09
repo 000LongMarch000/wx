@@ -7,12 +7,15 @@
   	<link rel="stylesheet" type="text/css" href="/src/css/h5/reset.css" />
   	<link rel="stylesheet" type="text/css" href="/src/css/h5/fail.css" />
   	<link rel="stylesheet" type="text/css" href="/src/css/h5/add.css" />
-	<title>商品</title>
+	<title>链接列表</title>
 </head>
 <body>
 <div class="good_lists">
 <{foreach from=$items item="item"}>
 <div class="item <{if $item.d_status=='dued'}>dued<{elseif $item.d_status == 'soon_due'}>soon<{/if}>">
+<{if $item.title}>
+<div class="name"><{$item.title}></div>
+<{/if}>
 <div class="goods">商品链接：<a href="<{$item.url}>"><{$item.url}></a><span><{if $item.d_status == 'soon_due'}>(即将过期)<{elseif $item.d_status == 'dued'}>(已过期)<{/if}></span></div>
 <div class="created">创建时间：<{$item.created_at|date_format:"%Y-%m-%d %H:%M"}></div>
 <div class="due">过期时间：<span><{$item.due_at|date_format:"%Y-%m-%d %H:%M"}></span></div>
