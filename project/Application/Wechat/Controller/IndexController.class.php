@@ -187,11 +187,15 @@ class IndexController extends Controller {
         $o_url = $content;
 
         \Common\Lib\Utils::log('wechat', 'request.log', $content);
-        //$headers = get_headers($content, TRUE);
-        //\Common\Lib\Utils::log('wechat', 'request.log', $headers);
-        //$content = $headers['Location'];
+        $title = "";
+        $http_pos = strpos($content_str, 'http');
+        \Common\Lib\Utils::log('wechat', 'request.log', $http_pos);
+        if($http_pos) {
+            $title = substr($content_str, 0, $http_pos);
+        }
+        \Common\Lib\Utils::log('wechat', 'request.log', $title);
 
-        if(preg_match('/mashort.cn/', $content)){
+        if(preg_match('/mashort.cn/', $content) || preg_match('/tb.cn/', $content)){
             $n_content = file_get_contents($content);
             $pa = '%id=("|\')?J_Url("|\')? value=("|\')?(.*?)("|\')?>%si';
             preg_match($pa,$n_content,$r);
@@ -236,8 +240,10 @@ class IndexController extends Controller {
                 //判断是否已经生成
                 $itemRes = $itemsMdl->getRow(array('nid' => $nid, 'uid' => $userid)); 
             }else{
-                $itemRes = $itemsMdl->getRow(array('url' => $content, 'uid' => $userid)); 
+                $itemRes = $itemsMdl->getRow(array('o_url' => $o_url, 'uid' => $userid)); 
             }
+            
+            \Common\Lib\Utils::log('wechat', 'request.log', $itemRes);
             
             $s_url = '';
             if($itemRes) {
@@ -246,10 +252,13 @@ class IndexController extends Controller {
                 $params['url'] = $content;
                 $params['o_url'] = $o_url;
                 $params['due_at'] = $due_at;
+                $params['title'] = $itemRes['title']?$itemRes['title']:$title;
                 $params['updated_at'] = time();
                 $itemsMdl->saveData($params);
                 $id = $itemRes['id'];
                 $s_url = $itemRes['s_url'];
+                
+                \Common\Lib\Utils::log('wechat', 'request.log', $params);
             }else{
                 $params['url'] = $content;
                 $params['o_url'] = $o_url;
@@ -259,10 +268,15 @@ class IndexController extends Controller {
                 $params['created_at'] = time();
                 $params['updated_at'] = time();
                 $params['due_at'] = $due_at;
+                $params['title'] = trim($title);
                 $res = $itemsMdl->saveData($params);
+                //\Common\Lib\Utils::log('wechat', 'request.log', $res);
                 if($res['status'] == 'success') {
                     $id = $res['data'];
                 } 
+
+                //\Common\Lib\Utils::log('wechat', 'request.log', $itemsMdl->getLastSql());
+                //\Common\Lib\Utils::log('wechat', 'request.log', $params);
             }
 
             if($id) {
