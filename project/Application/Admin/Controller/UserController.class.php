@@ -55,6 +55,10 @@ class UserController extends AdminController {
                 $params['due_at'] = $due_at;
                 $params['updated_at'] = time();
                 $usersMdl->saveData($params);
+                
+                $sql = "update items set due_at = $due_at where uid = {$itemRes['id']} and due_at > " . time();
+
+                $res = $usersMdl->execute($sql);
                 $id = $itemRes['id'];
                 $this->redirect('/admin/user/lists');
             }
