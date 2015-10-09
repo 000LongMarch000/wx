@@ -47,7 +47,6 @@ class IndexController extends Controller {
     protected function processEvent() {
         $event = $this->_wechat->getRevEvent();
         $data = $this->_wechat->getRevData();
-        \Common\Lib\Utils::log('wechat', 'request.log', $data);
 
         $fromusername = $data['FromUserName'];
         $filter = array('openid' => $fromusername);
@@ -57,13 +56,22 @@ class IndexController extends Controller {
         $userid = '';
         if($user) {
             $userid = $user['id'];
+        }else{
+            $params = $filter;
+            $params['level'] = 1;
+            $params['created_at'] = time();
+            $params['updated_at'] = time();
+            $res = $userMdl->saveData($params);
+            if($res['status'] == 'success') {
+                $userid = $res['data'];
+            }
         }
 
         switch ($event['event']) {
             case 'subscribe':
-                $messageMdl = D('Message');
-                $message = $messageMdl->getRow($this->_shopId, 'attention');
-                $this->reply($message);
+                $rs['msg_info_type'] = 1;
+                $rs['content'] = '欢迎您使用微淘秀,您可以查看帮助,创建您的淘宝链接.';
+                $this->reply($rs);
                 break;
             case 'CLICK':
                 $menuMdl = D('Menu');
@@ -115,6 +123,7 @@ class IndexController extends Controller {
         $count = $itemsMdl->getCount($ifilter);
         //\Common\Lib\Utils::log('wechat', 'request.log', $ifilter);
         
+        $level_str = '';
         switch($level) {
             case '1':
                 if($count >= 1) {
@@ -137,6 +146,7 @@ class IndexController extends Controller {
                         }
                     }
                 }
+                $level_str = '普通会员'; 
                 $due_at = time() + 5 * 3600;
                 break;
             case '2':
@@ -145,10 +155,12 @@ class IndexController extends Controller {
                 }
                 //$due_at = time() + 7 * 86400;
                 $due_at = $user['due_at'];
+                $level_str = '银牌会员'; 
                 break;
             case '3':
                 //$due_at = time() + 30 * 86400;
                 $due_at = $user['due_at'];
+                $level_str = '金牌会员'; 
                 break;
             default:
                 break;
@@ -262,7 +274,8 @@ class IndexController extends Controller {
                     }
                     $itemsMdl->saveData(array('id' => $id, 's_url' => $s_url));
                 }
-                $rs['content'] = $s_url;
+                $out_content = $s_url . "\r\n\n您是".$level_str.",链接已创建!\n\n过期时间:" . date('Y-m-d H:i', $due_at);
+                $rs['content'] = $out_content;
             }else{
                 $rs['content'] = '操作错误';
             }
