@@ -6,15 +6,16 @@
 
   	<link rel="stylesheet" type="text/css" href="/src/css/h5/reset.css" />
   	<link rel="stylesheet" type="text/css" href="/src/css/h5/fail.css" />
+  	<link rel="stylesheet" type="text/css" href="/src/css/h5/add.css" />
 	<title>商品</title>
 </head>
 <body>
-<div style="margin:5px 5px;">
+<div class="good_lists">
 <{foreach from=$items item="item"}>
-<div style="margin-bottom:10px;">
-<div style="margin-bottom:2px;">商品链接：<{if $item.s_url}><{$item.s_url}><{else}>http://i.vtshow.top/show/<{$item.id}><{/if}></div>
-<div style="margin-bottom:2px;">创建时间：<{$item.created_at|date_format:"%Y-%m-%d %H:%M"}></div>
-<div style="margin-bottom:2px;">过期时间：<{$item.due_at|date_format:"%Y-%m-%d %H:%M"}></div>
+<div class="item <{if $item.d_status=='dued'}>dued<{elseif $item.d_status == 'soon_due'}>soon<{/if}>">
+<div class="goods">商品链接：<a href="<{$item.url}>"><{$item.url}></a><span><{if $item.d_status == 'soon_due'}>(即将过期)<{elseif $item.d_status == 'dued'}>(已过期)<{/if}></span></div>
+<div class="created">创建时间：<{$item.created_at|date_format:"%Y-%m-%d %H:%M"}></div>
+<div class="due">过期时间：<span><{$item.due_at|date_format:"%Y-%m-%d %H:%M"}></span></div>
 </div>
 <{foreachelse}>
 <div class="title">您还没有创建商品，<a href="">查看帮助</a></div>

@@ -1,0 +1,43 @@
+.good_lists{
+    padding:5px 5px;
+    font-size:13px;
+}
+
+.good_lists .item {
+    margin-bottom:10px;
+    padding-bottom:5px;
+    border-bottom:1px solid #ddd;
+}
+
+.good_lists .item div {
+    margin-bottom:2px;
+}
+
+.good_lists .dued div.goods {
+    //text-decoration:line-through; 
+}
+
+.good_lists .dued div.goods span {
+    //color:red;
+}
+
+.good_lists .soon div.goods span {
+    color: #ff5f28;
+}
+
+.member .title{
+    margin-top:30px;
+}
+
+.member .btn {
+    width:280px;
+}
+
+.member .info {
+    font-size:13px;
+    margin:10px 20px;
+}
+
+.member .info div{
+    line-height:20px;
+}

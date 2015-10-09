@@ -23,6 +23,15 @@ class GoodsController extends PubController {
         if($items) {
             foreach($items as &$item) {
                 $item['id'] = \Common\Lib\Idhandler::encode($item['id']);
+                $item['d_status'] = 'normal';
+                if($item['due_at'] < time()) {
+                    $item['d_status'] = 'dued';
+                }elseif(($item['due_at'] - time()) < 86400) {
+                    $item['d_status'] = 'soon_due';
+                }
+                
+                $item['url'] = $item['s_url']?$item['s_url']:'http://i.vtshow.top/show/' . $item['id'];
+               
             }
         }
         $this->assign('items', $items);

@@ -12,8 +12,12 @@
 <{if !$due}>
 <iframe src="<{$item.url}>" width="100%" height="100%" frameborder="0"></iframe>
 <{else}>
-<div class="title">
-页面已经过期，不能访问喽
+<div class="show_due">
+   <div class="red">链接已过有效期喽！</div>
+   <div class="desc">关注“微淘秀”微信公众号，免费生成自己的淘宝商品链接喽！</div>
+   <div class="code">
+       <img src="/src/images/code.png"/>
+   </div>
 </div>
 <{/if}>
 </body>
