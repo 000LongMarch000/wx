@@ -30,6 +30,7 @@ div.menu {
     margin:10px;
     margin-left:5px;
     font-weight:bold;
+    font-size:14px;
 }
 
 .hinfo{
@@ -43,5 +44,12 @@ div.menu {
 .img_t {
     margin:5px;
     line-height:20px;
+    font-weight:bold;
+    color:#777;
+}
+
+.imgs img{
+   margin-bottom:10px;
+   border-bottom:1px solid #777;
 }
 
