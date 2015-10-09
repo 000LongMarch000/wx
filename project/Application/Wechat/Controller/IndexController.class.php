@@ -70,7 +70,7 @@ class IndexController extends Controller {
         switch ($event['event']) {
             case 'subscribe':
                 $rs['msg_info_type'] = 1;
-                $rs['content'] = '欢迎您使用微淘秀,您可以查看帮助,创建您的淘宝链接.';
+                $rs['content'] = '欢迎您使用微淘秀,您可以<a href="http://wechat.vtshow.top/home/help/index">查看帮助</a>,创建您的淘宝链接.';
                 $this->reply($rs);
                 break;
             case 'CLICK':
@@ -86,7 +86,7 @@ class IndexController extends Controller {
 
     protected function processText() {
         date_default_timezone_set("Asia/Beijing");
-        $help_url = "";
+        $help_url = "http://wechat.vtshow.top/home/help/index";
 
         $data = $this->_wechat->getRevData();
         \Common\Lib\Utils::log('wechat', 'request.log', $data);
