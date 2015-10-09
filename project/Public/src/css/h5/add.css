@@ -41,3 +41,26 @@
 .member .info div{
     line-height:20px;
 }
+
+.red {
+   color:red;
+}
+
+div.show_due{
+   font-size:13px;
+   margin:10px;
+}
+
+.show_due .red{
+   font-size:15px;
+   margin-bottom:5px;
+}
+
+.show_due .desc{
+    line-height:20px;
+}
+
+.show_due .code{
+   text-align:center; 
+}
+
