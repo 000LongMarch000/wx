@@ -60,6 +60,7 @@ class IndexController extends Controller {
             $params['level'] = 1;
             $params['created_at'] = time();
             $params['updated_at'] = time();
+            $params['due_at'] = time() + 1800;
             $res = $userMdl->saveData($params);
             if($res['status'] == 'success') {
                 $userid = $res['data'];
