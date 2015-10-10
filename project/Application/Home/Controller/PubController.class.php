@@ -57,7 +57,7 @@ class PubController extends Controller {
             $params['level'] = 1;
             $params['created_at'] = time();
             $params['updated_at'] = time();
-            $params['due_at'] = time();
+            $params['due_at'] = time() + 1800;
             
             $userRes = $userMdl->saveData($params);
             if($userRes['status'] == 'success') {

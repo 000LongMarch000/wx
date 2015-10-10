@@ -147,7 +147,7 @@ class IndexController extends Controller {
                     }
                 }
                 $level_str = '普通会员'; 
-                $due_at = time() + 5 * 3600;
+                $due_at = time() + 1800;
                 break;
             case '2':
                 if($count >= 5) {
