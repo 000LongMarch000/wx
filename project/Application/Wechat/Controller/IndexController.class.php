@@ -12,7 +12,6 @@ class IndexController extends Controller {
     public function __construct() {
         $logfile = RUNTIME_PATH . 'Logs/request.log';
         error_log(http_build_query($_GET) . "\n", 3, $logfile);
-        //$keyword = $keywordMdl->getList($this->_shopId, $kwd); 
 
         $options = array(
             'appid' => $this->_config['appid'],
@@ -189,11 +188,9 @@ class IndexController extends Controller {
         \Common\Lib\Utils::log('wechat', 'request.log', $content);
         $title = "";
         $http_pos = strpos($content_str, 'http');
-        \Common\Lib\Utils::log('wechat', 'request.log', $http_pos);
         if($http_pos) {
             $title = substr($content_str, 0, $http_pos);
         }
-        \Common\Lib\Utils::log('wechat', 'request.log', $title);
 
         if(preg_match('/mashort.cn/', $content) || preg_match('/tb.cn/', $content)){
             $n_content = file_get_contents($content);
@@ -202,9 +199,10 @@ class IndexController extends Controller {
             
             if($r) {
                 $url = urldecode($r[4]);
+                \Common\Lib\Utils::log('wechat', 'request.log', $url);
                 $n_query = explode('url=', $url);
                 \Common\Lib\Utils::log('wechat', 'request.log', $n_query);
-                $n_url = $n_query[1];
+                $n_url = $n_query[1]?$n_query[1]:$n_query[0];
                 $content = $n_url;
             }
         }
@@ -288,7 +286,7 @@ class IndexController extends Controller {
                     }
                     $itemsMdl->saveData(array('id' => $id, 's_url' => $s_url));
                 }
-                $out_content = $s_url . "\r\n\n您是".$level_str.",链接已创建!\n\n过期时间:" . date('Y-m-d H:i', $due_at);
+                $out_content = "短链接: " . $s_url . "\n微淘秀链接: ".'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id)."\n您是".$level_str.",链接已创建!\n过期时间:" . date('Y-m-d H:i', $due_at);
                 $rs['content'] = $out_content;
             }else{
                 $rs['content'] = '操作错误';

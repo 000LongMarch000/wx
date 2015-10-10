@@ -31,6 +31,7 @@ class GoodsController extends PubController {
                 }
                 
                 $item['url'] = $item['s_url']?$item['s_url']:'http://i.vtshow.top/show/' . $item['id'];
+                $item['vurl'] = 'http://i.vtshow.top/show/' . $item['id'];
                
             }
         }
