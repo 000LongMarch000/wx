@@ -279,6 +279,7 @@ class IndexController extends Controller {
             }
 
             if($id) {
+                /*
                 if(!$s_url) {
                     $url = 'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id);
                     $s_url = \Common\Lib\Utils::short_url($url);
@@ -287,7 +288,9 @@ class IndexController extends Controller {
                     }
                     $itemsMdl->saveData(array('id' => $id, 's_url' => $s_url));
                 }
-                $out_content = "短链接: " . $s_url . "\n微淘秀链接: ".'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id)."\n您是".$level_str.",链接已创建!\n过期时间:" . date('Y-m-d H:i', $due_at);
+                */
+                //$out_content = "短链接: " . $s_url . "\n微淘秀链接: ".'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id)."\n您是".$level_str.",链接已创建!\n过期时间:" . date('Y-m-d H:i', $due_at);
+                $out_content = 'http://i.vtshow.top/show/' . \Common\Lib\Idhandler::encode($id)."\n您是".$level_str.",链接已创建!\n过期时间:" . date('Y-m-d H:i', $due_at);
                 $rs['content'] = $out_content;
             }else{
                 $rs['content'] = '操作错误';
