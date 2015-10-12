@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  	<meta name="format-detection" content="telephone=no">
+
+	<title><{if $item.title}><{$item.title}><{else}>商品<{/if}></title>
+        <style>
+             body {
+                 margin:0px;
+                 padding:0px;
+             }
+             #bg1 {
+                 position:fixed;
+                 top:0px;
+                 right:0px;
+                 width:12px;
+                 background-color: rgba(0,0,0,.2);
+                 height:100%;
+             }
+
+             #top1 {
+                 position:fixed;
+                 top:0px;
+                 left:0px;
+                 width:100%;
+                 background-color: rgba(0,0,0,.2);
+                 text-align:center;
+                 color:red;
+                 font-size:13px;
+                 line-height:20px;
+             }
+            
+        </style>
+</head>
+<body>
+<{if !$due}>
+<iframe <{if $app}>style="margin-top:20px;"<{/if}> src="http://item.taobao.com/item.htm?sourceType=item&id=522559972791&price=99&origin_price=399&un=f9bf87bc5960df344b68d5f77a161062" width="100%" height="100%" frameborder="0"></iframe>
+
+<{if $app}>
+<div id="top1">如果不能滑动，试一下右边灰色的区域哦</div>
+<div id="bg1"></div>
+<script>
+    //height=document.body.scrollHeight;
+    //width=document.body.scrollWidth;
+    //document.getElementById("div1").style.height=height;
+    //document.getElementById("frame1").style.width=width - 10;
+    //document.getElementById("frame1").style.height=200;
+</script>
+<{/if}>
+
+<{else}>
+<div class="show_due">
+   <div class="red">链接已过有效期喽！</div>
+   <div class="desc">您可以长按👇的二维码，关注“微淘秀”微信公众号，免费生成自己的淘宝商品链接喽！</div>
+   <div class="code">
+       <img src="/src/images/qrcode334.jpg" width="334px" height="334px"/>
+   </div>
+</div>
+<{/if}>
+</body>
+</html>

@@ -17,6 +17,12 @@ class ShowController extends Controller {
         }
 
         $this->assign('due', $due);
+        $app = '';
+        $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+        if(strpos($agent, 'iphone')) {
+            $app ='ios';
+        }
+        $this->assign('app', $app);
  
         $this->display();
     }

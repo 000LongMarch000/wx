@@ -10,18 +10,8 @@
 	<title><{if $item.title}><{$item.title}><{else}>商品<{/if}></title>
 </head>
 <body>
-
 <{if !$due}>
-<div id="div1" style="-webkit-overflow-scrolling:touch; overflow: auto;">
-<iframe src="http://item.taobao.com/item.htm?sourceType=item&id=522559972791&price=99&origin_price=399&un=f9bf87bc5960df344b68d5f77a161062" width="100%" height="100%" id='frame1' name='frame1' vspace="0" scrolling="yes" frameborder="0"></iframe>
-</div>
-<{if $app}>
-<script>
-    height=document.body.scrollHeight;
-    //document.getElementById("div1").style.height=height;
-    document.getElementById("frame1").style.height=200;
-</script>
-<{/if}>
+<iframe src="<{$item.url}>" width="100%" height="100%" frameborder="0"></iframe>
 <{else}>
 <div class="show_due">
    <div class="red">链接已过有效期喽！</div>
