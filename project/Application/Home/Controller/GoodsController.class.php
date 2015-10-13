@@ -30,8 +30,8 @@ class GoodsController extends PubController {
                     $item['d_status'] = 'soon_due';
                 }
                 
-                $item['url'] = $item['s_url']?$item['s_url']:'http://i.vtshow.top/show/' . $item['id'];
-                $item['vurl'] = 'http://i.vtshow.top/show/' . $item['id'];
+                $item['url'] = $item['s_url']?$item['s_url']:'http://i.shopflow.cn/show/' . $item['id'];
+                $item['vurl'] = 'http://i.shopflow.cn/show/' . $item['id'];
                
             }
         }

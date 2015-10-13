@@ -16,10 +16,10 @@
 <{if $item.title}>
 <div class="name"><{$item.title}></div>
 <{/if}>
-<{*
+<{if $item.url}>
 <div class="goods">短链接：<a href="<{$item.url}>"><{$item.url}></a><span><{if $item.d_status == 'soon_due'}>(即将过期)<{elseif $item.d_status == 'dued'}>(已过期)<{/if}></span></div>
-*}>
-<div class="goods">微淘秀链接：<a href="<{$item.vurl}>"><{$item.vurl}></a></span></div>
+<{/if}>
+<div class="goods">微淘秀链接：<a href="<{$item.vurl}>"><{$item.vurl}></a><span><{if $item.d_status == 'soon_due'}>(即将过期)<{elseif $item.d_status == 'dued'}>(已过期)<{/if}></span></div>
 <div class="created">创建时间：<{$item.created_at|date_format:"%Y-%m-%d %H:%M"}></div>
 <div class="due">过期时间：<span><{$item.due_at|date_format:"%Y-%m-%d %H:%M"}></span></div>
 </div>
