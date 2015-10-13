@@ -69,6 +69,12 @@ class IndexController extends Controller {
 
         switch ($event['event']) {
             case 'subscribe':
+                $shareMdl = D('Share'); 
+                $sql = 'update share set subscribe = 1 where user_id = '. $userid;
+                $userMdl->execute($sql);
+                
+                $userMdl->uplevel($userid, '2');
+                
                 $rs['msg_info_type'] = 1;
                 $rs['content'] = '欢迎您使用微淘秀,您可以<a href="http://wechat.vtshow.top/home/help/index">查看帮助</a>,创建您的淘宝链接.';
                 $this->reply($rs);

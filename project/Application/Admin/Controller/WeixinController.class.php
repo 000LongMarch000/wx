@@ -119,7 +119,7 @@ class WeixinController extends AdminController {
         if($count > 0){
             foreach($list as $key=>$val){
                 $list[$key]['msg_data'] = unserialize(@$val['msg_data']);
-                $sec_list = $menuMdl->getList($shopId, $val['id']);
+                $sec_list = $menuMdl->getList($val['id']);
 
                 if($sec_list){
                     foreach ($sec_list as $s_k => $s_v) {
@@ -496,13 +496,14 @@ class WeixinController extends AdminController {
                     }
                 }
 
-                if(!$menuMdl->saveData($shopId, $loc_info)){
+                if(!$menuMdl->saveData($loc_info)){
                     echo json_encode(array('status'=>'error','msg'=>'保存二级菜单失败'));exit;
                 }
 
                 unset($loc_info['id']);
             }
         }
+
         $rs = $menuMdl->selectMenu($this->weixin);
 
         //$logfile = RUNTIME_PATH . 'Logs/request.log';

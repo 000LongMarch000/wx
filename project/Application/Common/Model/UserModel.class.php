@@ -39,4 +39,44 @@ class UserModel extends Model {
             return array('status' => 'fail', 'msg' => $this->getError());
         }
     }
+
+    public function uplevel($user_id, $level, $up='share'){
+        $flag =  false;
+        if($user_id) {
+            $shareMdl = D('Share');
+            $useruplogMdl = D('Useruplog');
+            if(!($useruplogMdl->getRow(array('user_id' => $user_id, 'up' => $up))))
+            $shareCount = $shareMdl->getCount(array('source' => $user_id, 'subscribe' => 1));
+            if($shareCount >= 10) {
+                $user = $this->getRow(array('id' => $user_id));
+                if($user) {
+                    $due_at = $user['due_at']; 
+                    if($due_at < time()) {
+                        $due_at = time();
+                    }
+                    
+                    switch($level) {
+                        case '2':
+                            $due_at += 7 * 86400;
+                            break;
+                        case '3':
+                            $due_at += 30 * 86400;
+                            break;
+                        default:
+                            break;
+                    }
+                    $this->saveData(array('id' => $user_id, 'due_at' => $due_at, 'updated_at' => time()));
+
+                    $sql = "update items set due_at = $due_at where uid = $user_id and due_at > " . time();
+
+                    $this->execute($sql);
+
+                    $useruplogMdl->saveData(array('user_id' => $user_id, 'up' => 'share' , 'created_at' => time()));
+                
+                    $flag = true;
+                }
+            }
+        }
+        return $flag; 
+    }
 }
