@@ -4,27 +4,62 @@
   	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   	<meta name="format-detection" content="telephone=no">
 	<title>微淘秀－快速传播您的店铺</title>
-    <link rel="stylesheet" type="text/css" href="/src/css/h5/reset.css" />
-  	<link rel="stylesheet" type="text/css" href="/src/css/h5/fail.css" />
   	<link rel="stylesheet" type="text/css" href="/src/css/h5/add.css" />
+    <style>
+        body {
+            margin:0px;
+            padding:0px;
+        }
+        
+        div.event {
+            margin:20px 10px;
+        }
+
+        div.event .title{
+            margin-bottom:10px;
+            font-size:16px;
+            color:#777;
+            text-align:center;
+            line-height:20px;
+        }
+
+        div.event .info{
+            margin-bottom:20px;
+            font-size:13px;
+            color:#777;
+            line-height:20px;
+            margin-left:30px;
+            margin-right:30px;
+        }
+
+        div.event div.event1{
+            font-size:14px;
+            margin:20px 30px;
+        }
+        
+        .red {
+             color:red;
+             font-weight:bold;
+        }
+    </style>
 </head>
 <body>
      <{if $curr_profile}>
 
 <div class="event">
-     <div class="title">转发分享，可免费续期7天!</div>
-     <div class="info">活动说明：转发本页面到朋友圈，如果有10人以上关注“微淘秀”公众号，则帮您续期</div>
+     <div class="title">转发分享,推荐朋友关注公众号,<br/>可免费续期<span class="red">7</span>天!</div>
+     <div class="info">活动说明:转发本页面到朋友圈,如果有<span class="red">10人</span>以上关注“微淘秀”公众号,则自动帮您的帐号续期</div>
      <{if $hasup}>
-     <div class="event">您的朋友圈太给力了，已经帮您升级为银牌会员了!</div>
+     <div class="event1">您的朋友圈太给力了，已经帮您续期成功了!</div>
      <{else}>
-     <div class="event">您已经推荐了<{$share_count}>个朋友关注了公众号</div>
+     <div class="event1">您已经推荐了<span class="red"><{$share_count}></span>个朋友关注了公众号</div>
      <{/if}>
 </div>
 
      <{else}>
 
 <div class="show_due">
-   <div class="desc">您可以长按👇的二维码，关注“微淘秀”微信公众号，免费生成自己的淘宝商品链接喽！快速传播自己的生意</div>
+   <div class="desc">您可以长按👇的二维码，关注“微淘秀”微信公众号后，免费生成自己的淘宝商品链接喽！快速传播自己的生意</div>
    <div class="code">
        <img src="/src/images/qrcode334.jpg" width="334px" height="334px"/>
    </div>
