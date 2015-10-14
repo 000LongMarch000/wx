@@ -20,7 +20,7 @@ class EventsController extends PubController {
         $user['id'] = \Common\Lib\Idhandler::encode($user['id']);
         
         if(!$source) {
-            $this->redirect('/home/events/index?source=' . $user['id']);
+            $this->redirect('/home/events/share?source=' . $user['id']);
             exit();
         }
         

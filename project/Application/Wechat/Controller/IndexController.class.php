@@ -72,8 +72,14 @@ class IndexController extends Controller {
                 $shareMdl = D('Share'); 
                 $sql = 'update share set subscribe = 1 where user_id = '. $userid;
                 $userMdl->execute($sql);
-                
-                $userMdl->uplevel($userid, '2');
+                $shares = $shareMdl->getList(array('subscribe' => 1, 'user_id' => $userid), 10000, 0, 'updated_at desc');
+                \Common\Lib\Utils::log('wechat', 'subscribe.log', $shareMdl->getLastSql());
+                \Common\Lib\Utils::log('wechat', 'subscribe.log', $shares);
+                if($shares)  {
+                    foreach($shares as $share) {
+                        $userMdl->uplevel($share['source'], '2');
+                    }
+                }
                 
                 $rs['msg_info_type'] = 1;
                 $rs['content'] = '欢迎您使用微淘秀,您可以<a href="http://wechat.vtshow.top/home/help/index">查看帮助</a>,创建您的淘宝链接.';
@@ -201,11 +207,12 @@ class IndexController extends Controller {
 
         if(preg_match('/mashort.cn/', $content) || preg_match('/tb.cn/', $content)){
             $n_content = file_get_contents($content);
-            $pa = '%id=("|\')?J_Url("|\')? value=("|\')?(.*?)("|\')?>%si';
+            $pa = '%url = ("|\')?(.*?)("|\')?;%s';
             preg_match($pa,$n_content,$r);
             
+            \Common\Lib\Utils::log('wechat', 'request.log', $r);
             if($r) {
-                $url = urldecode($r[4]);
+                $url = urldecode($r[2]);
                 \Common\Lib\Utils::log('wechat', 'request.log', $url);
                 $n_query = explode('url=', $url);
                 \Common\Lib\Utils::log('wechat', 'request.log', $n_query);
