@@ -19,10 +19,22 @@ class ShowController extends Controller {
         $this->assign('due', $due);
         $app = '';
         $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-        if(strpos($agent, 'iphone')) {
+
+        \Common\Lib\Utils::log('show', 'agent.log', $agent);
+
+        if(strpos($agent, 'android')) {
+            $app ='android';
+        }elseif(strpos($agent, 'iphone') || strpos($agent, 'ipad')) {
             $app ='ios';
         }
+ 
+        $wechat = 0;
+        if(strpos($agent, 'micromessenger')){
+            $wechat = 1;
+        }
+
         $this->assign('app', $app);
+        $this->assign('wechat', $wechat);
  
         $this->display();
     }
