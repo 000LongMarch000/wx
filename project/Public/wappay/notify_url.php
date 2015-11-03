@@ -23,6 +23,21 @@ $alipayNotify = new AlipayNotify($alipay_config);
 $verify_result = $alipayNotify->verifyNotify();
 
 if($verify_result) {//验证成功
+        error_log(date('Y-m-d H:i:s') .' GET : ' . json_encode($_GET),3,'./logs/notify.log');
+        error_log(date('Y-m-d H:i:s') .' POST : ' . json_encode($_POST),3,'./logs/notify.log');
+    if($_POST['trade_status'] == 'TRADE_FINISHED' || $_POST['trade_status'] == 'TRADE_SUCCESS') {
+        $query_string = http_build_query($_POST);
+	$url = "http://wechat.vtshow.top/home/pay/success?" . $query_string;
+        $res = file_get_contents($url);
+        error_log(date('Y-m-d H:i:s') .' RES : ' . $res,3,'./logs/notify.log');
+        exit(); 
+    }
+    else {
+        //echo "trade_status=".$_GET['trade_status'];
+        logResult("trade_status=".$_GET['trade_status']);
+    }
+
+    /*
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//请在这里加上商户的业务逻辑程序代
 
@@ -63,6 +78,7 @@ if($verify_result) {//验证成功
         //调试用，写文本函数记录程序运行情况是否正常
         //logResult("这里写入想要调试的代码变量值，或其他运行的结果记录");
     }
+    */
 
 	//——请根据您的业务逻辑来编写程序（以上代码仅作参考）——
         

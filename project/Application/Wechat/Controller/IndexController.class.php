@@ -162,8 +162,8 @@ class IndexController extends Controller {
                 $due_at = time() + 1800;
                 break;
             case '2':
-                if($count >= 5) {
-                    $rs['content'] = '您是银牌会员，已经创建5次链接，, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
+                if($count >= 10) {
+                    $rs['content'] = '您是银牌会员，已经创建10次链接，, <a href="http://wechat.vtshow.top/home/pay/index">点击成为会员</a>，可创建更多';
                 }
                 //$due_at = time() + 7 * 86400;
                 $due_at = $user['due_at'];

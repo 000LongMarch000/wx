@@ -26,6 +26,8 @@ $alipayNotify = new AlipayNotify($alipay_config);
 $verify_result = $alipayNotify->verifyReturn();
 
 if($verify_result) {//验证成功
+    error_log(date('Y-m-d H:i:s') . " GET : " . json_encode($_GET),3,'./logs/return.log'); 
+    error_log(date('Y-m-d H:i:s'). " POST : " . json_encode($_POST),3,'./logs/return.log'); 
     if($_GET['trade_status'] == 'TRADE_FINISHED' || $_GET['trade_status'] == 'TRADE_SUCCESS') {
 	$url = "http://wechat.vtshow.top/home/pay/success?" . $_SERVER['QUERY_STRING'];
         echo "<script>location.href = '".$url."'</script>";

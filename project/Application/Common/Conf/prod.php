@@ -10,7 +10,7 @@ $conf = array(
     'DB_PREFIX' => '', // 数据库表前缀
     'DB_CHARSET' => 'utf8', // 数据库编码默认采用utf8
     'PRODUCTS' => array(
-         '2' => array('title' => '银牌会员', 'desc' => '欢迎您成为银牌会员', 'price' => '88.00'),
-         '3' => array('title' => '金牌会员', 'desc' => '欢迎您成为金牌会员', 'price' => '299.00'),
+         '2' => array('title' => '银牌会员', 'desc' => '欢迎您成为银牌会员', 'price' => '8.00'),
+         '3' => array('title' => '金牌会员', 'desc' => '欢迎您成为金牌会员', 'price' => '168.00'),
     ),
 );
